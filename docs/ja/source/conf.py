@@ -35,25 +35,30 @@ todo_include_todos = True
 extlinks = {
     'milestone-asakusafw': ("https://github.com/asakusafw/asakusafw/issues?&q=milestone:%s", 'asakusafw milestone:'),
     'milestone-asakusafw-sdk': ("https://github.com/asakusafw/asakusafw-sdk/issues?&q=milestone:%s", 'asakusafw-sdk milestone:'),
+    'milestone-asakusafw-compiler': ("https://github.com/asakusafw/asakusafw-compiler/issues?&q=milestone:%s", 'asakusafw-compiler milestone:'),
+    'milestone-asakusafw-spark': ("https://github.com/asakusafw/asakusafw-spark/issues?&q=milestone:%s", 'asakusafw-spark milestone:'),
+    'milestone-asakusafw-dag': ("https://github.com/asakusafw/asakusafw-dag/issues?&q=milestone:%s", 'asakusafw-dag milestone:'),
+    'milestone-asakusafw-m3bp': ("https://github.com/asakusafw/asakusafw-m3bp/issues?&q=milestone:%s", 'asakusafw-m3bp milestone:'),
+    'milestone-m3bp': ("https://github.com/fixstars/m3bp/issues?&q=milestone:%s", 'm3bp milestone:'),
     'jinrikisha': ('http://docs.asakusafw.com/jinrikisha/ja/html/%s', None),
-    'asakusa-on-spark': ('http://docs.asakusafw.com/asakusa-on-spark/latest/release/ja/html/%s', None),
-    'asakusa-on-m3bp': ('http://docs.asakusafw.com/asakusa-on-m3bp/latest/release/ja/html/%s', None),
     'apiref': ('http://docs.asakusafw.com/0.8.1/release/api/%s', None),
     'epub': ('http://docs.asakusafw.com/0.8.1/release/ja/epub/%s', None),
     'basic-tutorial': ('http://docs.asakusafw.com/basic-tutorial/0.8/release/ja/html/%s', None),
 }
 javadoclinks = {
-    'javadoc': ('http://docs.asakusafw.com/0.8.1/release/api/%s.html', ""),
-    'gradledoc': ('http://docs.asakusafw.com/0.8.1/release/gradle-plugins/%s.html', "")
+    'asakusafw-javadoc': ('http://docs.asakusafw.com/0.8.1/release/api/%s.html', ""),
+    'asakusa-gradle-groovydoc': ('http://docs.asakusafw.com/0.8.1/release/gradle-plugins/%s.html', ""),
+    'asakusa-spark-gradle-groovydoc': ('http://docs.asakusafw.com/asakusa-on-spark/0.3.1/release/gradle-plugins/%s.html', ""),
+    'asakusa-m3bp-gradle-groovydoc': ('http://docs.asakusafw.com/asakusa-on-m3bp/0.1.2/release/gradle-plugins/%s.html', ""),
 }
 
 rst_prolog = u"""
 :tocdepth: 3
 
-..  |ASAKUSA_ON_M3BP| replace:: Asakusa on M\ :sup:`3`\ BP
 ..  |M3BP_ENGINE| replace:: M\ :sup:`3` for Batch Processing
+..  |M3BP_FEATURE| replace:: Asakusa on M\ :sup:`3`\ BP
+..  |M3BP_COMPILER| replace:: DSL Compiler for M\ :sup:`3`\ BP
 ..  |VERSION_UP| unicode:: U+2191
-
 """
 
 # ------------------------------------------------------------------------------

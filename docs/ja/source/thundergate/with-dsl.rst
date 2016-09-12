@@ -90,10 +90,10 @@ ThunderGateと連携してデータベースのテーブルからデータをイ
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.DbImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.DbImporterDescription`
 ..  [#] DMDLを直接記述してデータモデルクラスを作成している場合、 ``DbImporterDescription`` の代わりに ``BulkLoadImporterDescription`` [#]_ を利用して下さい
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.BulkLoadImporterDescription.LockType`
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.BulkLoadImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.BulkLoadImporterDescription.LockType`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.BulkLoadImporterDescription`
 
 データベースのテーブルにエクスポートする
 ----------------------------------------
@@ -120,9 +120,9 @@ ThunderGateと連携してジョブフローの処理結果をデータベース
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.DbExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.DbExporterDescription`
 ..  [#] DMDLを直接記述してデータモデルクラスを作成している場合、 ``DbExporterDescription`` の代わりに ``BulkLoadExporterDescription`` [#]_ を利用して下さい
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.BulkLoadExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.BulkLoadExporterDescription`
 
 補助インポータ
 ==============
@@ -194,7 +194,7 @@ ThunderGateと連携してジョブフローの処理結果をデータベース
   * 通常のインポータを一つも利用しない場合、エクスポータのターゲット名は何を指定してもかまいません
 
 ..  [#] これとは逆の「補助エクスポータ」のような仕組みは現在提供していません
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.SecondaryImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.SecondaryImporterDescription`
 
 .. _thundergate-dup-check:
 
@@ -309,7 +309,7 @@ ThunderGateと連携してジョブフローの処理結果をデータベース
 
 
 ..  [#] エラーコードを格納するカラムだけは、正常テーブルになくても大丈夫です
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.DupCheckDbExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.DupCheckDbExporterDescription`
 
 
 正常テーブルとエラーテーブルの構造が大きく異なる場合

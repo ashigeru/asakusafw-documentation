@@ -69,8 +69,8 @@ Asakusa Frameworkは以下の実装クラスを組み込みで提供していま
 
 レポートAPIの利用方法については :doc:`../dsl/user-guide` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.Report.Delegate`
-..  [#] :javadoc:`com.asakusafw.runtime.core.Report.Default`
-..  [#] :javadoc:`com.asakusafw.runtime.report.CommonsLoggingReport`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Report.Delegate`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Report.Default`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.report.CommonsLoggingReport`
 
 

@@ -1058,8 +1058,8 @@ YAESSではUnixの方式に従い、正常終了の場合は ``0`` , それ以�
 
 上記のうち実行IDを除いては、 `実行計画の確認`_ のものと同様です。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.batch.Batch`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.JobFlow`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.batch.Batch`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.JobFlow`
 
 フェーズ単位の実行
 ------------------
@@ -1142,7 +1142,7 @@ YAESSではUnixの方式に従い、正常終了の場合は ``0`` , それ以�
     現在のAsakusa Frameworkでは、同一のAsakusa DSLのソースコードに対してもバッチコンパイルの結果生成されるバッチアプリケーションの実行計画は不定です。
     実行計画が異なるアプリケーションを異なる環境に配置して実行した場合、予期しない動作をする可能性が高いです。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.context.InconsistentApplicationException`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.context.InconsistentApplicationException`
 
 プロファイルセットの指定
 ~~~~~~~~~~~~~~~~~~~~~~~~

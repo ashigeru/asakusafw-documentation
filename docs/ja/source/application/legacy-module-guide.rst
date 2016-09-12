@@ -18,8 +18,8 @@ Asakusa DSL
 * ``FileImporterDescription`` [#]_
 * ``FileExporterDescription`` [#]_
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.external.FileImporterDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.external.FileExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.external.FileImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.external.FileExporterDescription`
 
 TestDriver
 ----------
@@ -27,9 +27,9 @@ TestDriver
 * ``JobFlowTestDriver`` [#]_
 * ``FlowPartTestDriver`` [#]_
 
-..  [#] :javadoc:`com.asakusafw.testdriver.BatchTestDriver`
-..  [#] :javadoc:`com.asakusafw.testdriver.JobFlowTestDriver`
-..  [#] :javadoc:`com.asakusafw.testdriver.FlowPartTestDriver`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.BatchTestDriver`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.JobFlowTestDriver`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.FlowPartTestDriver`
 
 外部システム連携
 ----------------

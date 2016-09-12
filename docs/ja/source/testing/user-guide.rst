@@ -66,8 +66,8 @@
 
 なお、結果型を引数に指定する演算子については :doc:`../dsl/operators` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.Result`
-..  [#] :javadoc:`com.asakusafw.runtime.testing.MockResult`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Result`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.testing.MockResult`
 
 演算子テストの補助
 ------------------
@@ -83,7 +83,7 @@
     @Rule
     public OperatorTestEnvironment resource = new OperatorTestEnvironment();
 
-..  [#] :javadoc:`com.asakusafw.testdriver.OperatorTestEnvironment`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.OperatorTestEnvironment`
 ..  [#] ``org.junit.Rule``
 
 コンテキストAPIを利用する演算子のテスト
@@ -341,10 +341,10 @@ Asakusa Frameworkが標準でサポートしているのは以下の3種類で�
     FlowDescription flowPart = new StockJob(shipmentIn, stockIn, shipmentOut, stockOut);
     tester.runTest(flowPart);
 
-..  [#] :javadoc:`com.asakusafw.testdriver.FlowPartTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.FlowPartTester`
 ..  [#] ここの名前は他の名前と重複せず、アルファベットや数字のみで構成して下さい
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.In`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Out`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.In`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Out`
 
 ジョブフローのテスト
 ~~~~~~~~~~~~~~~~~~~~
@@ -373,7 +373,7 @@ Asakusa Frameworkが標準でサポートしているのは以下の3種類で�
 * 入出力を ``In`` や ``Out`` に保持しない
 * ``runTest`` メソッドにはジョブフロークラス( ``.class`` )を指定する
 
-..  [#] :javadoc:`com.asakusafw.testdriver.JobFlowTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.JobFlowTester`
 
 バッチのテスト
 ~~~~~~~~~~~~~~
@@ -401,7 +401,7 @@ Asakusa Frameworkが標準でサポートしているのは以下の3種類で�
 * 入出力を指定する前に、 ``jobflow`` メソッドを経由して入出力を利用するジョブフローのID [#]_ を指定する
 * ``runTest`` メソッドにはバッチクラス( ``.class`` )を指定する
 
-..  [#] :javadoc:`com.asakusafw.testdriver.BatchTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.BatchTester`
 ..  [#] 注釈 ``@JobFlow`` の ``name`` に指定した文字列を利用して下さい
 
 出力結果を保存する
@@ -549,7 +549,7 @@ Javaオブジェクトによるテストデータ定義
         ...
     }
 
-..  [#] :javadoc:`com.asakusafw.testdriver.core.ModelVerifier`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.core.ModelVerifier`
 
 テスト条件をJavaで拡張する
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -603,7 +603,7 @@ Javaオブジェクトによるテストデータ定義
 テスト条件の拡張は、主にExcelなどで表現しきれない比較を行いたい場合に利用できます。
 比較方法をすべてJavaで記述する場合には `テスト条件をJavaで記述する`_ の方法を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.testdriver.core.ModelTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.core.ModelTester`
 
 ..  [#] 第三引数を指定できるのは、テスト条件をパスで指定した場合のみです。
         ``ModelVerifier`` を利用する場合には指定できません。
@@ -846,7 +846,7 @@ Javaのプログラムからバッチテストランナーを実行するには�
         // エラー処理 ...
     }
 
-..  [#] :javadoc:`com.asakusafw.testdriver.tools.runner.BatchTestRunner`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.tools.runner.BatchTestRunner`
 
 コマンドラインインターフェース
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

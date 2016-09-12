@@ -24,7 +24,7 @@ Feb 01, 2016
 * Asakusa on Spark バージョン 0.2.2 は、 Asakusa Framework バージョン 0.7.6 以降が必要です。
 
 ..  note::
-    対応プラットフォームの変更については、 :doc:`user-guide` - :ref:`target-platform` を参照してください。
+    対応プラットフォームの変更については、 :doc:`user-guide` - :ref:`spark-target-platform` を参照してください。
 
 Release 0.2.1
 =============
@@ -48,7 +48,7 @@ Nov 19, 2015
 * Asakusa on Spark バージョン 0.2.1 は、 Asakusa Framework バージョン 0.7.5 以降が必要です。
 
 ..  note::
-    対応プラットフォームの変更については、 :doc:`user-guide` - :ref:`target-platform` を参照してください。
+    対応プラットフォームの変更については、 :doc:`user-guide` - :ref:`spark-target-platform` を参照してください。
 
 Release 0.2.0
 =============

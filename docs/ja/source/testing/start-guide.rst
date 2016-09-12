@@ -73,8 +73,8 @@
 
 なお、結果型を引数に指定する演算子については :doc:`../dsl/operators` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.Result`
-..  [#] :javadoc:`com.asakusafw.runtime.testing.MockResult`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Result`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.testing.MockResult`
 
 データフローのテスト
 ====================
@@ -283,10 +283,10 @@ Excelファイルのテストデータテンプレートを利用する場合、
     FlowDescription flowPart = new StockJob(shipmentIn, stockIn, shipmentOut, stockOut);
     tester.runTest(flowPart);
 
-..  [#] :javadoc:`com.asakusafw.testdriver.FlowPartTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.FlowPartTester`
 ..  [#] ここの名前は他の名前と重複せず、アルファベットや数字のみで構成して下さい
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.In`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Out`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.In`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Out`
 
 ジョブフローのテスト
 ~~~~~~~~~~~~~~~~~~~~
@@ -315,7 +315,7 @@ Excelファイルのテストデータテンプレートを利用する場合、
 * 入出力を ``In`` や ``Out`` に保持しない
 * ``runTest`` メソッドにはジョブフロークラス( ``.class`` )を指定する
 
-..  [#] :javadoc:`com.asakusafw.testdriver.JobFlowTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.JobFlowTester`
 
 バッチのテスト
 ~~~~~~~~~~~~~~
@@ -343,5 +343,5 @@ Excelファイルのテストデータテンプレートを利用する場合、
 * 入出力を指定する前に、 ``jobflow`` メソッドを経由して入出力を利用するジョブフローのID [#]_ を指定する
 * ``runTest`` メソッドにはバッチクラス( ``.class`` )を指定する
 
-..  [#] :javadoc:`com.asakusafw.testdriver.BatchTester`
+..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.BatchTester`
 ..  [#] 注釈 ``@JobFlow`` の ``name`` に指定した文字列を利用して下さい

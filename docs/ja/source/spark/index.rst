@@ -40,7 +40,6 @@ APIリファレンス
 リンク
 ======
 
-* :asakusafw:`Asakusa Framework documentation <index.html>`
 * `Apache Spark`_
 
 ..  _`Apache Spark`: https://spark.apache.org/

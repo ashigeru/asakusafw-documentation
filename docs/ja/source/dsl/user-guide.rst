@@ -214,7 +214,7 @@ DSLといっても難しいものではなく、通常のJavaのメソッド宣�
 ..  seealso::
     キーの指定が必要な演算子については、 :doc:`operators` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.model.Key`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.model.Key`
 
 演算子の多相化
 ~~~~~~~~~~~~~~
@@ -290,7 +290,7 @@ DSLといっても難しいものではなく、通常のJavaのメソッド宣�
         同一のバッチIDやフローIDに対しても、ジョブフローの実行のたびに変化する。
         同一ジョブフローの実行中は必ず同じ値で、トランザクションを識別するために利用できる。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.BatchContext`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.BatchContext`
 
 .. _dsl-report-api:
 
@@ -318,7 +318,7 @@ DSLといっても難しいものではなく、通常のJavaのメソッド宣�
 致命的な状況に対するレポートの仕組みも用意していますが、このレポートによって処理の流れに影響が出ることはありません。
 エラーによって処理を強制終了させたい場合などでは、ランタイム例外を演算子メソッドからスローするなどの方法が必要です。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.Report`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Report`
 
 ..  attention::
     特定のデータに対してレポートのみを行い、その結果を最終的に出力しない場合、コンパイラの最適化によって演算子の処理が省略されてしまう場合があります。
@@ -348,7 +348,7 @@ DSLといっても難しいものではなく、通常のJavaのメソッド宣�
 ``Shared`` [#]_ クラスは演算子で利用する共有オブジェクトの管理機能を提供します。
 利用方法はJavadocを参照してください。
 
-..  [#] :javadoc:`com.asakusafw.runtime.core.util.Shared`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.util.Shared`
 
 Operator DSLコンパイラ
 ----------------------
@@ -479,7 +479,7 @@ Asakusa Frameworkは標準でDirect I/OやWindGateというデータソースを
     ただし、このインターフェースだけを実装してもデータソースを利用することはできません。
     これらは、 `Operator DSLコンパイラ`_ のコンパイラプラグインを追加することで、新しいデータソースを利用できるようになります。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.external.ImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.external.ImporterDescription`
 
 エクスポータ記述
 ~~~~~~~~~~~~~~~~
@@ -498,7 +498,7 @@ Asakusa Frameworkは標準でDirect I/OやWindGateというデータソースを
     エクスポータ記述はいずれも ``ExporterDescription`` [#]_ インターフェースの実装クラスとなります。
     インポータ記述と同様に、このインターフェースだけを実装してもデータソースを利用することはできません。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.external.ExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.external.ExporterDescription`
 
 ジョブフロークラス
 ~~~~~~~~~~~~~~~~~~
@@ -529,8 +529,8 @@ Asakusa Frameworkは標準でDirect I/OやWindGateというデータソースを
 
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.FlowDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.JobFlow`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.FlowDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.JobFlow`
 
 ジョブフローコンストラクタ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -594,10 +594,10 @@ Asakusa Frameworkは標準でDirect I/OやWindGateというデータソースを
     }
 ..  **
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.In`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Out`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Import`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Export`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.In`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Out`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Import`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Export`
 
 フロー記述メソッド
 ~~~~~~~~~~~~~~~~~~
@@ -702,8 +702,8 @@ Asakusa Frameworkは標準でDirect I/OやWindGateというデータソースを
 
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.FlowDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.FlowPart`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.FlowDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.FlowPart`
 
 
 フロー部品コンストラクタ
@@ -751,8 +751,8 @@ Asakusa Frameworkは標準でDirect I/OやWindGateというデータソースを
     }
 ..  **
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.In`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Out`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.In`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Out`
 
 フロー部品のフロー記述
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -823,8 +823,8 @@ Batch DSLで記述する内容は、主に「ジョブフローの実行順序�
 
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.batch.BatchDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.batch.Batch`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.batch.BatchDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.batch.Batch`
 
 バッチ注釈
 ~~~~~~~~~~
@@ -917,7 +917,7 @@ Batch DSLで記述する内容は、主に「ジョブフローの実行順序�
     }
 
 ..  [#] バッチ引数については `コンテキストAPI`_ も参照してください。
-..  [#] :javadoc:`com.asakusafw.vocabulary.batch.Batch.Parameter`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.batch.Batch.Parameter`
 
 バッチ記述メソッド
 ~~~~~~~~~~~~~~~~~~
@@ -979,7 +979,8 @@ Batch DSLコンパイラが生成するバッチアプリケーションには�
   各コンパイラのコンパイルオプションについては、以下のドキュメントを参照してください。
 
 * :doc:`mapreduce-compiler`
-* :asakusa-on-spark:`Asakusa DSL Compiler for Spark リファレンス <reference.html#asakusa-dsl-compiler-for-spark>`
+* :doc:`../spark/reference` - :ref:`spark-dsl-compiler-reference`
+* :doc:`../m3bp/reference` - :ref:`m3bp-dsl-compiler-reference`
 
 ワークフロー記述
 

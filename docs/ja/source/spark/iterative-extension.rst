@@ -20,7 +20,7 @@ Iterative Extensionsを適用したバッチを「反復バッチ」と呼びま
  連続するバッチアプリケーションを1つのSparkアプリケーションとして実行するため、特にYARN上での実行においては、アプリケーションコンテナの初期化などの分散オーバーヘッドが極小化される、コンテナリソースをシンプルな設定で最大限に利用できる、などの利点があります。
 
 * 差分処理による最適化
-  
+
  反復バッチでは連続するバッチ間で再計算が不要な箇所は実行結果を再利用することがあるため、特に実行するバッチアプリケーション間での変更箇所が少ない場合には、バッチ間の差分処理による利点が大きくなります。
 
 反復バッチは、日付範囲を指定した日次バッチの一括実行や、パラメータ・スイープによるシミュレーションといった用途に適しています。
@@ -30,7 +30,7 @@ Iterative Extensionsは、反復バッチを定義するためのAsakusa DSLの�
 ..  attention::
     現時点では、Iterative Extensions は Asakusa on Spark 上でのみ使用できます。
     MapReduce実行環境に対してIterative Extensionsに対応する予定はありません。
-    
+
 反復バッチの開発
 ================
 
@@ -45,7 +45,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 
 反復バッチ注釈 - ``@IterativeBatch`` [#]_
   対象の **ジョブフロー** が反復バッチであることを表す注釈。
-  
+
   ジョブフロークラスに反復バッチ注釈 ``IterativeBatch`` を指定し、アプリケーションのDSLコンパイルを実行すると該当のジョブフローから反復バッチを生成します。
 
   ..  attention::
@@ -54,11 +54,11 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 
 反復化注釈 - ``@Iterative`` [#]_
   対象の処理 (外部入力、演算子) が反復対象であることを表す注釈。
-  
+
   ジョブフロークラスのジョブフローコンストラクタや演算子クラス、演算子メソッドに反復化注釈 ``Iterative`` を指定することで、その処理が反復処理の対象となります。
-  
+
   反復化注釈には、その要素に反復の対象となる変数を表す反復変数名を指定することができます。
-  
+
 ..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.iterative.IterativeBatch`
 ..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.iterative.Iterative`
 
@@ -69,7 +69,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 この注釈の要素 ``name`` に反復バッチの名前を指定します。この名前は反復バッチのバッチIDとして使用されます [#]_ 。
 
 ..  code-block:: java
-    
+
     @IterativeBatch(name = "hogeIterativeBatch")
     public class HogeJobFlow extends FlowDescription {
         ...
@@ -79,7 +79,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 この場合、このジョブフロークラスは通常のバッチにおけるジョブフロー、および反復バッチの両方の要素として利用することができます。
 
 ..  code-block:: java
-    
+
     @JobFlow(name = "hogeJobflow")
     @IterativeBatch(name = "hogeIterativeBatch")
     public class HogeJobFlow extends FlowDescription {
@@ -110,7 +110,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 外部入力の反復を指定するには、 `反復バッチの定義`_ で定義したジョブフロークラスのジョブフローコンストラクタ内で、反復演算の対象とする入力（ 注釈 ``Import`` を指定している仮引数）の先頭に反復化注釈 ``Iterative`` を指定します。
 
 ..  code-block:: java
-    
+
     @IterativeBatch(name = "hogeIterativeBatch")
     public class HogeJobFlow extends FlowDescription {
         ...
@@ -125,14 +125,14 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 ..  attention::
     現時点では、WindGate, ThunderGateによる外部入力はIterative Extensionsに対応していません。
     これらの外部入力に反復化注釈を設定した場合はDSLコンパイルエラーとなります。
-    
+
 ..  attention::
     Interative ExtensionsはSparkの実行環境にのみ対応しています。
     このためコンパイルオプション ``spark.input.direct`` [#]_ を ``false`` に設定した、
     MapReduce上でDirect I/Oの入力処理を実行する機能は利用できません。
     コンパイルオプション ``spark.input.direct`` を ``false`` に設定した場合はDSLコンパイルエラーとなります。
 
-..  [#] Direct I/O の入力時にバッチ引数が利用可能な項目については :asakusafw:`Direct I/O ユーザガイド <directio/user-guide.html>` などを参照してください。
+..  [#] Direct I/O の入力時にバッチ引数が利用可能な項目については :doc:`../directio/user-guide` などを参照してください。
 ..  [#] コンパイルオプション ``spark.input.direct`` については、 :doc:`reference` のコンパイラプロパティの項を参照してください。
 
 外部出力の反復
@@ -167,7 +167,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 演算子の反復を指定するには、反復演算の対象とするユーザ演算子に対して、演算子注釈の前に反復化注釈 ``Iterative`` を指定します。
 
 ..  code-block:: java
-    
+
     public abstract class HogeOperators {
         ...
         @Iterative
@@ -178,8 +178,8 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
         }
         ...
     }
-    
-..  [#] コンテキストAPIの使い方については :asakusafw:`Asakusa DSL ユーザガイド <dsl/user-guide.html>` などを参照してください。
+
+..  [#] コンテキストAPIの使い方については :doc:`../dsl/user-guide` などを参照してください。
 
 反復変数の指定
 ~~~~~~~~~~~~~~
@@ -194,7 +194,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 反復変数名は複数指定が可能です。
 
 ..  code-block:: java
-    
+
     public abstract class HogeOperators {
         ...
         @Iterative({ "iterative-param1", "iterative-param2" })
@@ -331,24 +331,24 @@ YAESSによる反復バッチの実行
 
 ``com.asakusafw.spark.iterativebatch.slots``
   反復バッチ内で同時に実行するラウンド数を指定します。
-  
+
   このプロパティを設定しない場合、反復バッチの実行時にすべてのラウンドを同時に実行します。
-  
+
   既定値: ``Integer.MAX_VALUE``
-  
+
   ..  hint::
       一部のケースにおいて、同時に実行するラウンド数が大きい場合にタスク数が膨大になることで、Sparkアプリケーションのパフォーマンスが劣化することがあることを確認しています。
       このような場合、``com.asakusafw.spark.iterativebatch.slots`` を適切に設定することでパフォーマンスが改善する可能性があります。
 
 ``com.asakusafw.spark.iterativebatch.stopOnFail``
   反復バッチ実行中のあるラウンドが異常終了した場合に、反復バッチ全体を異常終了するかを指定します。
-  
+
   標準の設定では、反復バッチ内であるラウンドが異常終了した場合は即時に反復バッチ全体を異常終了します。
-  
+
   この設定値を ``false`` にした場合、あるラウンドが異常終了しても他のラウンドの処理が続行されます。また反復バッチの実行結果 （正確には反復バッチ内の ``main`` フェーズ）は常に成功となります。
-  
+
   既定値: ``true``
-  
+
   ..  attention::
       この設定値を ``false`` にした場合、一部、もしくは全てのラウンドが異常終了した場合でも、反復バッチの実行結果が成功となることに注意してください。
       各ラウンドの実行結果は、反復バッチの実行時ログなどを確認する必要があります。

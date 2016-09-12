@@ -83,18 +83,18 @@ Asakusa Gradle Pluginを使った標準的なアプリケーション開発環�
     * - `asakusa-mapreduce-template-0.8.1.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.8.1.tar.gz>`_
       - Asakusa on MapReduceを利用するプロジェクトテンプレート
     * - `asakusa-spark-template-0.3.1.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.3.1.tar.gz>`_
-      - :asakusa-on-spark:`Asakusa on Spark <index.html>` を利用するプロジェクトテンプレート
+      - :doc:`../spark/index` を利用するプロジェクトテンプレート
     * - `asakusa-m3bp-template-0.1.2.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.1.2.tar.gz>`_
-      - :asakusa-on-m3bp:`Asakusa on M3BP <index.html>` を利用するプロジェクトテンプレート
+      - :doc:`../spark/index` を利用するプロジェクトテンプレート
 
 ..  seealso::
-    Asakusa on Spark , |ASAKUSA_ON_M3BP| についてはこのドキュメントの更新とは独立してリリースが実施される可能性があり、
+    Asakusa on Spark , |M3BP_FEATURE| についてはこのドキュメントの更新とは独立してリリースが実施される可能性があり、
     プロジェクトテンプレートも上記よりも新しいバージョンがリリースされている可能性があります。
 
     それぞれの最新バージョンのプロジェクトテンプレートについては、以下のドキュメントを確認してください。
 
-    * :asakusa-on-spark:`Asakusa on Spark ユーザガイド <user-guide.html>`
-    * :asakusa-on-m3bp:`Asakusa on M3BP ユーザガイド <user-guide.html>`
+    * :doc:`../spark/user-guide`
+    * :doc:`../m3bp/user-guide`
 
 また、Asakusa Frameworkの `サンプルプログラム集 (GitHub)`_ では、サンプルアプリケーションのソースコード一式を含むサンプルアプリケーションプロジェクトを公開しています。
 
@@ -654,7 +654,7 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 
 例えば上の例では、 ``asakusafwOrganizer`` 直下の ``hive.enabled true`` の設定はプロファイル ``prod`` と ``stage`` 、及び標準のプロフィルである ``dev`` に反映されます。
 
-..  [#] これらの機能は :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerProfile` が提供します。
+..  [#] これらの機能は :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerProfile` が提供します。
 ..  [#] ``dev`` プロファイルは主に :program:`installAsakusafw` タスクで開発環境にデプロイする構成として使用します。
         ``dev`` プロファイルはテストドライバー用の構成が有効になるなど、開発環境向けの既定値が設定されています。
 ..  [#] 標準の設定では、プロファイル ``prod`` のデプロイメントアーカイブは ``asakusafw-${asakusafwVersion}.tar.gz`` というファイル名(プロファイル名が接尾辞につかない)で生成されます。
@@ -795,7 +795,7 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 ..  seealso::
     テストツールタスクの利用例は :doc:`../testing/user-guide` - :ref:`testing-userguide-testtool-task` を参照してください。
 
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.TestToolTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.TestToolTask`
 
 Hive用DDLファイルの生成
 -----------------------

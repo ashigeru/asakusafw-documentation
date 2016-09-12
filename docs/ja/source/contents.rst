@@ -20,5 +20,7 @@
     application/index
     administration/index
     sandbox/index
+    spark/index
+    m3bp/index
     product/index
     document/index

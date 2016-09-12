@@ -83,4 +83,4 @@ Asakusa on Spark Iterative Extensions の詳細は、以下のドキュメント
 * Asakusa on Spark バージョン 0.3.0 は、 Spark バージョン 1.6.0 以降が必要です。
 
 ..  note::
-    対応プラットフォームの変更については、 :doc:`user-guide` - :ref:`target-platform` を参照してください。
+    対応プラットフォームの変更については、 :doc:`user-guide` - :ref:`spark-target-platform` を参照してください。

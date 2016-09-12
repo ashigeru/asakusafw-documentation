@@ -21,10 +21,10 @@ Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリに以下のMave
       - Asakusa Gradle Pluginの標準機能を提供する
     * - ``com.asakusafw.spark``
       - ``asakusa-spark-gradle``
-      - Asakusa Gradle Pluginの標準機能に加えて、 :asakusa-on-spark:`Asakusa on Spark <index.html>` 向けの機能を提供する。
+      - Asakusa Gradle Pluginの標準機能に加えて、 :doc:`../spark/index` 向けの機能を提供する。
     * - ``com.asakusafw.m3bp``
       - ``asakusa-m3bp-gradle``
-      - Asakusa Gradle Pluginの標準機能に加えて、 :asakusa-on-m3bp:`Asakusa on M3BP <index.html>` 向けの機能を提供する。
+      - Asakusa Gradle Pluginの標準機能に加えて、 :doc:`../m3bp/index` 向けの機能を提供する。
 
 アプリケーションプロジェクトからAsakusa Gradle Pluginを利用する場合、ビルドスクリプトに下記を含めます。
 
@@ -42,10 +42,10 @@ Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリに以下のMave
     }
 
 ..  seealso::
-    Asakusa on Spark , |ASAKUSA_ON_M3BP| を利用する場合の設定例については、それぞれ以下のドキュメントを確認してください。
+    Asakusa on Spark , |M3BP_FEATURE| を利用する場合の設定例については、それぞれ以下のドキュメントを確認してください。
 
-    * :asakusa-on-spark:`Asakusa on Spark ユーザガイド <user-guide.html>`
-    * :asakusa-on-m3bp:`Asakusa on M3BP ユーザガイド <user-guide.html>`
+    * :doc:`../spark/user-guide`
+    * :doc:`../m3bp/user-guide`
 
 Asakusa Gradle Plugin 一覧
 ==========================
@@ -88,7 +88,7 @@ Asakusa Gradle Pluginはいくつかのプラグインから構成されてい�
       - ``-``
       - Spark向けのバッチアプリケーションを生成、実行するための機能を導入する。
     * - ``asakusafw-m3bp``
-      - |ASAKUSA_ON_M3BP| Plugin
+      - |M3BP_FEATURE| Plugin
       - ``-``
       - |M3BP_ENGINE| 向けのバッチアプリケーションを生成、実行するための機能を導入する。
     * - ``asakusafw-legacy``
@@ -191,13 +191,13 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ``GenerateHiveDdlTask`` [#]_
       - DMDLからHive用のDDLファイルを生成する
 
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.CompileDmdlTask`
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.CompileBatchappTask`
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.GenerateTestbookTask`
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.RunBatchappTask`
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.AnalyzeYaessLogTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileDmdlTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileBatchappTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateTestbookTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.RunBatchappTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.AnalyzeYaessLogTask`
 ..  [#] YAESS Log Analyzerやその使い方については、 :doc:`yaess-log-visualization` を参照してください。
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.GenerateHiveDdlTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateHiveDdlTask`
 
 また、Batch Application Pluginは以下のタスクに対してタスク依存関係を追加します。
 
@@ -281,7 +281,7 @@ Batch Application Pluginの規約プロパティはビルドスクリプトか�
       - ``${project.group}``
       - プラグインの各タスクでJavaソースコードの生成時に指定する基底Javaパッケージ
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention` が提供します。
 ..  [#] Logback設定ファイルの詳細は次のドキュメントを参照してください: http://logback.qos.ch/manual/configuration.html
 
 DMDLプロパティ
@@ -307,7 +307,7 @@ DMDLに関する規約プロパティは、 ``asakusafw`` ブロック内の参�
       - ``src/${project.sourceSets.main.name}/dmdl``
       - DMDLスクリプトのソースディレクトリ
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.DmdlConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.DmdlConfiguration` が提供します。
 
 データモデル生成プロパティ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -332,7 +332,7 @@ DMDLに関する規約プロパティは、 ``asakusafw`` ブロック内の参�
       - ``${project.buildDir}/generated-sources/modelgen``
       - データモデルクラスのソースディレクトリ
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.ModelgenConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.ModelgenConfiguration` が提供します。
 
 Javaコンパイラプロパティ
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -365,7 +365,7 @@ Javaコンパイラ関する規約プロパティは、 ``asakusafw`` ブロッ�
       - ``1.7``
       - クラス生成のターゲットJavaバージョン
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.JavacConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.JavacConfiguration` が提供します。
 ..  [#] JDK6を利用するなどの場合に変更します。 詳しくは :doc:`using-jdk` を参照してください。
 
 DSLコンパイラプロパティ
@@ -411,7 +411,7 @@ DSLコンパイラ関する規約プロパティは、 ``asakusafw`` ブロッ�
       - ``target/hadoopwork/${execution_id}``
       - DSLコンパイラが生成するアプリケーション(Hadoopジョブ)が使用するHadoop上のワーキングディレクトリ
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.CompilerConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.CompilerConfiguration` が提供します。
 ..  [#] `Javaコンパイラプロパティ`_ の ``targetCompatibility`` の値が設定されます。
 ..  [#] DSLコンパイラオプションについては、 :doc:`../dsl/mapreduce-compiler` - :ref:`mapreduce-compile-options` を参照してください。
 
@@ -454,7 +454,7 @@ MapReduce DSLコンパイラ関する規約プロパティは、 ``asakusafw`` �
       - ``true`` (即座にコンパイルを停止する)
       - コンパイルエラーが発生したら即座にコンパイルを停止するかどうかを選択する。コンパイルエラーが発生した際に、 true を指定した場合にはコンパイルをすぐに停止し、 false を指定した場合には最後までコンパイルを実施する。
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
 ..  [#] ``include``, ``exclude`` プロパティの利用方法については、 :doc:`gradle-plugin` - :ref:`gradle-plugin-dslcompile-filter` を参照してください。
 ..  [#] DSLコンパイラオプションについては、 :doc:`../dsl/mapreduce-compiler` - :ref:`mapreduce-compile-options` を参照してください。
 
@@ -465,16 +465,16 @@ Spark DSLコンパイラに関する規約プロパティは、 ``asakusafw`` �
 
 この規約オブジェクトについては、Asakusa on Sparkの以下のドキュメントを参照してください。
 
-* :asakusa-on-spark:`Asakusa on Spark リファレンス - Batch Application Plguin (asakusafw) への拡張 <reference.html#batch-application-plugin-asakusafw>`
+* :doc:`../spark/reference` - :ref:`spark-batch-application-plugin-ext`
 
 M3BPプロパティ
 ~~~~~~~~~~~~~~
 
 M\ :sup:`3`\ BP DSLコンパイラに関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``m3bp`` でアクセスできます。
 
-この規約オブジェクトについては、 |ASAKUSA_ON_M3BP| の以下のドキュメントを参照してください。
+この規約オブジェクトについては、 |M3BP_FEATURE| の以下のドキュメントを参照してください。
 
-* :asakusa-on-m3bp:`Asakusa on M3BP リファレンス - Batch Application Plguin (asakusafw) への拡張 <reference.html#batch-application-plugin-asakusafw>`
+* :doc:`../m3bp/reference` - :ref:`m3bp-batch-application-plugin-ext`
 
 テストツールプロパティ
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -499,7 +499,7 @@ M\ :sup:`3`\ BP DSLコンパイラに関する規約プロパティは、 ``asak
       - ``${project.buildDir}/excel``
       - テストデータ定義シートの出力先
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.TestToolsConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.TestToolsConfiguration` が提供します。
 ..  [#] テストデータ定義シートのフォーマット指定値は、 :doc:`../testing/using-excel` - :ref:`testdata-generator-excel-format` を参照してください。
 
 Eclipse Pluginの拡張
@@ -612,7 +612,7 @@ Framework Organizer Plugin の規約プロパティはビルドスクリプト�
       - ``${project.buildDir}/asakusafw-assembly``
       - デプロイメント構成の構築時に利用するワーキングディレクトリのプレフィックス
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention` が提供します。
 
 バッチアプリケーションプロパティ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -633,7 +633,7 @@ Framework Organizer Plugin の規約プロパティはビルドスクリプト�
       - true
       - この値をtrueにするとデプロイメントアーカイブにプロジェクトのバッチアプリケーションを含める
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.BatchappsConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.BatchappsConfiguration` が提供します。
 
 MapReduceプロパティ
 ~~~~~~~~~~~~~~~~~~~
@@ -654,7 +654,7 @@ MapReduce DSLコンパイラが生成するバッチアプリケーションの�
       - true
       - この値をtrueにするとデプロイメントアーカイブにMapReduce DSLコンパイラが生成するプロジェクトのバッチアプリケーションを含める
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.mapreduce.gradle.plugins.AsakusafwOrganizerMapReduceExtension` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.mapreduce.gradle.plugins.AsakusafwOrganizerMapReduceExtension` が提供します。
 
 Sparkプロパティ
 ~~~~~~~~~~~~~~~
@@ -663,16 +663,16 @@ Spark DSLコンパイラが生成するバッチアプリケーションの構�
 
 この規約オブジェクトについては、Asakusa on Sparkの以下のドキュメントを参照してください。
 
-* :asakusa-on-spark:`Asakusa on Spark リファレンス - Framework Organizer Plugin ( asakusafwOrganizer ) への拡張 <reference.html#framework-organizer-plugin-asakusafworganizer>`
+* :doc:`../spark/reference` - :ref:`spark-framework-organizer-plugin-ext`
 
 M3BPプロパティ
 ~~~~~~~~~~~~~~
 
 M\ :sup:`3`\ BP DSLコンパイラが生成するバッチアプリケーションの構成に関する規約プロパティは、 ``asakusafwOrganizer`` ブロック内の参照名 ``m3bp`` でアクセスできます。
 
-この規約オブジェクトについては、 |ASAKUSA_ON_M3BP| の以下のドキュメントを参照してください。
+この規約オブジェクトについては、 |M3BP_FEATURE| の以下のドキュメントを参照してください。
 
-* :asakusa-on-m3bp:`Asakusa on M3BP リファレンス - Framework Organizer Plugin ( asakusafwOrganizer ) への拡張 <reference.html#framework-organizer-plugin-asakusafworganizer>`
+* :doc:`../m3bp/reference` - :ref:`m3bp-framework-organizer-plugin-ext`
 
 Direct I/Oプロパティ
 ~~~~~~~~~~~~~~~~~~~~
@@ -693,7 +693,7 @@ Direct I/Oの構成に関する規約プロパティは、 ``asakusafwOrganizer`
       - true
       - この値をtrueにするとDirect I/O用の構成を行う
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.DirectIoConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.DirectIoConfiguration` が提供します。
 
 .. _gradle-plugin-oraganizer-hive:
 
@@ -720,7 +720,7 @@ Direct I/O Hiveの構成に関する規約プロパティは、 ``asakusafwOrgan
       - ``org.apache.hive:hive-exec:1.1.1``
       - Directi I/O Hiveが実行時に使用するHiveライブラリ
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.HiveConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.HiveConfiguration` が提供します。
 
 テストドライバープロパティ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -741,7 +741,7 @@ Direct I/O Hiveの構成に関する規約プロパティは、 ``asakusafwOrgan
       - false
       - この値をtrueにするとテストモジュール用の構成を行う
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.TestingConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.TestingConfiguration` が提供します。
 
 WindGateプロパティ
 ~~~~~~~~~~~~~~~~~~
@@ -770,7 +770,7 @@ WindGateの構成に関する規約プロパティは、 ``asakusafwOrganizer`` 
       - true
       - この値をtrueにするとHadoopブリッジ ( ``windgate-ssh`` ) を追加する [#]_
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.WindGateConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.WindGateConfiguration` が提供します。
 ..  [#] 詳しくは :doc:`../windgate/user-guide` - :ref:`windgate-userguide-retryable-plugin` を参照してください。
 ..  [#] 詳しくは :doc:`../windgate/user-guide` - :ref:`windgate-userguide-ssh-hadoop` を参照してください。
 
@@ -809,10 +809,10 @@ YAESSの構成に関する規約プロパティは、 ``asakusafwOrganizer`` ブ
       - true
       - この値をtrueにするとYAESSのIterative Extensions向け拡張モジュールを追加する [#]_
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.YaessConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.YaessConfiguration` が提供します。
 ..  [#] 詳しくは :doc:`../yaess/user-guide` - :ref:`yaess-profile-hadoop-section-ssh` を参照してください。
 ..  [#] 詳しくは :doc:`../yaess/jobqueue` - :ref:`yaess-plugin-jobqueue-client` を参照してください。
-..  [#] Iterative ExtensionsについてはAsakusa on Sparkのドキュメント :asakusa-on-spark:`Asakusa on Spark Iterative Extensions <iterative-extension.html>` を参照してください。
+..  [#] Iterative ExtensionsについてはAsakusa on Sparkのドキュメント :doc:`../spark/iterative-extension` を参照してください。
 
 フレームワーク拡張プロパティ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -833,7 +833,7 @@ Asakusa Frameworkの拡張構成に関する規約プロパティは、 ``asakus
       - ``[]``
       - ``$ASAKUSA_HOME/ext/lib`` 配下に配置するライブラリ [#]_
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.ExtensionConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.ExtensionConfiguration` が提供します。
 ..  [#] 明示的に指定されたライブラリのみを配置し、明示的でない依存ライブラリ等は自動的に配置しません。
 
 デプロイメントアーカイブの編集
@@ -875,6 +875,6 @@ Asakusa Frameworkの拡張構成に関する規約プロパティは、 ``asakus
 
   後の引数に、置換対象文字列をMap形式 ( ``key``:``value`` )で指定します。
 
-..  [#] これらの機能は :gradledoc:`com.asakusafw.gradle.assembly.AsakusafwAssembly` が提供します。
+..  [#] これらの機能は :asakusa-gradle-groovydoc:`com.asakusafw.gradle.assembly.AsakusafwAssembly` が提供します。
 ..  [#] ``assembly`` の利用例は、 :doc:`../administration/deployment-guide` も参照してください。
-..  [#] これらの機能は :gradledoc:`com.asakusafw.gradle.assembly.AssemblyHandler` が提供します。
+..  [#] これらの機能は :asakusa-gradle-groovydoc:`com.asakusafw.gradle.assembly.AssemblyHandler` が提供します。

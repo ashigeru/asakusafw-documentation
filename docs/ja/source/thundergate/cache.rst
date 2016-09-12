@@ -244,7 +244,7 @@ DMDLを生成するコマンドで上記を指定する場合には、 :doc:`wit
 ..  note::
     この制約は今後緩和される可能性があります。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.bulkloader.DbImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.bulkloader.DbImporterDescription`
 
 
 キャッシュ運用上の注意

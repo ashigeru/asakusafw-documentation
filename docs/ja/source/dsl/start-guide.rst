@@ -63,7 +63,7 @@ Asakusa Frameworkでは、HadoopやSparkなどのフレームワークを直接�
 ..  seealso::
     利用可能な全ての演算子については、 :doc:`operators` を参照して下さい。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.package-summary`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.package-summary`
 
 演算子クラスを作成する
 ----------------------
@@ -446,9 +446,9 @@ WindGateからデータをインポートしてジョブフローで処理する
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.FsImporterDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.JdbcImporterDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.WindGateImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.FsImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.WindGateImporterDescription`
 
 WindGateにエクスポートする
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -484,9 +484,9 @@ WindGateにエクスポートする
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.FsExporterDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription`
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.WindGateExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.FsExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.WindGateExporterDescription`
 
 Direct I/Oを利用する
 ~~~~~~~~~~~~~~~~~~~~
@@ -518,9 +518,9 @@ WindGateはCSVのほか、さまざまな形式のファイルやデータベー
 
 なお、それぞれのジョブフロークラスは、末尾の名前が ``jobflow`` であるようなパッケージに配置することを推奨しています。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.FlowDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.FlowDescription`
 ..  [#] その他、publicなトップレベルクラスであり、具象クラスである(  ``abstract`` を指定しない)、型引数を宣言しない、 ``FlowDescription`` 以外の親クラスや親インターフェースを指定しない、などの制約があります。
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.JobFlow`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.JobFlow`
 
 コンストラクタの作成
 --------------------
@@ -566,10 +566,10 @@ WindGateはCSVのほか、さまざまな形式のファイルやデータベー
         ...
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.In`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Import`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Out`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.Export`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.In`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Import`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Out`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.Export`
 
 ジョブフローメソッドの作成
 --------------------------
@@ -609,7 +609,7 @@ WindGateはCSVのほか、さまざまな形式のファイルやデータベー
         ...
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.util.CoreOperatorFactory`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.util.CoreOperatorFactory`
 
 入力と演算子を接続する
 ----------------------
@@ -966,9 +966,9 @@ WindGateはCSVのほか、さまざまな形式のファイルやデータベー
 
 なお、それぞれのバッチクラスは、末尾の名前が ``batch`` であるようなパッケージに配置することを推奨しています。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.batch.BatchDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.batch.BatchDescription`
 ..  [#] その他、publicなトップレベルクラスであり、具象クラスである( ``abstract`` を指定しない)、型引数を宣言しない、明示的な親クラスや親インターフェースを指定しない、明示的なコンストラクタを宣言しない、などの制約があります。
-..  [#] :javadoc:`com.asakusafw.vocabulary.batch.Batch`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.batch.Batch`
 
 バッチメソッドの作成
 --------------------

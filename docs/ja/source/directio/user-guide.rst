@@ -617,9 +617,9 @@ Direct I/Oを利用してファイルを入出力するには、 `Hadoopのフ�
     :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがSDKアーティファクトという依存性定義によってデフォルトで利用可能になっています。
     詳しくは :doc:`../application/sdk-artifact` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.runtime.directio.DataFormat`
-..  [#] :javadoc:`com.asakusafw.runtime.directio.BinaryStreamFormat`
-..  [#] :javadoc:`com.asakusafw.runtime.directio.hadoop.HadoopFileFormat`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.DataFormat`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.BinaryStreamFormat`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.hadoop.HadoopFileFormat`
 
 データフォーマットの作成
 ------------------------
@@ -722,8 +722,8 @@ Direct I/Oを利用してファイルからデータを読み出す場合、 ``D
         }
     }
 .. ***
-..  [#] :javadoc:`com.asakusafw.vocabulary.directio.DirectFileInputDescription`
-..  [#] :javadoc:`com.asakusafw.runtime.directio.DataFilter`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.directio.DirectFileInputDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.DataFilter`
 
 入力ファイルのベースパス
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -849,7 +849,7 @@ Direct I/Oを利用してファイルからデータを読み出す場合、 ``D
     }
 ..  **
 
-..  [#] :javadoc:`com.asakusafw.runtime.directio.DataFilter`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.DataFilter`
 
 
 .. _directio-dsl-output-description:
@@ -946,7 +946,7 @@ Direct I/Oを利用してデータをファイルに書き出す場合、 ``Dire
 
     このため、出力先にワイルドカードやランダムな値を利用する場合には、 ``getDeletePatterns()`` を利用してファイルを削除しておいたほうが良い場合があります。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.directio.DirectFileOutputDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.directio.DirectFileOutputDescription`
 
 出力ファイルのベースパス
 ~~~~~~~~~~~~~~~~~~~~~~~~

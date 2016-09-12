@@ -155,7 +155,7 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ThunderGate用のMySQLメタデータからDMDLスクリプトを生成する
 
 ..  [#] ThunderGateの設定を有効にした場合、 :program:`compileDMDL` タスクに :program:`generateThunderGateDataModel` タスクが依存先として追加されます
-..  [#] :gradledoc:`com.asakusafw.gradle.tasks.GenerateThunderGateDataModelTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateThunderGateDataModelTask`
 
 規約プロパティ
 ~~~~~~~~~~~~~~
@@ -179,7 +179,7 @@ Batch Application Pluginの規約プロパティはビルドスクリプトか�
       - プラグイン規定のバージョン [#]_
       - プロジェクトが使用するAsakusa Frameworkのバージョン
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention` が提供します。
 ..  [#] Asakusa Gradle Pluginの該当バージョンが規定するAsakusa Frameworkバージョンを導入します。詳しくは後述の `asakusafwVersion`_ を参照してください。
 
 ``asakusafwVersion``
@@ -264,7 +264,7 @@ ThunderGateに関する規約プロパティは、 ``asakusafw`` ブロック内
       - ``'1'``
       - ThunderGateが入出力を行う業務テーブルの論理削除フラグが削除されたことを示す値
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.ThunderGateConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.ThunderGateConfiguration` が提供します。
 
 ..  [#] この設定を利用する場合、タスク実行時にAsakusa Frameworkがインストール済みとなっている必要があります。
         または ``jdbcFile`` をプロパティを設定することで、インストールを行わない状態でタスクが実行できるようになります。
@@ -410,7 +410,7 @@ Framework Organizer Plugin の規約プロパティはビルドスクリプト�
       - プラグイン規定のバージョン [#]_
       - プロジェクトが使用するAsakusa Frameworkのバージョン
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention` が提供します。
 ..  [#] Asakusa Gradle Pluginの該当バージョンが規定するAsakusa Frameworkバージョンを導入します。詳しくは先述の `asakusafwVersion`_ を参照してください。
 
 ThunderGateプロパティ
@@ -436,4 +436,4 @@ ThunderGateの構成に関する規約プロパティは、 ``asakusafwOrganizer
       - ``未指定``
       - デプロイメントアーカイブに含める既定のThunderGateのターゲット名。
 
-..  [#] これらのプロパティは規約オブジェクト :gradledoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.ThunderGateConfiguration` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.ThunderGateConfiguration` が提供します。

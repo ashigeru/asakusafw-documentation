@@ -32,8 +32,8 @@ Asakusa Framework入門
 * :doc:`application/index`
 * :doc:`administration/index`
 * :doc:`sandbox/index`
-* :asakusa-on-spark:`Asakusa on Spark <index.html>`
-* :asakusa-on-m3bp:`Asakusa on M3BP <index.html>`
+* :doc:`spark/index`
+* :doc:`m3bp/index`
 
 プロダクトについて
 ==================

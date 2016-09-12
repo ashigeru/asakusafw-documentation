@@ -152,7 +152,7 @@ Eclipse上で環境変数 ``ASAKUSA_HOME`` が有効になっていることを�
 
 * `asakusa-mapreduce-template-0.8.1.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.8.1.tar.gz>`_
 
-Asakusa on Sparkを利用する場合のプロジェクトテンプレートは、 :asakusa-on-spark:`Asakusa on Spark ユーザーガイド <user-guide.html>` に記載のリンクからダウンロードします。
+Asakusa on Sparkを利用する場合のプロジェクトテンプレートは、 :doc:`../spark/user-guide` に記載のリンクからダウンロードします。
 
 ..  code-block:: sh
 
@@ -173,7 +173,7 @@ Shafuを導入した開発環境では、オンライン上に公開されてい
    *  Spark向けのテンプレートを利用する場合は、 :guilabel:`Asakusa Project Template <Spark> - <version>` を選択します [#]_ 。
 #. :guilabel:`Finish` ボタンを押すと選択したプロジェクトテンプレートを読み込み、Eclipseプロジェクトとして新規プロジェクトが作成されます。
 
-..  [#] Asakusa on Sparkで利用可能なバージョンは、 :asakusa-on-spark:`Asakusa on Spark <index.html>` のドキュメントを確認してください。
+..  [#] Asakusa on Sparkで利用可能なバージョンは、 :doc:`../spark/index` のドキュメントを確認してください。
 
 Asakusa Frameworkのインストール
 -------------------------------
@@ -298,7 +298,7 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 
 * ``JAVA_HOME``: Javaのインストールパス
 * ``HADOOP_CMD``: :program:`hadoop` コマンドのパス
-* ``SPARK_CMD``: :program:`spark-submit` コマンドのパス ( :asakusa-on-spark:`Asakusa on Spark <index.html>` を利用する場合 )
+* ``SPARK_CMD``: :program:`spark-submit` コマンドのパス ( :doc:`../spark/index` を利用する場合 )
 * ``ASAKUSA_HOME``: Asakusa Frameworkのインストールパス
 
 以下は環境変数の設定例です。

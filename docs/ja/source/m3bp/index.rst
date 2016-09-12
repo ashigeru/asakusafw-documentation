@@ -1,11 +1,11 @@
-=========
-|FEATURE|
-=========
+==============
+|M3BP_FEATURE|
+==============
 
-|FEATURE|\ は、Asakusa DSLを始めとするAsakusa Frameworkの開発基盤を利用して作成したバッチアプリケーションに対して、
-|ENGINE|\ をその実行基盤として利用するための機能セットを提供します。
+|M3BP_FEATURE|\ は、Asakusa DSLを始めとするAsakusa Frameworkの開発基盤を利用して作成したバッチアプリケーションに対して、
+|M3BP_ENGINE|\ をその実行基盤として利用するための機能セットを提供します。
 
-|FEATURE|\ の概要と利用方法は、 :doc:`user-guide` を参照してください。
+|M3BP_FEATURE|\ の概要と利用方法は、 :doc:`user-guide` を参照してください。
 
 ドキュメント
 ============
@@ -41,5 +41,4 @@ APIリファレンス
 リンク
 ======
 
-* :asakusafw:`Asakusa Framework documentation <index.html>`
 * `M3 for Batch Processing (GitHub) <https://github.com/fixstars/m3bp>`_

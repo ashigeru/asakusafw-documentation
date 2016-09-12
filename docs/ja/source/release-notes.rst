@@ -97,17 +97,17 @@ Apr 08, 2016
 
 Asakusa Frameworkは優れた開発生産性、高いパフォーマンスを発揮するバッチアプリケーションの開発、実行基盤として様々な改善を続けています。
 
-今回のリリースでは、 新しい実行基盤である |ASAKUSA_ON_M3BP| の新規公開、昨年からDeveloper Previewとして公開していた Asakusa on Spark の正式公開など重要なアップデートが多数含まれています。
+今回のリリースでは、 新しい実行基盤である |M3BP_FEATURE| の新規公開、昨年からDeveloper Previewとして公開していた Asakusa on Spark の正式公開など重要なアップデートが多数含まれています。
 
 また今回のリリースでは、より優れたプラットフォームへの対応を積極的に行うために、いくつかの古いプラットフォームの対応を削除しています。
 
 新機能と主な変更点
 ------------------
 
-|ASAKUSA_ON_M3BP|
-~~~~~~~~~~~~~~~~~
+|M3BP_FEATURE|
+~~~~~~~~~~~~~~
 
-|ASAKUSA_ON_M3BP| は、Asakusa DSLを始めとするAsakusa Frameworkの開発基盤を利用して作成したバッチアプリケーションに対して、 |M3BP_ENGINE| (https://github.com/fixstars/m3bp) を実行基盤として利用するための機能セットを提供します。
+|M3BP_FEATURE| は、Asakusa DSLを始めとするAsakusa Frameworkの開発基盤を利用して作成したバッチアプリケーションに対して、 |M3BP_ENGINE| (https://github.com/fixstars/m3bp) を実行基盤として利用するための機能セットを提供します。
 
 |M3BP_ENGINE| はDAG (Directed Acyclic Graph; 有向非循環グラフ) の形で表現されたタスクをマルチコア環境で効率よく処理するためのフレームワークで、以下のような特徴があります。
 
@@ -115,11 +115,11 @@ Asakusa Frameworkは優れた開発生産性、高いパフォーマンスを発
 * 細粒度で動的なタスクスケジューリング
 * ほぼすべてオンメモリで処理
 
-上記のような特徴のため、 小規模〜中規模のデータを扱うバッチに対して、|ASAKUSA_ON_M3BP| によって単一ノード上で高速に処理できるようになりました。
+上記のような特徴のため、 小規模〜中規模のデータを扱うバッチに対して、|M3BP_FEATURE| によって単一ノード上で高速に処理できるようになりました。
 
-|ASAKUSA_ON_M3BP| の詳細は、以下のドキュメントを参照してください。
+|M3BP_FEATURE| の詳細は、以下のドキュメントを参照してください。
 
-* :asakusa-on-m3bp:`Asakusa on M3BP <index.html>`
+* :doc:`../m3bp/index`
 
 Asakusa on Spark
 ~~~~~~~~~~~~~~~~
@@ -132,7 +132,7 @@ Asakusa on Sparkは、Asakusa DSLを始めとするAsakusa Frameworkの開発基
 
 Asakusa on Spark の詳細は、以下のドキュメントを参照してください。
 
-* :asakusa-on-spark:`Asakusa on Spark <index.html>`
+* :doc:`../spark/index`
 
 Asakusa on Spark Iterative Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -158,7 +158,7 @@ Iterative Extensionsは、反復バッチを定義するためのAsakusa DSLの�
 
 Asakusa on Spark Iterative Extensions の詳細は、以下のドキュメントを参照してください。
 
-* :asakusa-on-spark:`Asakusa on Spark Iterative Extensions <iterative-extension.html>`
+* :doc:`../spark/iterative-extension`
 
 対応プラットフォームの更新
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -177,7 +177,7 @@ Asakusa on Spark Iterative Extensions の詳細は、以下のドキュメント
 Asakusa Gradle Pluginの改善
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|ASAKUSA_ON_M3BP| や Asakusa on Spark のリリースに伴い、Gradle Plugin上で複数の実行基盤を統一的な方法で扱うための改善や、ビルド設定をシンプルに管理するための改善などをおこないました。
+|M3BP_FEATURE| や Asakusa on Spark のリリースに伴い、Gradle Plugin上で複数の実行基盤を統一的な方法で扱うための改善や、ビルド設定をシンプルに管理するための改善などをおこないました。
 
 Asakusa Gradle Pluginの変更点については、以下のドキュメントを参照してください。
 

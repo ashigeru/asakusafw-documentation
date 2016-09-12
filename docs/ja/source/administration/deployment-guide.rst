@@ -263,7 +263,7 @@ Hadoopクライアントマシン上でAsakusa Frameworkを配置しバッチア
 
 * ``JAVA_HOME``: YAESSが使用するJavaのインストールパス
 * ``HADOOP_CMD``: YAESSが使用する :program:`hadoop` コマンドのパス
-* ``SPARK_CMD``: YAESSが使用する :program:`spark-submit` コマンドのパス ( :asakusa-on-spark:`Asakusa on Spark <index.html>` を利用する場合 )
+* ``SPARK_CMD``: YAESSが使用する :program:`spark-submit` コマンドのパス ( :doc:`../spark/index` を利用する場合 )
 * ``ASAKUSA_HOME``: Asakusa Frameworkのインストールパス
 
 :file:`~/.profile` をエディタで開き、最下行に以下の定義を追加します。
@@ -339,7 +339,7 @@ Hadoopクライアントマシンにデプロイメントアーカイブファ�
 
     $ASAKUSA_HOME/yaess/bin/yaess-batch.sh example.summarizeSales -A date=2011-04-01
 
-:asakusa-on-spark:`Asakusa on Spark <index.html>` を利用したバッチアプリケーションの場合、バッチIDのプレフィックスに ``spark.`` を付与して実行します。
+:doc:`../spark/index` を利用したバッチアプリケーションの場合、バッチIDのプレフィックスに ``spark.`` を付与して実行します。
 
 ..  code-block:: sh
 
@@ -406,7 +406,7 @@ Asakusa on Sparkの最適化設定
 
 以下のドキュメントでは、Asakusa on Sparkを使ったSparkアプリケーションの実行に関してAkakusa Framework特有のチューニングパラメータなどを説明しています。
 
-* :asakusa-on-spark:`Asakusa on Sparkの最適化設定 <optimization.html>`
+* :doc:`../spark/optimization`
 
 各コンポーネントの設定
 ----------------------

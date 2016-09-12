@@ -43,7 +43,7 @@ Asakusa on Spark Gradle Pluginが提供する機能とインターフェース�
 
     ``asakusafwOrganizer.batchapps.enabled`` に ``true`` が指定されている場合、自動的に有効になる。
 
-..  [#] :asakusafw-sdk-gradle-groovydoc:`com.asakusafw.gradle.tasks.AsakusaCompileTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.AsakusaCompileTask`
 
 タスク拡張
 ----------
@@ -66,6 +66,8 @@ Asakusa on Spark Gradle Pluginが提供する機能とインターフェース�
 規約プロパティ拡張
 ------------------
 
+.. _spark-batch-application-plugin-ext:
+
 Batch Application Plugin ( ``asakusafw`` ) への拡張
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -75,7 +77,7 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
 
 ..  code-block:: groovy
     :caption: build.gradle
-    :name: build.gradle-reference-1
+    :name: build.gradle-spark-reference-1
 
     asakusafw {
         spark {
@@ -144,7 +146,9 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
 
     既定値: ``true`` (即座にコンパイルを停止する)
 
-..  [#] これらのプロパティは規約オブジェクト :asakusafw-sdk-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
+
+.. _spark-framework-organizer-plugin-ext:
 
 Framework Organizer Plugin ( ``asakusafwOrganizer`` ) への拡張
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -211,6 +215,8 @@ Asakusa on Spark Gradle Plugin は Framework Organizer Plugin に対して Asaku
     規約プロパティ ``asakusafw.spark.{in,ex}clude`` と同様にワイルドカードを利用可能。
 
     このオプションが設定された場合、規約プロパティ ``asakusafw.spark.{in,ex}clude`` の設定は無視する。
+
+.. _spark-dsl-compiler-reference:
 
 Asakusa DSL Compiler for Spark リファレンス
 ===========================================

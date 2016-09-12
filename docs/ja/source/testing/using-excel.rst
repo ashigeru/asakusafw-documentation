@@ -16,7 +16,7 @@ Asakusa Frameworkには、このテストデータを記述するためのExcel�
 コマンドラインインターフェース
 ------------------------------
 
-テストデータテンプレートを生成するには、 ``asakusa-test-data-generator`` の :javadoc:`com.asakusafw.testdata.generator.excel.Main` を実行します。
+テストデータテンプレートを生成するには、 ``asakusa-test-data-generator`` の :asakusafw-javadoc:`com.asakusafw.testdata.generator.excel.Main` を実行します。
 指定できるオプションは次の通りです。
 
 ..  program:: com.asakusafw.testdata.generator.excel.Main

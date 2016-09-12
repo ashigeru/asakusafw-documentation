@@ -93,7 +93,7 @@ MapReduce DSLコンパイラで利用可能なコンパイルオプションを�
     ただし、およそハッシュ表の元になったデータサイズの倍程度のメモリを必要とするため、適用範囲が限られてしまうという問題はあります。
 
 ..  [#] 部分集約の設定については、 :doc:`operators` の単純集計演算子や畳み込み演算子を参照してください。
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.processor.PartialAggregation`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.processor.PartialAggregation`
 
 コンパイラスイッチ
 ~~~~~~~~~~~~~~~~~~

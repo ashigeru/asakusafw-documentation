@@ -50,7 +50,7 @@ Asakusa Gradle Pluginのバージョン変更
         }
     }
 
-:asakusa-on-spark:`Asakusa on Spark <index.html>` を利用している場合は、Asakusa on Spark Gradle Pluginのバージョンを指定します。
+:doc:`../spark/index` を利用している場合は、Asakusa on Spark Gradle Pluginのバージョンを指定します。
 
 ..  literalinclude:: gradle-attachment/template-build.gradle
     :language: groovy
@@ -60,7 +60,7 @@ Asakusa Gradle Pluginのバージョン変更
     :emphasize-lines: 6
 
 ..  attention::
-    Asakusa on Spark Gradle Pluginのバージョンや、Asakusa on Sparkが利用するAsakusa Frameworkのバージョンについては、:asakusa-on-spark:`Asakusa on Sparkのドキュメント <index.html>` を確認してください。
+    Asakusa on Spark Gradle Pluginのバージョンや、Asakusa on Sparkが利用するAsakusa Frameworkのバージョンについては、:doc:`../spark/index` を確認してください。
 
 .. _vup-gradle-wrapper:
 

@@ -556,8 +556,8 @@ Asakusa FrameworkのバッチアプリケーションからWindGateを利用し�
 ..  hint::
     :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがSDKアーティファクトという依存性定義によってデフォルトで利用可能になっています。詳しくは :doc:`../application/sdk-artifact` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.runtime.directio.DataFormat`
-..  [#] :javadoc:`com.asakusafw.windgate.core.vocabulary.DataModelStreamSupport`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.DataFormat`
+..  [#] :asakusafw-javadoc:`com.asakusafw.windgate.core.vocabulary.DataModelStreamSupport`
 
 CSV形式のDataModelStreamSupportの作成
 -------------------------------------
@@ -764,7 +764,7 @@ WindGateと連携してファイルからデータをインポートする場合
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.FsImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.FsImporterDescription`
 
 ローカルファイルシステムを利用するエクスポーター記述
 ----------------------------------------------------
@@ -822,7 +822,7 @@ WindGateと連携してジョブフローの処理結果をローカルのファ
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.FsExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.FsExporterDescription`
 
 データベースの入出力
 ====================
@@ -853,7 +853,7 @@ Asakusa FrameworkのバッチアプリケーションからWindGateを利用し�
 ..  hint::
     :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがSDKアーティファクトという依存性定義によってデフォルトで利用可能になっています。詳しくは :doc:`../application/sdk-artifact` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.windgate.core.vocabulary.DataModelJdbcSupport`
+..  [#] :asakusafw-javadoc:`com.asakusafw.windgate.core.vocabulary.DataModelJdbcSupport`
 
 DataModelJdbcSupportの自動生成
 ------------------------------
@@ -1015,7 +1015,7 @@ WindGateと連携してデータベースのテーブルからデータをイン
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.JdbcImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcImporterDescription`
 
 データベースを利用するエクスポーター記述
 ----------------------------------------
@@ -1084,7 +1084,7 @@ WindGateと連携してジョブフローの処理結果をデータベースの
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription`
 
 WindGateと連携したテスト
 ========================

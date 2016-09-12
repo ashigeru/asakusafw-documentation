@@ -35,7 +35,7 @@ Operator DSLでは上記のグループを作成するために、 ``Key`` [#]_ 
 これは、グループ化のための方法や、グループ内での整列順序を指定するためのものです。
 詳しくは :doc:`user-guide` - :ref:`dsl-key-annotation` を参照してください。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.model.Key`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.model.Key`
 
 演算子の分類
 ------------
@@ -74,8 +74,8 @@ Operator DSLでは上記のグループを作成するために、 ``Key`` [#]_ 
 Flow DSLでコア演算子を利用する場合、一般的に ``CoreOperatorFactory`` [#]_ というファクトリクラスが提供するメソッドを使用します。
 また、上記ファクトリクラスと同名のクラスメソッド群を持つ ``CoreOperators`` [#]_ も利用可能です。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.util.CoreOperatorFactory`
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.util.CoreOperators`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.util.CoreOperatorFactory`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.util.CoreOperators`
 
 演算子の性能特性
 ----------------
@@ -240,7 +240,7 @@ Flow DSLでコア演算子を利用する場合、一般的に ``CoreOperatorFac
     Javaの対応する型
 
 ..  [#] ``java.util.List``
-..  [#] :javadoc:`com.asakusafw.runtime.core.Result` 演算子の出力となるデータモデルオブジェクトを保持します。
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Result` 演算子の出力となるデータモデルオブジェクトを保持します。
         ``add`` メソッドにより複数のオブジェクトを追加することができます。
 
 .. _flow-control-operators:
@@ -303,7 +303,7 @@ Flow DSLでコア演算子を利用する場合、一般的に ``CoreOperatorFac
       - inと同様
       - 任意の個数を指定可
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Branch`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Branch`
 
 
 分岐演算子の実装
@@ -604,7 +604,7 @@ Flow DSLからは演算子からの出力を複数回利用すると、複製演
       - inと同様
       -
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Update`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Update`
 
 
 更新演算子の実装
@@ -730,7 +730,7 @@ Flow DSLからは演算子からの出力を複数回利用すると、複製演
       - inと同様
       - 変換前のデータ
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Convert`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Convert`
 
 ..  hint::
     レコードから不要なプロパティを除去したり、新たなプロパティを追加する場合は `射影演算子`_ や `拡張演算子`_ 、 `再構築演算子`_ の利用を推奨しています。
@@ -1079,7 +1079,7 @@ Flow DSLからは次のように利用します。
       - 任意
       - 任意個数を指定可
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Extract`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Extract`
 
 抽出演算子の実装
 ~~~~~~~~~~~~~~~~
@@ -1238,7 +1238,7 @@ Flow DSLからは次のように利用します。
       - txと同様
       - マスタが見つからなかったもの
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.MasterCheck`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.MasterCheck`
 
 マスタ確認演算子の実装
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -1389,7 +1389,7 @@ Flow DSLからは次のように利用します。
       - マスタが見つからなかったもの
 
 ..  [#] 結合モデルについては :doc:`../dmdl/user-guide` を参照してください。
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.MasterJoin`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.MasterJoin`
 
 マスタ結合演算子の実装
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -1468,7 +1468,7 @@ Flow DSLからは次のように利用します。
 また、この演算子注釈に ``selection`` を指定することで、非等価結合条件を記述することも可能です。
 詳しくは `マスタ選択`_ を参照して下さい。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.model.Joined`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.model.Joined`
 
 .. _master-branch-operator:
 
@@ -1530,7 +1530,7 @@ Flow DSLからは次のように利用します。
       - txと同様
       - 任意の個数を指定可
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.MasterBranch`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.MasterBranch`
 
 マスタ分岐演算子の実装
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -1729,7 +1729,7 @@ Flow DSLからは次のように利用します。
       - txと同様
       - マスタが見つからなかったもの
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.MasterJoinUpdate`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.MasterJoinUpdate`
 
 マスタつき更新演算子の実装
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1870,7 +1870,7 @@ Flow DSLからは次のように利用します。
       - 任意
       - 任意の個数
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.CoGroup`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.CoGroup`
 
 グループ結合演算子の実装
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2041,7 +2041,7 @@ Flow DSLからは次のように利用します。
         }
     }
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.processor.InputBuffer`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.processor.InputBuffer`
 
 .. _split-operator:
 
@@ -2103,7 +2103,7 @@ Flow DSLからは次のように利用します。
       - 特殊
       - 結合モデルの右項の型
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Split`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Split`
 
 
 分割演算子の実装
@@ -2252,7 +2252,7 @@ Flow DSLからは次のように利用します。
       - 集計結果、集計モデルの型
 
 ..  [#] 集計モデルについては :doc:`../dmdl/user-guide` を参照してください。
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Summarize`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Summarize`
 
 
 NULL値に対する集約関数の動作
@@ -2340,7 +2340,7 @@ NULL値に対する集約関数の動作
     public abstract HogeTotal summarize(Hoge hoge);
 ..  **
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.model.Summarized`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.model.Summarized`
 
 部分集約
 ~~~~~~~~
@@ -2368,8 +2368,12 @@ NULL値に対する集約関数の動作
     基本的に、単純集計演算子では部分集約を行うべきです。
     初期値は ``PARTIAL`` になっています。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.flow.processor.PartialAggregation`
-..  [#] コンパイラオプションの設定については :doc:`mapreduce-compiler` - :ref:`mapreduce-compile-options` や :asakusa-on-spark:`Asakusa DSL Compiler for Spark リファレンス - コンパイラプロパティ <reference.html#asakusa-dsl-compiler-for-spark>` を参照してください
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.processor.PartialAggregation`
+..  [#] コンパイラオプションの設定については、以下の各コンパイラリファレンスを参照してください
+
+        * :doc:`mapreduce-compiler` - :ref:`mapreduce-compile-options`
+        * :doc:`../spark/reference` - :ref:`spark-dsl-compiler-reference`
+        * :doc:`../m3bp/reference` - :ref:`m3bp-dsl-compiler-reference`
 
 .. _fold-operator:
 
@@ -2426,7 +2430,7 @@ NULL値に対する集約関数の動作
       - inと同様
       - 畳みこみ結果
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Fold`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Fold`
 
 畳み込み演算子の実装
 ~~~~~~~~~~~~~~~~~~~~
@@ -2577,7 +2581,7 @@ NULL値に対する集約関数の動作
       - 任意
       - 任意個数を指定可
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.GroupSort`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.GroupSort`
 
 グループ整列演算子の実装
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2868,7 +2872,7 @@ Flow DSLからは次のように利用します。
       - inと同様
       -
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Logging`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Logging`
 
 ロギング演算子の実装
 ~~~~~~~~~~~~~~~~~~~~
@@ -2945,7 +2949,7 @@ Flow DSLからは次のように利用します。
 ..  **
 
 ..  [#] ログの処理方法は、内部的には :ref:`dsl-report-api` に処理を移譲しています。
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Logging.Level`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Logging.Level`
 
 .. _empty-operator:
 
@@ -3201,7 +3205,7 @@ Flow DSLからは次のように利用します。
     }
 ..  **
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.MasterSelection`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.MasterSelection`
 
 
 .. _volatile-support-operator:
@@ -3242,7 +3246,7 @@ Flow DSLからは次のように利用します。
 * 実行時の時刻などを利用する
 * 入力の個数を計測する
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Volatile`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Volatile`
 
 .. _sticky-support-operator:
 
@@ -3273,5 +3277,5 @@ Flow DSLからは次のように利用します。
 
 上記のように除去抑制が指定されている場合にはこの演算子は消去されず、この演算子の入力にデータが流れた瞬間に例外がスローされます。
 
-..  [#] :javadoc:`com.asakusafw.vocabulary.operator.Sticky`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.operator.Sticky`
 

@@ -94,7 +94,7 @@ Hadoopのシーケンスファイル [#]_ を直接読み書きするには、 `
     この機能は、 `Apache Sqoop`_ 等のツールと連携することを想定して提供されています。
 
 ..  [#] ``org.apache.hadoop.io.SequenceFile``
-..  [#] :javadoc:`com.asakusafw.runtime.directio.hadoop.SequenceFileFormat`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.hadoop.SequenceFileFormat`
 
 ..  _`Apache Sqoop` : http://sqoop.apache.org/
 

@@ -50,7 +50,7 @@ Asakusa DSL
 ..  hint::
     Asakusa on Sparkを利用する場合Hadoopクラスタ上でMapReduceとSparkのリソースをまとめて管理できるYARNの利用を推奨しています。
 
-..  _target-platform:
+..  _spark-target-platform:
 
 対応プラットフォーム
 ====================
@@ -59,7 +59,7 @@ Hadoopディストリビューション
 ----------------------------
 
 Asakusa on Sparkが動作を検証しているHadoopディストリビューションは、
-:asakusafw:`対応プラットフォーム <product/target-platform.html>` の「Hadoopディストリビューション」を参照してください。
+:doc:`../product/target-platform` の「Hadoopディストリビューション」を参照してください。
 
 Spark
 -----
@@ -84,11 +84,11 @@ Asakusa on Spark バージョン |version| は、Asakusa Framework バージョ�
 マイグレーション
 ~~~~~~~~~~~~~~~~
 
-過去のAsakusa on Sparkバージョンを利用している開発環境、およびアプリケーションプロジェクトのバージョンアップ手順は、 :asakusafw:`開発環境マイグレーションガイド <application/migration-guide.html>` を参照してください。
+過去のAsakusa on Sparkバージョンを利用している開発環境、およびアプリケーションプロジェクトのバージョンアップ手順は、 :doc:`../application/migration-guide` を参照してください。
 
 ..  attention::
     Asakusa on Spark 0.2.2 以前のバージョンからマイグレーションを行う場合、Asakusa Framework バージョン は 0.7系からのマイグレーションとなります。
-    このため、 :asakusafw:`開発環境マイグレーションガイド <application/migration-guide.html>` の「バージョン 0.8.0 へのマイグレーション」に関する記述を必ず確認してください。
+    このため、 :doc:`../application/migration-guide` の「バージョン 0.8.0 へのマイグレーション」に関する記述を必ず確認してください。
 
 非対応機能
 ~~~~~~~~~~
@@ -128,7 +128,7 @@ Asakusa on Sparkは、Asakusa Frameworkの該当バージョンで非推奨と�
 
 新規に開発環境を構築する場合は、以下のドキュメントなどを参考にして開発環境を準備してください。
 
-* :asakusafw:`Asakusa Framework スタートガイド <introduction/start-guide.html>`
+* :doc:`../introduction/start-guide`
 * :jinrikisha:`Jinrikisha - Asakusa Framework Starter Package - <index.html>`
 
 アプリケーションの開発
@@ -136,7 +136,7 @@ Asakusa on Sparkは、Asakusa Frameworkの該当バージョンで非推奨と�
 
 開発環境上で Asakusa Frameworkのバッチアプリケーションを開発し、Spark向けのアプリケーションをビルドする方法を見ていきます。
 
-ここでは、 :asakusafw:`Asakusa Framework スタートガイド <introduction/start-guide.html>` などで使用しているサンプルアプリケーション「カテゴリー別売上金額集計バッチ」をSpark向けにビルドするよう設定します。
+ここでは、 :doc:`../introduction/start-guide` などで使用しているサンプルアプリケーション「カテゴリー別売上金額集計バッチ」をSpark向けにビルドするよう設定します。
 
 プロジェクトテンプレートのダウンロード
 --------------------------------------
@@ -171,7 +171,7 @@ Asakusa on Spark Gradle Pluginは、アプリケーションプロジェクト�
 ..  literalinclude:: attachment/build.gradle
     :language: groovy
     :caption: build.gradle
-    :name: build.gradle-user-guide-1
+    :name: build.gradle-spark-user-guide-1
     :emphasize-lines: 8,15
 
 アプリケーションのビルド
@@ -209,7 +209,7 @@ Asakusa on Spark Gradle Pluginは、アプリケーションプロジェクト�
 
 ここでは、Asakusa on Spark固有の実行環境の設定について説明します。
 
-Asakusa Frameworkの実行環境の構築方法やバッチアプリケーションを実行する方法の基本的な流れは、 :asakusafw:`Asakusa Framework デプロイメントガイド <administration/deployment-guide.html>` などを参照してください。
+Asakusa Frameworkの実行環境の構築方法やバッチアプリケーションを実行する方法の基本的な流れは、 :doc:`../administration/deployment-guide` などを参照してください。
 
 Sparkのセットアップ
 -------------------
@@ -238,7 +238,7 @@ Asakusa on Sparkの実行に環境変数を利用する場合、 :file:`$ASAKUSA
 
     Asakusa on Sparkを利用する場合、コマンドラインジョブのプロファイル ``command.spark`` が利用できます。 :file:`$ASAKUSA_HOME/yaess/conf/yaess.properties` に ``command.spark.env.SPARK_CMD`` といったような設定を追加することで、YAESSからSparkを実行する際に環境変数が設定されます。
 
-    YAESSのコマンドラインジョブの設定方法について詳しくは、 :asakusafw:`YAESSユーザーガイド - コマンドラインジョブの実行 <yaess/user-guide.html#yaess-profile-command-section>` などを参照してください。
+    YAESSのコマンドラインジョブの設定方法について詳しくは、 :doc:`../yaess/user-guide` - :ref:`yaess-profile-command-section` などを参照してください。
 
 バッチアプリケーションの実行
 ----------------------------
@@ -258,7 +258,7 @@ Asakusa on Sparkの実行に環境変数を利用する場合、 :file:`$ASAKUSA
     $ASAKUSA_HOME/yaess/bin/yaess-batch.sh spark.example.summarizeSales -A date=2011-04-01
 
 ..  seealso::
-    サンプルアプリケーションのデプロイやデータの配置、実行結果の確認方法などは、 :asakusafw:`Asakusa Framework スタートガイド - サンプルアプリケーションの実行 <introduction/start-guide.html#startguide-running-example>` を参照してください。
+    サンプルアプリケーションのデプロイやデータの配置、実行結果の確認方法などは、 :doc:`../introduction/start-guide` - :ref:`startguide-running-example` を参照してください。
 
 バッチアプリケーション実行時の設定
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
