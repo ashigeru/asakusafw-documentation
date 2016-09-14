@@ -46,7 +46,7 @@ Asakusa Gradle Pluginのバージョン変更
             maven { url 'http://asakusafw.s3.amazonaws.com/maven/releases' }
         }
         dependencies {
-            classpath group: 'com.asakusafw', name: 'asakusa-gradle-plugins', version: '0.8.1'
+            classpath group: 'com.asakusafw', name: 'asakusa-gradle-plugins', version: '0.9.0'
         }
     }
 
