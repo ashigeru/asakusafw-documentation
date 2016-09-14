@@ -122,11 +122,6 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 ..  [#] |M3BP_FEATURE| をMapRと連携して利用する場合において、バッチアプリケーションの起動時にデッドロックが発生しアプリケーションが実行されないことがある問題を確認しています。
         この問題の回避方法について `Hadoopとの連携`_ に記載しています。
 
-Asakusa Framework 対応バージョン
---------------------------------
-
-|M3BP_FEATURE| バージョン |version| は、Asakusa Framework バージョン 0.8.1 を使用します。
-
 マイグレーション
 ~~~~~~~~~~~~~~~~
 
@@ -192,7 +187,7 @@ Asakusa Framework 対応バージョン
 
 |M3BP_FEATURE|\ を利用する構成を持つアプリケーション開発用のプロジェクトテンプレートは、以下リンクからダウンロードします。
 
-* `asakusa-m3bp-template-0.1.2.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.1.2.tar.gz>`_
+* `asakusa-m3bp-template-0.2.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.2.0.tar.gz>`_
 
 ..  _user-guide-gradle-plugin:
 
@@ -207,7 +202,7 @@ Asakusa Framework 対応バージョン
 
 * ``buildscript/dependencis`` ブロックに指定しているAsakusa Gradle Pluginの指定を\ |M3BP_FEATURE| Gradle Pluginの指定に置き換える [#]_
 
-  * ``group: 'com.asakusafw.m3bp', name: 'asakusa-m3bp-gradle', version: '0.1.2'``
+  * ``group: 'com.asakusafw.m3bp', name: 'asakusa-m3bp-gradle', version: '0.2.0'``
 
 * |M3BP_FEATURE| Gradle Pluginを適用する定義を追加する
 
@@ -289,7 +284,7 @@ Hadoopとの連携
 
         asakusafwOrganizer {
             extension {
-                libraries += ["com.asakusafw.m3bp.bridge:asakusa-m3bp-workaround-hadoop:0.1.2"]
+                libraries += ["com.asakusafw.m3bp.bridge:asakusa-m3bp-workaround-hadoop:0.2.0"]
             }
         }
 
