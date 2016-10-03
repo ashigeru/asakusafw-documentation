@@ -279,6 +279,11 @@ Framework Organizer Plugin
 
 Framework Organizer Plugin は、以下のタスクを定義します。
 
+..  warning::
+    バージョン 0.9.0 以降では、以下のタスクは削除されました。
+
+    * ``attachComponentDevelopment``
+
 ..  attention::
     バージョン 0.7.0 以降では、 ``attach`` から始まる各タスクの使用は非推奨となりました。
     ``attach`` から始まるタスクはFramework Organizer Pluginが内部で生成し利用します。
