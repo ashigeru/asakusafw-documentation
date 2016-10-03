@@ -182,10 +182,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ``asakusafw-mapreduce``
       - ``RunBatchappTask`` [#]_
       - バッチテストランナーを実行する
-    * - :program:`summarizeYaessJob`
-      - ``asakusafw-sdk``
-      - ``AnalyzeYaessLogTask`` [#]_
-      - YAESS Log Analyzerを実行する [#]_
     * - :program:`generateHiveDDL`
       - ``asakusafw-sdk``
       - ``GenerateHiveDdlTask`` [#]_
@@ -195,8 +191,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileBatchappTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateTestbookTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.RunBatchappTask`
-..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.AnalyzeYaessLogTask`
-..  [#] YAESS Log Analyzerやその使い方については、 :doc:`yaess-log-visualization` を参照してください。
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateHiveDdlTask`
 
 また、Batch Application Pluginは以下のタスクに対してタスク依存関係を追加します。

@@ -141,6 +141,11 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
 ..  attention::
     以下では非推奨となったタスクをあげています。
 
+..  warning::
+    バージョン 0.9.0 以降では、以下のタスクは削除されました。
+
+    * ``summarizeYaessJob``
+
 ..  list-table:: Batch Application Plugin - タスク
     :widths: 113 63 113 163
     :header-rows: 1
@@ -153,9 +158,16 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ``-`` [#]_
       - ``GenerateThunderGateDataModelTask`` [#]_
       - ThunderGate用のMySQLメタデータからDMDLスクリプトを生成する
+    * - :program:`summarizeYaessJob`
+      - ``asakusafw-sdk``
+      - ``AnalyzeYaessLogTask`` [#]_
+      - YAESS Log Analyzerを実行する [#]_
+
 
 ..  [#] ThunderGateの設定を有効にした場合、 :program:`compileDMDL` タスクに :program:`generateThunderGateDataModel` タスクが依存先として追加されます
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateThunderGateDataModelTask`
+..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.AnalyzeYaessLogTask`
+..  [#] YAESS Log Analyzerやその使い方については、 :doc:`yaess-log-visualization` を参照してください。
 
 規約プロパティ
 ~~~~~~~~~~~~~~
