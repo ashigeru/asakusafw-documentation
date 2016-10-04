@@ -400,6 +400,8 @@ WindGateのリソースとして、JDBCをサポートするデータベース�
       - テーブルの内容を削除する際の文形式 [#]_ (省略時には ``TRUNCATE`` 文)
     * - ``resource.jdbc.properties.<キー名>``
       - コネクションプロパティの値
+    * - ``resource.jdbc.optimizations``
+      - データベースとの接続時に利用する最適化オプション
 
 上記の設定のうち、先頭の ``resource.jdbc`` を除くすべての項目の値の中に ``${環境変数名}`` という形式で環境変数を含められます。
 
@@ -416,6 +418,25 @@ WindGateのリソースとして、JDBCをサポートするデータベース�
 ..  [#] この設定は ``java.text.MessageFormat`` の形式で指定し、削除対象のテーブル名は ``{0}`` で指定してください。
     省略時には ``TRUNCATE TABLE {0}`` が利用され、代わりに ``DELETE FROM {0}`` などを指定できます。
     なお、 ``MessageFormat`` ではシングルクウォート ( ``'`` ) が特殊文字として取り扱われることに注意が必要です。
+
+データベース接続時の最適化オプション
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``resource.jdbc.optimizations`` にはWindGateで利用可能なデータベース固有の最適化オプションを指定します。
+
+本バージョンでは、以下のオプションが利用可能です。
+
+..  list-table:: データベース接続時の最適化オプション
+    :widths: 2 8
+    :header-rows: 1
+
+    * - オプション
+      - 内容
+    * - ``ORACLE_DIRPATH``
+      - Oracleのダイレクト・パス・インサートを有効にする。
+        実行するINSERT文に対して、APPEND_VALUESヒントを指定する。
+
+        WindGateの実行環境でダイレクト・パス・インサートを利用にするには、このオプション指定に加えて、 `データベースを利用するエクスポーター記述`_ でオプションを指定する必要がある。
 
 その他のWindGateの設定
 ======================
@@ -991,6 +1012,11 @@ WindGateと連携してデータベースのテーブルからデータをイン
   利用可能な変数はコンテキストAPIで参照できるものと同様です。
   変数がそのまま文字列として展開されるため、文字列リテラルを利用する場合などには注意が必要です。
 
+``Collection<? extends JdbcAttribute> getOptions()``
+  インポート処理時に指定するオプションを指定します。
+
+  このメソッドは将来の拡張用に定義されており、本バージョンでは指定可能なオプションはありません。
+
 以下は実装例です。
 
 ..  code-block:: java
@@ -1060,6 +1086,24 @@ WindGateと連携してジョブフローの処理結果をデータベースの
 
   このメソッドは、自動生成される骨格ではすでに宣言されています。
 
+``Collection<? extends JdbcAttribute> getOptions()``
+  エクスポート処理時に指定するオプションを指定します。
+
+  指定可能なオプションは、列挙型 ``JdbcExporterDescription.Option`` [#]_ に定義されています。
+  本バージョンでは、以下のオプションが利用可能です。
+
+  ..  list-table:: データベースを利用するエクスポーター記述で利用可能なオプション
+      :widths: 2 8
+      :header-rows: 1
+
+      * - オプション
+        - 内容
+      * - ``ORACLE_DIRPATH``
+        - Oracleのダイレクト・パス・インサートを有効にする。
+          実行するINSERT文に対して、APPEND_VALUESヒントを指定する。
+
+          WindGateの実行環境でダイレクト・パス・インサートを利用にするには、このオプション指定に加えて `データベースの設定`_ で ``resource.jdbc.optimizations`` を設定する必要がある。
+
 以下は実装例です。
 
 ..  code-block:: java
@@ -1093,6 +1137,7 @@ WindGateと連携してジョブフローの処理結果をデータベースの
     }
 
 ..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription.Option`
 
 WindGateと連携したテスト
 ========================
