@@ -656,24 +656,50 @@ CSV形式の設定
 
 ..  [#] ``java.text.SimpleDateFormat``
 
-ヘッダの設定
-~~~~~~~~~~~~
+CSVフィールドの設定
+~~~~~~~~~~~~~~~~~~~
 
-`CSV形式の設定`_ でヘッダを有効にしている場合、出力の一行目にプロパティ名が表示されます。
-ここで表示される内容を変更するには、それぞれのプロパティに ``@windgate.csv.field`` 属性を指定し、さらに ``name`` 要素でフィールド名を指定します。
+CSVのフィールドに関する設定は、DMDLスクリプトのデータモデルに含まれるそれぞれのプロパティに ``@windgate.csv.field`` 属性を指定します。
 
-以下は利用例です。
+``@windgate.csv.field`` 属性には、次のような要素を指定できます。
+
+..  list-table:: CSVフィールドの設定
+    :widths: 10 10 20 60
+    :header-rows: 1
+
+    * - 要素
+      - 型
+      - 既定値
+      - 内容
+    * - ``name``
+      - 文字列
+      - プロパティ名
+      - `CSV形式の設定`_ でヘッダを有効にしている場合に使用するCSVのヘッダのフィールド名
+    * - ``quote``
+      - 文字列
+      - ``default``
+      - 各フィールド値のクォートに関する動作の指定。``default`` , ``needed`` , ``always`` のいずれかを指定
+
+``name`` 要素に指定するフィールド名は、入力データの読み込み時のヘッダの形式チェックやデータ出力時のヘッダ文字列として使用されます。
+
+``quote`` 要素に関する動作の指定は以下の通りです。
+
+* ``needed`` : フィールド値にクォート処理が必要な値が含まれている場合にクォート処理を行う
+* ``always`` : フィールド値の内容に関わらず、常にクォート処理を行う
+* ``default`` : ``needed`` を指定した場合と同じ動作を行う
+
+以下はCSVフィールドの設定を付加したDMDLスクリプトの記述例です。
 
 ..  code-block:: dmdl
 
     @windgate.csv
     document = {
         "the name of this document"
-        @windgate.csv.field(name = "題名")
+        @windgate.csv.field(name = "題名" , quote = "always")
         name : TEXT;
 
         "the content of this document"
-        @windgate.csv.field(name = "内容")
+        @windgate.csv.field(name = "内容" , quote = "needed")
         content : TEXT;
     };
 
