@@ -1134,6 +1134,11 @@ WindGateと連携してジョブフローの処理結果をデータベースの
         public Class<? extends DataModelJdbcSupport<?>> getJdbcSupport() {
             return WordJdbcSupport.class;
         }
+
+        @Override
+        public Collection<Option> getOptions() {
+            return Arrays.asList(Option.ORACLE_DIRPATH);
+        }
     }
 
 ..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcExporterDescription`
