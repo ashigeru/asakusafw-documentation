@@ -340,7 +340,7 @@ Hadoopのファイルシステムを利用したデータソースでは、指�
       - boolean
       - 試行領域に直接出力するかどうか
     * - ``com.asakusafw.directio.<DSID>.threads.commit``
-      - long
+      - int
       - ステージング領域から最終的な出力先にデータを移動させる処理に使用するスレッド数
 
 ``...fs.tempdir`` を省略した場合、このパスは ``com.asakusafw.directio.<DSID>.fs.path`` 下の :file:`_directio_temp` というディレクトリになります。
