@@ -328,9 +328,14 @@ Asakusa DSL Compiler for Sparkで利用可能なコンパイラプロパティ�
 
     これが有効である場合、Direct I/Oではepilogueフェーズを省略してSparkから直接ファイルを書き出す。
 
-    WindGateの場合はどちらもSparkからは書き出さす、WindGateのプログラムを利用して外部リソース上に展開する。
+    WindGateの場合はどちらもSparkからは書き出さず、WindGateのプログラムを利用して外部リソース上に展開する。
 
     既定値: ``true``
+
+..  attention::
+    ``spark.input.direct`` , ``spark.output.direct`` のいずれかの値を ``false`` に設定した場合、
+    YAESSによるバッチアプリケーション実行にはHadoopコマンドを利用できる環境が必要です。
+    利用するHadoopコマンドの設定方法や検索方法については、 :doc:`../yaess/user-guide` を参照してください。
 
 ``spark.parallelism.limit.tiny``
     Sparkでシャッフル処理を行う際に、データサイズの合計が指定のバイト数以下であれば分割数を1に制限する。

@@ -128,7 +128,7 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
 
 ..  attention::
     Interative ExtensionsはSparkの実行環境にのみ対応しています。
-    このためコンパイルオプション ``spark.input.direct`` [#]_ を ``false`` に設定した、
+    このため外部入力の反復を利用する場合は、コンパイルオプション ``spark.input.direct`` [#]_ を ``false`` に設定した、
     MapReduce上でDirect I/Oの入力処理を実行する機能は利用できません。
     コンパイルオプション ``spark.input.direct`` を ``false`` に設定した場合はDSLコンパイルエラーとなります。
 
@@ -208,10 +208,17 @@ Asakusa Framework バージョン ``0.8.0`` 以降では、Asakusa DSLに対し�
     現時点では、WindGate, ThunderGateによる外部出力はIterative Extensionsに対応していません。
     これらの外部出力を利用する場合、外部入力と外部出力で同じバッチ引数を使用している場合において外部入力を反復演算としても、外部出力側では反復化の対象とはならないことに注意してください。
 
+..  attention::
+    Interative ExtensionsはSparkの実行環境にのみ対応しています。
+    このため外部出力の反復を利用する場合は、コンパイルオプション ``spark.output.direct`` [#]_ を ``false`` に設定した、
+    MapReduce上でDirect I/Oの出力処理を実行する機能は利用できません。
+
 ..  note::
     Asakusa on Spark バージョン 0.3系では、外部出力の反復はIterative Extensionsに対応していませんでした。
 
     Asakusa on Spark バージョン 0.4.0 からは上述の通り、Direct I/Oを外部出力に利用する場合においてIterative Extensionsに対応するようになりました。
+
+..  [#] コンパイルオプション ``spark.output.direct`` については、 :doc:`reference` のコンパイラプロパティの項を参照してください。
 
 反復バッチのテスト
 ------------------
