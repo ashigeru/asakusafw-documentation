@@ -323,6 +323,15 @@ Asakusa DSL Compiler for Sparkで利用可能なコンパイラプロパティ�
 
     既定値: ``true``
 
+``spark.output.direct``
+    ジョブフローの出力データを（可能ならば）Sparkから直接書き出すかどうか。
+
+    これが有効である場合、Direct I/Oではepilogueフェーズを省略してSparkから直接ファイルを書き出す。
+
+    WindGateの場合はどちらもSparkからは書き出さす、WindGateのプログラムを利用して外部リソース上に展開する。
+
+    既定値: ``true``
+
 ``spark.parallelism.limit.tiny``
     Sparkでシャッフル処理を行う際に、データサイズの合計が指定のバイト数以下であれば分割数を1に制限する。
 
