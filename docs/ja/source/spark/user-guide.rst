@@ -38,17 +38,17 @@ Asakusa DSL
 
 アプリケーションの実行
   従来と同様、YAESSを利用してバッチアプリケーションを実行することができます。
-  実行環境にMapReduce用のバッチアプリケーションとSpark用のバッチアプリケーションを両方配置して運用することも可能です。
 
 外部システム連携
   Direct I/OやWindGateといった外部システム連携モジュールはSpark向けのバッチアプリケーションでもそのまま利用することができます。
-  Direct I/OやWindGateの実行にはHadoopの機能を使用します。Direct I/Oの入出力処理にはMapReduceが使用されるため、MapReduceが動作する環境が併せて必要になります。
 
 ..  attention::
-    Asakusa on Sparkを利用する上でも外部システム連携機能などにおいて、一部Hadoop MapReduceの機能を利用します。
+    Direct I/OやWindGateでHadoopの機能を利用するよう設定した場合は、Hadoopが動作する環境が併せて必要になります。
 
-..  hint::
-    Asakusa on Sparkを利用する場合Hadoopクラスタ上でMapReduceとSparkのリソースをまとめて管理できるYARNの利用を推奨しています。
+..  note::
+    Asakusa on Spark バージョン 0.3系およびそれ以前のバージョンでは、Direct I/Oの出力処理にMapReduceを利用するためMapReduceの実行環境が合わせて必要でした。
+
+    Asakusa on Spark バージョン 0.4.0 からはDirect I/Oの出力処理もSpark上で実行するようになったため、MapReduceの実行環境は必須ではなくなりました。
 
 ..  _spark-target-platform:
 
