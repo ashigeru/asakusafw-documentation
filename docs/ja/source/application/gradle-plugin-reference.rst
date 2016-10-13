@@ -266,6 +266,27 @@ Batch Application Pluginの規約プロパティはビルドスクリプトか�
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention` が提供します。
 ..  [#] Logback設定ファイルの詳細は次のドキュメントを参照してください: http://logback.qos.ch/manual/configuration.html
 
+コアプロパティ
+~~~~~~~~~~~~~~
+
+Asakusa Frameworkコアに関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``core`` でアクセスできます [#]_ 。
+この規約オブジェクトは以下のプロパティを持ちます。
+
+..  list-table:: Batch Application Plugin - コアプロパティ ( ``core`` ブロック )
+    :widths: 2 1 2 5
+    :header-rows: 1
+
+    * - プロパティ名
+      - 型
+      - デフォルト値
+      - 説明
+    * - ``version``
+      - String
+      - コアライブラリのバージョン
+      - コアライブラリのバージョンを保持する。この値は変更不可。
+
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.CoreConfiguration` が提供します。
+
 DMDLプロパティ
 ~~~~~~~~~~~~~~
 
@@ -402,6 +423,64 @@ M\ :sup:`3`\ BP DSLコンパイラに関する規約プロパティは、 ``asak
 
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.TestToolsConfiguration` が提供します。
 ..  [#] テストデータ定義シートのフォーマット指定値は、 :doc:`../testing/using-excel` - :ref:`testdata-generator-excel-format` を参照してください。
+
+SDKプロパティ
+~~~~~~~~~~~~~
+
+アプリケーションSDKライブラリ [#]_ に関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``sdk`` でアクセスできます [#]_ 。
+この規約オブジェクトは以下のプロパティを持ちます。
+
+..  list-table:: Batch Application Plugin - SDKプロパティ ( ``sdk`` ブロック )
+    :widths: 1 1 2 6
+    :header-rows: 1
+
+    * - プロパティ名
+      - 型
+      - デフォルト値
+      - 説明
+    * - ``core``
+      - Object
+      - true
+      - この値をtrueにするとコアライブラリ(実行ライブラリやDSL語彙など)を依存ライブラリに追加する。
+        true または false を指定可能。
+    * - ``dmdl``
+      - Object
+      - true
+      - この値をtrueにするとDMDLライブラリ(DMDLコンパイラなど)を依存ライブラリに追加する。
+        true または false を指定可能。
+    * - ``operator``
+      - Object
+      - true
+      - この値をtrueにするとOprator DSLライブラリ(Operator DSLコンパイラなど)を依存ライブラリに追加する。
+        true または false を指定可能。
+    * - ``testing``
+      - Object
+      - true
+      - この値をtrueにするとテストツールライブラリ(テストドライバなど)を依存ライブラリに追加する。
+        true または false を指定可能。
+    * - ``testkit``
+      - Object
+      - ``mapreduce-emulation``
+      - テストドライバで利用する実行エンジンを指定する。
+        ``mapreduce`` (Hadoop MapReduce) または ``mapreduce-emulation`` (エミュレーションモード) を指定可能。
+    * - ``directio``
+      - Object
+      - true
+      - この値をtrueにするとDirect I/Oライブラリを依存ライブラリに追加する。
+        true または false を指定可能。
+    * - ``windgate``
+      - Object
+      - true
+      - この値をtrueにするとWindGateライブラリを依存ライブラリに追加する。
+        true または false を指定可能。
+    * - ``hive``
+      - Object
+      - false
+      - この値をtrueにするとDirect I/O Hiveライブラリを依存ライブラリに追加する。
+        true または false を指定可能。
+
+..  [#] アプリケーションSDKライブラリについては、 :doc:`gradle-plugin` - :ref:`gradle-plugin-dependency-management` も参照してください。
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwSdkExtension` が提供します。
 
 Eclipse Pluginの拡張
 --------------------

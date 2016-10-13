@@ -87,6 +87,13 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
 
 この規約オブジェクトは以下のプロパティを持ちます。
 
+``spark.version``
+    Asakusa on Sparkのコンポーネントバージョンを保持する。
+
+    この値は設定による変更は不可。
+
+    既定値: Asakusa on Spark Gradle Pluginが保持する既定のバージョン
+
 ``spark.outputDirectory``
     コンパイラの出力先を指定する。
 

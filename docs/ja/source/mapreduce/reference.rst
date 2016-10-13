@@ -87,6 +87,13 @@ Asakusa on MapReduce Gradle Pluginは Batch Application Plugin に対して Asak
 
 この規約オブジェクトは以下のプロパティを持ちます。
 
+``mapreduce.version``
+    Asakusa on MapReduceのコンポーネントバージョンを保持する。
+
+    この値は設定による変更は不可。
+
+    既定値: Asakusa on MapReduce Gradle Pluginが保持する既定のバージョン
+
 ``mapreduce.outputDirectory``
     コンパイラの出力先を指定する。
 

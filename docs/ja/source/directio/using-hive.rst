@@ -13,51 +13,30 @@ Direct I/OのHive連携
 Hive連携モジュールの利用方法
 ============================
 
-Direct I/OのHive連携モジュールを利用するには、利用するアプリケーションプロジェクトに対して以下のSDKアーティファクト（以下「Hive連携モジュールSDK」）を追加します。
+Hive 連携モジュールを使用する場合は :file:`build.gradle` に対して以下の定義を追加します。
 
-..  list-table:: Direct I/OのHive連携で使用するアーティファクト
-    :widths: 226 226
-    :header-rows: 1
+* Hive連携モジュール用のアプリケーションSDKライブラリを依存関係に追加する
 
-    * - グループID
-      - アーティファクトID
-    * - ``com.asakusafw.sdk``
-      - ``asakusa-sdk-hive``
-
-また、Hive連携モジュールの実行環境用のライブラリをAsakusa Frameworkのインストールディレクトリに追加します。
-
-Gradleプロジェクトの設定
-------------------------
-
-GradleプロジェクトでHive 連携モジュールを使用する場合は :file:`build.gradle` に対して以下の定義を追加します。
-
-* Framework Organizerに対してHiveの構成を有効化する
+  * ``asakusafw`` ブロックに ``sdk.hive true`` を追加
+* デプロイ構成に対してDirect I/O Hive用の構成を有効化する
 
   * ``asakusafwOrganizer`` ブロックに ``hive.enabled true`` を追加
-* Hive連携モジュールSDKを依存関係に追加する
-
-  * ``dependencies`` ブロックの ``compile`` に対して ``asakusa-sdk-hive`` を 追加
 
 以下、 ``build.gradle`` の設定例です。
 
 ..  code-block:: groovy
 
-    asakusafwOrganizer {
-        ...
-        hive.enabled true
+    asakusafw {
+        sdk.hive true
     }
 
-    dependencies {
-        ...
-        compile group: 'com.asakusafw.sdk', name: 'asakusa-sdk-hive', version: asakusafw.asakusafwVersion
+    asakusafwOrganizer {
+        hive.enabled true
     }
 
 上記の設定後、 :program:`installAsakusafw` タスクを実行して開発環境のAsakusa Frameworkを再インストールします。
 
 Eclipseを利用している場合は、 :program:`eclipse` タスクを実行してEclipseのプロジェクト情報を再構成します。
-
-..  attention::
-    MavenプロジェクトはHiveとの連携機能をサポートしていません。Hiveとの連携機能を利用する場合はGradleプロジェクトを利用してください。
 
 カラムナフォーマットファイルの入出力
 ====================================

@@ -545,15 +545,44 @@ Asakusa Gradle Pluginのプラグイン規約プロパティは、以下に説�
 依存ライブラリの管理
 ====================
 
-アプリケーションSDKライブラリの追加
------------------------------------
+ここではアプリケーションプロジェクトが利用する拡張機能や追加ライブラリなどの依存ライブラリを管理する方法を説明します。
 
-Asakusa Frameworkではアプリケーションプロジェクトで使用するAsakusa Frameworkのライブラリをグループ化した :doc:`SDKアーティファクト <sdk-artifact>` を提供しています。
-また、 :doc:`試験的機能 <../sandbox/index>` として提供されるAsakusa Frameworkのライブラリがいくつか存在します。
+アプリケーションSDKライブラリ
+-----------------------------
+
+Asakusa Frameworkではアプリケーションの開発で使用するAsakusa Frameworkのライブラリをグループ化した「アプリケーションSDKライブラリ」を提供しています。
+
+Asakusa Gradle Pluginを適用したアプリケーションプロジェクトでは、標準的なアプリケーションSDKライブラリがプロジェクトの依存ライブラリに自動的に追加されます。
+
+標準の設定では無効化されている試験的機能を有効にしたり、利用しないSDKライブラリを無効化するなどの場合には、アプリケーションSDKライブラリの設定を変更します。
+
+アプリケーションSDKライブラリは、 ビルドスクリプトの ``asakusafw`` ブロック配下の ``sdk`` で指定します。
+
+以下の例では、プロジェクトテンプレートに含まれるビルドスクリプトに対して :doc:`../directio/using-hive` を利用するためのアプリケーションSDKライブラリを追加しています。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-gradle-plugin-10
+
+    asakusafw {
+        sdk.hive true
+    }
+
+..  attention::
+    Asakusa Framework バージョン 0.8系までは、アプリケーションSDKライブラリの管理はビルドスクリプトの ``dependencies`` ブロックに
+    :doc:`SDKアーティファクト <sdk-artifact>` を追加するという方法を採用していましたが、この方法はバージョン 0.9.0 からは非推奨となりました。
+
+..  seealso::
+    ``asakusafw.sdk`` ブロックで設定可能な全てのプロパティについては :doc:`gradle-plugin-reference` - :ref:`batch-application-plugin-reference` を参照してください。
+
+コンパイラ拡張ライブラリ
+------------------------
+
+アプリケーションSDKライブラリの他に、Asakusa Frameworkでは :doc:`試験的機能 <../sandbox/index>` として提供されるコンパイラ拡張ライブラリがいくつか存在します。
 
 これらの機能を追加するには、各ライブラリの利用方法にしたがってビルドスクリプトの ``dependencies`` ブロックに指定します。
 
-以下の例では、プロジェクトテンプレートに含まれるビルドスクリプトに対して :doc:`../sandbox/directio-tsv` を利用するための拡張ライブラリ ``com.asakusafw.sandbox:asakusa-directio-dmdl-ext`` を追加しています。
+以下の例では、プロジェクトテンプレートに含まれるビルドスクリプトに対して :doc:`../sandbox/directio-tsv` を利用するためのコンパイラ拡張ライブラリ ``com.asakusafw.sandbox:asakusa-directio-dmdl-ext`` を追加しています。
 
 ..  literalinclude:: gradle-attachment/custom-build.gradle
     :language: groovy

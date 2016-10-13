@@ -621,8 +621,7 @@ Direct I/Oを利用してファイルを入出力するには、 `Hadoopのフ�
       - DMDLコンパイラプラグイン
 
 ..  hint::
-    :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがSDKアーティファクトという依存性定義によってデフォルトで利用可能になっています。
-    詳しくは :doc:`../application/sdk-artifact` を参照してください。
+    :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがGradle Pluginによってデフォルトで利用可能になっています。
 
 ..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.DataFormat`
 ..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.directio.BinaryStreamFormat`

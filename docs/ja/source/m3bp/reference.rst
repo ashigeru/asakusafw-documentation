@@ -84,6 +84,13 @@ Batch Application Plugin ( ``asakusafw`` ) への拡張
 
 この規約オブジェクトは以下のプロパティを持ちます。
 
+``m3bp.version``
+    |M3BP_FEATURE| のコンポーネントバージョンを保持する。
+
+    この値は設定による変更は不可。
+
+    既定値: |M3BP_FEATURE| Gradle Pluginが保持する既定のバージョン
+
 ``m3bp.outputDirectory``
     コンパイラの出力先を指定する。
 

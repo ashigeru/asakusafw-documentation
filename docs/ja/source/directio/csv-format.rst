@@ -26,11 +26,9 @@ CSV形式 [#]_ に対応した ``DataFormat`` の実装クラスを自動的に�
 また、 単純な :ref:`directio-dsl-input-description` と :ref:`directio-dsl-output-description` の骨格も自動生成します。
 前者は ``<出力先パッケージ>.csv.Abstract<データモデル名>CsvInputDescription`` 、後者は ``<出力先パッケージ>.csv.Abstract<データモデル名>CsvOutputDescription`` というクラス名で生成します。必要に応じて継承して利用してください。
 
-この機能を利用するには、DMDLコンパイラのプラグインに ``asakusa-directio-dmdl`` を追加する必要があります。
-DMDLコンパイラについては :doc:`../dmdl/user-guide` を参照してください。
-
 ..  hint::
-    :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがSDKアーティファクトという依存性定義によってデフォルトで利用可能になっています。詳しくは :doc:`../application/sdk-artifact` を参照してください。
+    この機能を利用するには、DMDLコンパイラのプラグインに ``asakusa-directio-dmdl`` を追加する必要がありますが、
+    :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがGradle Pluginによってデフォルトで利用可能になっています。
 
 ..  note::
     この機構は :doc:`WindGate <../windgate/user-guide>` のものと将来統合されるかもしれません。

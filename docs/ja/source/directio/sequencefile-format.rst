@@ -145,16 +145,13 @@ Hadoopのシーケンスファイル [#]_ を直接読み書きするには、 `
 前者は ``<出力先パッケージ>.sequencefile.Abstract<データモデル名>SequenceFileInputDescription`` 、後者は ``<出力先パッケージ>.sequencefile.Abstract<データモデル名>SequenceFileOutputDescription`` というクラス名で生成します。
 必要に応じて継承して利用してください。
 
-この機能を利用するには、DMDLコンパイラのプラグインに ``asakusa-directio-dmdl`` を追加する必要があります。
-DMDLコンパイラについては :doc:`../dmdl/user-guide` を参照してください。
-
 ..  attention::
     シーケンスファイルの形式や、内部データのバイナリ表現はHadoopやAsakusa Frameworkのメジャーバージョンアップの際に変更になる場合があります。
     データを長期にわたって保管する場合、CSVなどのポータブルな形式を利用することを推奨します。
 
 ..  hint::
-    :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがSDKアーティファクトという依存性定義によってデフォルトで利用可能になっています。
-    詳しくは :doc:`../application/sdk-artifact` を参照してください。
+    この機能を利用するには、DMDLコンパイラのプラグインに ``asakusa-directio-dmdl`` を追加する必要がありますが、
+    :doc:`../application/gradle-plugin` の手順に従ってプロジェクトテンプレートから作成したプロジェクトは、これらのライブラリやプラグインがGradle Pluginによってデフォルトで利用可能になっています。
 
 ..  hint::
     DMDLのデータモデル定義で、同一のデータモデルに ``@directio.csv`` と ``@directio.sequence_file`` の両方を指定することもできます。
