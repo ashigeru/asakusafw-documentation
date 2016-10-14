@@ -206,3 +206,152 @@ Java VMの設定
     export ASAKUSA_M3BP_OPTS='-Xmx16g'
 
 上記のように書いた場合、Open JDKなどでJavaのヒープ領域の最大値を ``16GB`` に設定できます。
+
+WindGate JDBC ダイレクト・モード
+================================
+
+..  attention::
+    本バージョンでは、WindGate JDBC ダイレクト・モードは試験的機能として提供しています。
+    また、現時点ではWindGate JDBC ダイレクト・モードは |M3BP_FEATURE| でのみ利用可能です。
+
+概要
+----
+
+WindGate JDBC ダイレクト・モードとは、:doc:`WindGate <../windgate/index>` を利用したバッチアプリケーションの実行時に
+データフロー処理を行うプロセスの内部で直接WindGate JDBCによるデータベースへのインポート処理とエクスポート処理を行うように動作する最適化設定です。
+
+通常のWindGateの動作は、バッチアプリケーションのメインとなるデータフローの処理の前後でそれぞれ
+WindGateのプロセスを起動し、外部リソースからのデータの読み込み（インポート処理）と書き出し（エクスポート処理）を行います。
+
+メインとなるデータフロー処理とWindGateの処理との間ではHadoopファイルシステムを介した中間データの受け渡しが必要になります。
+また、インポート処理、データフロー処理、エクスポート処理はそれぞれのフェーズが完全に終了しないと次のフェーズに進むことができません。
+
+これに対して「WindGate ダイレクト・モード」ではプロセス間の中間データの受け渡しは不要になり、フェーズ間の待ち合わせを設けないように設定することも可能です。
+これらの動作により、通常のWindGateよりもバッチアプリケーション全体の実行時間が大きく短縮できる可能性があります。
+
+コンパイラの設定
+----------------
+
+WindGate JDBC ダイレクト・モードを利用するには、まずアプリケーションプロジェクトのビルドスクリプト( ``build.gradle`` )にこのモードを利用するためのコンパイルオプションを指定します。
+
+以下、 ``build.gradle`` の設定例です。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-m3bp-optimization-1
+
+    asakusafw {
+        m3bp {
+            option 'windgate.jdbc.direct', '*'
+        }
+    }
+
+WindGate JDBC ダイレクト・モードに関するコンパイラオプションは以下の通りです。
+
+``windgate.jdbc.direct``
+    WindGate JDBC ダイレクト・モードを有効にするプロファイル名のパターン一覧を設定します。
+
+    名前のパターンにはワイルドカードとして ``*`` を含めることができます。
+    また、複数のパターンを指定する場合にはカンマ (``,``) 区切りで行います。
+
+    コンパイル対象に、このパターンに適合するプロファイル名 [#]_ を持つWindGate JDBCの入出力 が含まれる場合、それらはWindGate JDBC ダイレクト・モード上で動作します。
+
+    また、コンパイル対象に上記で指定した以外のプロファイル名を利用しているWindGate JDBCの入出力が含まれる場合、それらは従来のWindGate上で動作します。
+
+    既定値: なし (利用しない)
+
+``windgate.jdbc.direct.barrier``
+    ``true`` を指定した場合、プロファイルごとに入力がすべて完了するまで出力の開始を遅延させます。
+    ``false`` を指定した場合には、これを行いません。
+
+    既定値: ``true`` (遅延させる)
+
+    ..  warning::
+        この設定に ``false`` を設定した場合、（グループ化やソートが含まれない）非常に単純なバッチが高速化されますが、特定の状況でデッドロックが発生する可能性があります。
+
+        デッドロックを確実に回避するには、 `実行エンジンの設定`_ で「出力の最大並列実行数」よりも「最大同時接続数」を大きな値に設定する必要があります。
+
+..  [#] バッチアプリケーションが利用するWindGateプロファイルの指定方法などについては、 :doc:`../windgate/user-guide` などを参照してください。
+
+実行エンジンの設定
+------------------
+
+WindGate JDBC ダイレクト・モードに関する実行エンジンの設定は以下の通りです。
+設定方法については上述の `設定方法`_ を参照してください。
+
+..  attention::
+    通常のWindGateはWindGateプロファイル上で動作設定を行いますが、WindGate JDBC ダイレクト・モードではこの設定を利用しません。
+    |M3BP_FEATURE|\ の `設定方法`_ に従って本項で紹介する項目を設定してください。
+
+``com.asakusafw.dag.jdbc.<profile-name>.url``
+    対象のJDBC URLを指定します。
+
+    既定値: なし (必須項目)
+
+``com.asakusafw.dag.jdbc.<profile-name>.driver``
+    対象のJDBCドライバークラス名を指定します。
+
+    既定値: なし (必須項目)
+
+``com.asakusafw.dag.jdbc.<profile-name>.properties.<key>``
+    JDBC接続に対して、 ``<key>`` で指定した設定を追加します。
+
+    ..  hint::
+        多くのJDBCドライバーでは、 ``user`` と ``password`` の設定が必要です。
+
+``com.asakusafw.dag.jdbc.<profile-name>.connection.max``
+    最大同時接続数を設定します。
+
+    既定値: `1`
+
+    ..  hint::
+        この接続数を超えて接続を試みた場合、他の接続が解放されるまで待ち合わせます。
+
+``com.asakusafw.dag.jdbc.<profile-name>.input.records``
+    JDBC経由でデータを取得する際に、一度に取得する最大行数を設定します。
+
+    既定値: `1024`
+
+``com.asakusafw.dag.jdbc.<profile-name>.output.records``
+    JDBC経由でデータを出力する際に、一度にバッチ処理する最大行数を設定します。
+
+    既定値: `1024`
+
+``com.asakusafw.dag.jdbc.<profile-name>.output.threads``
+    JDBC経由でデータを出力する際の、最大並列実行数を設定します。
+
+    この設定は |M3BP_FEATURE|\ の「ワーカースレッドの最大数 (``com.asakusafw.m3bp.thread.max``)」以下である必要があります。
+
+    既定値: `1`
+
+    ..  hint::
+        この値に最大同時接続数より大きな値を設定した場合、いくつかのスレッドは接続の取得を待ち合わせることになります。
+
+``com.asakusafw.dag.jdbc.<profile-name>.output.clear``
+    JDBC経由でデータを出力する際の、事前に出力先を削除する方式を設定します。
+
+    利用可能な値:
+
+    * ``delete`` - ``DELETE`` 文を利用してテーブルを削除します
+    * ``truncate`` - ``TRUNCATE`` 文を利用してテーブルを削除します
+    * ``keep`` - 削除を行いません
+
+    既定値: ``truncate``
+
+    ..  hint::
+        この設定は、DSL側の ``JdbcExporterDescription.getCustomTruncate()`` で上書きできます。
+
+``com.asakusafw.dag.jdbc.<profile-name>.optimizations``
+    このプロファイルで利用可能な最適化項目の一覧を設定します。
+
+    複数の項目を設定する場合、カンマ (``,``) 区切りで行います。
+
+    利用可能な値:
+
+    * ``ORACLE_DIRPATH`` - 出力時にOracleのダイレクトパス・インサートを有効にします
+
+    既定値: なし (有効にしない)
+
+    ..  hint::
+        この設定だけでは最適化が有効にならず、 ``Jdbc{Importer,Exporter}Description.getOptions()`` でも同名の項目を指定する必要があります。
+        詳しくは :doc:`../windgate/user-guide` を参照してください。
