@@ -78,7 +78,7 @@ Batch Application Plugin ( ``asakusafw`` ) への拡張
     asakusafw {
         m3bp {
             include 'com.example.batch.*'
-            compilerProperties += ['m3bp.native.path': '/usr/bin:/usr/local/bin']
+            option 'm3bp.native.path', '/usr/bin:/usr/local/bin'
         }
     }
 
@@ -120,10 +120,17 @@ Batch Application Plugin ( ``asakusafw`` ) への拡張
 
     既定値: ``null`` (コンパイラの標準設定を利用する)
 
+``m3bp.option``
+    `コンパイラプロパティ`_ （コンパイラのオプション設定）を追加する。
+
+    後述する `コンパイラプロパティ`_ を ``<key>, <value>`` の形式で指定する。
+
+    既定値: (|M3BP_FEATURE|\ 向けのコンパイルに必要な最低限のもの)
+
 ``m3bp.compilerProperties``
     `コンパイラプロパティ`_ （コンパイラのオプション設定）を追加する。
 
-    この値はマップ型 ( ``java.util.Map`` ) であるため、プロパティのキーと値をマップのキーと値として追加可能。
+    ``m3bp.option`` と同じ機能であるが、この値はマップ型 ( ``java.util.Map`` ) であるため、プロパティのキーと値をマップのキーと値として追加可能。
 
     既定値: (|M3BP_FEATURE|\ 向けのコンパイルに必要な最低限のもの)
 
@@ -259,7 +266,7 @@ Framework Organizer Plugin ( ``asakusafwOrganizer`` ) への拡張
 --------------------
 
 |M3BP_COMPILER|\ で利用可能なコンパイラプロパティについて説明します。
-これらの設定方法については、 `Batch Application Plugin ( asakusafw ) への拡張`_ の ``m3bp.compilerProperties`` の項を参照してください。
+これらの設定方法については、 `Batch Application Plugin ( asakusafw ) への拡張`_ の ``m3bp.option`` の項を参照してください。
 
 ``inspection.dsl``
     DSLの構造を可視化するためのファイル( ``etc/inspection/dsl.json`` )を生成するかどうか。
