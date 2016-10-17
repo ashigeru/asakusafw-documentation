@@ -38,5 +38,4 @@ Batch DSLはデータフローを組み合わせて複雑なバッチ処理の�
     user-guide
     operators
     generic-dataflow
-    mapreduce-compiler
     developer-guide

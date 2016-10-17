@@ -158,18 +158,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ``asakusafw-sdk``
       - ``CompileBatchappTask`` [#]_
       - プロジェクトのビルド構成に基づくBatch DSLコンパイラを使ってバッチアプリケーションを生成する
-    * - :program:`mapreduceCompileBatchapps`
-      - ``asakusafw-mapreduce``
-      - ``-``
-      - MapReduce DSLコンパイラを使ってバッチアプリケーションを生成する
-    * - :program:`sparkCompileBatchapps`
-      - ``asakusafw-spark``
-      - ``-``
-      - Spark DSLコンパイラを使ってバッチアプリケーションを生成する
-    * - :program:`m3bpCompileBatchapps`
-      - ``asakusafw-m3bp``
-      - ``-``
-      - M\ :sup:`3`\ BP DSLコンパイラを使ってバッチアプリケーションを生成する
     * - :program:`jarBatchapp`
       - ``asakusafw-sdk``
       - ``Jar``
@@ -204,7 +192,7 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
     * - :program:`compileJava`
       - :program:`compileDMDL`
     * - :program:`compileBatchapp`
-      - :program:`classes`, :program:`mapreduceCompileBatchapps`, :program:`sparkCompileBatchapps`, :program:`m3bpCompileBatchapps`
+      - :program:`classes`
     * - :program:`jarBatchapp`
       - :program:`compileBatchapp`
     * - :program:`assemble`
@@ -362,95 +350,14 @@ Javaコンパイラ関する規約プロパティは、 ``asakusafw`` ブロッ�
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.JavacConfiguration` が提供します。
 ..  [#] JDK6を利用するなどの場合に変更します。 詳しくは :doc:`using-jdk` を参照してください。
 
-DSLコンパイラプロパティ
-~~~~~~~~~~~~~~~~~~~~~~~
-
-..  attention::
-    バージョン 0.8.0 より、 ``compiler`` ブロックの指定は非推奨となりました。
-    MapReduceコンパイラに対する設定は、後述の MapReduceプロパティ を使用してください。
-
-..  attention::
-    バージョン |version| 時点では、 ``compiler`` ブロックではMapReduce DSLコンパイラに対する設定がおこなわれます。
-
-DSLコンパイラ関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``compiler`` でアクセスできます [#]_ 。
-
-この規約オブジェクトは以下のプロパティを持ちます。
-
-..  list-table:: Batch Application Plugin - DSLコンパイラプロパティ ( ``compiler`` ブロック )
-    :widths: 2 1 2 5
-    :header-rows: 1
-
-    * - プロパティ名
-      - 型
-      - デフォルト値
-      - 説明
-    * - ``compiledSourcePackage``
-      - String
-      - ``${asakusafw.basePackage}.batchapp``
-      - DSLコンパイラが生成する各クラスに使用されるパッケージ名
-    * - ``compiledSourceDirectory``
-      - String
-      - ``${project.buildDir}/batchc``
-      - DSLコンパイラが生成する成果物の出力先
-    * - ``compilerOptions``
-      - String
-      - ``XjavaVersion=${targetCompatibility}`` [#]_
-      - DSLコンパイラオプション [#]_
-    * - ``compilerWorkDirectory``
-      - String
-      - ``未指定``
-      - DSLコンパイラのワーキングディレクトリ
-    * - ``hadoopWorkDirectory``
-      - String
-      - ``target/hadoopwork/${execution_id}``
-      - DSLコンパイラが生成するアプリケーション(Hadoopジョブ)が使用するHadoop上のワーキングディレクトリ
-
-..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.CompilerConfiguration` が提供します。
-..  [#] `Javaコンパイラプロパティ`_ の ``targetCompatibility`` の値が設定されます。
-..  [#] DSLコンパイラオプションについては、 :doc:`../dsl/mapreduce-compiler` - :ref:`mapreduce-compile-options` を参照してください。
-
 MapReduceプロパティ
 ~~~~~~~~~~~~~~~~~~~
 
-MapReduce DSLコンパイラ関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``mapreduce`` でアクセスできます [#]_ 。
-この規約オブジェクトは以下のプロパティを持ちます。
+Spark DSLコンパイラに関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``mapreduce`` でアクセスできます。
 
-..  list-table:: Batch Application Plugin - MapReduceコンパイラプロパティ ( ``mapreduce`` ブロック )
-    :widths: 2 1 2 5
-    :header-rows: 1
+この規約オブジェクトについては、Asakusa on Sparkの以下のドキュメントを参照してください。
 
-    * - プロパティ名
-      - 型
-      - デフォルト値
-      - 説明
-    * - ``outputDirectory``
-      - String
-      - ``$buildDir/batchc``
-      - コンパイラの出力先を指定する。文字列や java.io.File などで指定し、相対パスが指定された場合にはプロジェクトからの相対パスとして取り扱う。
-    * - ``include``
-      - String, List<String>
-      - ``null`` (すべて)
-      - コンパイルの対象に含めるバッチクラス名のパターンを指定する。バッチクラス名には ``*`` でワイルドカードを含めることが可能。また、バッチクラス名のリストを指定した場合、それらのパターンのいずれかにマッチしたバッチクラスのみをコンパイルの対象に含める。 [#]_
-    * - ``exclude``
-      - String, List<String>
-      - ``null`` (除外しない)
-      - コンパイルの対象に含めるバッチクラス名のパターンを指定する。バッチクラス名には ``*`` でワイルドカードを含めることが可能。また、バッチクラス名のリストを指定した場合、それらのパターンのいずれかにマッチしたバッチクラスのみをコンパイルの対象に含める。
-    * - ``runtimeWorkingDirectory``
-      - String
-      - ``null``  (コンパイラの標準設定を利用する)
-      - 実行時のテンポラリワーキングディレクトリのパスを指定する。パスにはURIやカレントワーキングディレクトリからの相対パスを指定可能。未指定の場合、コンパイラの標準設定である「 ``target/hadoopwork`` 」を利用する。
-    * - ``compilerProperties``
-      - Map<String, String>
-      - ``null``
-      - MapReduceコンパイラのコンパイラオプション [#]_ を追加する。この値はマップ型 ( ``java.util.Map`` ) であるため、プロパティのキーと値をマップのキーと値として追加可能。
-    * - ``failOnError``
-      - boolean
-      - ``true`` (即座にコンパイルを停止する)
-      - コンパイルエラーが発生したら即座にコンパイルを停止するかどうかを選択する。コンパイルエラーが発生した際に、 true を指定した場合にはコンパイルをすぐに停止し、 false を指定した場合には最後までコンパイルを実施する。
-
-..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
-..  [#] ``include``, ``exclude`` プロパティの利用方法については、 :doc:`gradle-plugin` - :ref:`gradle-plugin-dslcompile-filter` を参照してください。
-..  [#] DSLコンパイラオプションについては、 :doc:`../dsl/mapreduce-compiler` - :ref:`mapreduce-compile-options` を参照してください。
+* :doc:`../mapreduce/reference` - :ref:`mapreduce-batch-application-plugin-ext`
 
 Sparkプロパティ
 ~~~~~~~~~~~~~~~
@@ -632,23 +539,11 @@ Framework Organizer Plugin の規約プロパティはビルドスクリプト�
 MapReduceプロパティ
 ~~~~~~~~~~~~~~~~~~~
 
-MapReduce DSLコンパイラが生成するバッチアプリケーションの構成に関する規約プロパティは、 ``asakusafwOrganizer`` ブロック内の参照名 ``mapreduce`` でアクセスできます [#]_ 。
-この規約オブジェクトは以下のプロパティを持ちます。
+MapReduce DSLコンパイラが生成するバッチアプリケーションの構成に関する規約プロパティは、 ``asakusafwOrganizer`` ブロック内の参照名 ``mapreduce`` でアクセスできます。
 
-..  list-table:: Batch Application Plugin - MapReduceコンパイラプロパティ ( ``mapreduce`` ブロック )
-    :widths: 2 1 2 5
-    :header-rows: 1
+この規約オブジェクトについては、Asakusa on MapReduceの以下のドキュメントを参照してください。
 
-    * - プロパティ名
-      - 型
-      - デフォルト値
-      - 説明
-    * - ``enabled``
-      - boolean
-      - true
-      - この値をtrueにするとデプロイメントアーカイブにMapReduce DSLコンパイラが生成するプロジェクトのバッチアプリケーションを含める
-
-..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.mapreduce.gradle.plugins.AsakusafwOrganizerMapReduceExtension` が提供します。
+* :doc:`../mapreduce/reference` - :ref:`mapreduce-framework-organizer-plugin-ext`
 
 Sparkプロパティ
 ~~~~~~~~~~~~~~~

@@ -978,9 +978,9 @@ Batch DSLコンパイラが生成するバッチアプリケーションには�
   各コンパイラによって利用できるコンパイルオプションは異なります。
   各コンパイラのコンパイルオプションについては、以下のドキュメントを参照してください。
 
-* :doc:`mapreduce-compiler`
 * :doc:`../spark/reference` - :ref:`spark-dsl-compiler-reference`
 * :doc:`../m3bp/reference` - :ref:`m3bp-dsl-compiler-reference`
+* :doc:`../mapreduce/reference` - :ref:`mapreduce-dsl-compiler-reference`
 
 ワークフロー記述
 
