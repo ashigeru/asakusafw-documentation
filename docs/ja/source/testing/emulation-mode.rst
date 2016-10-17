@@ -40,38 +40,34 @@
 Asakusa Framework バージョン 0.8.0 以降では、:doc:`../introduction/start-guide` や :doc:`../application/gradle-plugin` などで説明しているプロジェクトテンプレートを利用する場合、
 標準でエミュレーションモードが利用されます。
 
-エミュレーションモードで利用するモジュール
-------------------------------------------
+エミュレーションモードの設定
+----------------------------
 
-エミュレーションモード用のモジュールはAsakusa FrameworkのMavenリポジトリに以下の内容で登録されています。
+アプリケーションプロジェクトでエミュレーションモードの設定を変更する場合は、ビルドスクリプトの ``asakusafw`` ブロック内の ``sdk.testkit`` の値を変更します。
 
-..  list-table:: エミュレーションモードで使用するSDKアーティファクト
-    :widths: 2 4 5
-    :header-rows: 1
-
-    * - グループID
-      - アーティファクトID
-      - 説明
-    * - ``com.asakusafw.sdk``
-      - ``asakusa-sdk-test-emulation``
-      - テストドライバー実行にエミュレーションモードを使用する
-
-..  attention::
-    Asakusa Framework バージョン ``0.7.3`` から、エミュレーションに関するモジュール定義は上記のSDKアーティファクトに統一されました。
-    バージョン ``0.7.2`` 以前で説明していた設定方法は一部環境で動作しないため、上記のSDKアーティファクトに変更してください。
-
-エミュレーションモードの有効化
-------------------------------
-
-アプリケーションプロジェクトでエミュレーションモードを使用する場合はビルドスクリプトの ``dependencies`` ブロック内に `エミュレーションモードで利用するモジュール`_ を利用する依存定義を追加します。
+以下は、エミュレーションモードを利用を明示的に設定する例です。この設定は :doc:`../application/gradle-plugin` を利用する標準の構成と同じ設定です。
 
 ..  code-block:: groovy
     :caption: build.gradle
     :name: build.gradle-emulation-mode-1
 
-    dependencies {
-        ...
-        testRuntime group: 'com.asakusafw.sdk', name: 'asakusa-sdk-test-emulation', version: asakusafw.asakusafwVersion
+    asakusafw {
+        sdk.testkit 'mapreduce-emulation'
+    }
+
+エミュレーションモードの設定を無効化し、環境のHadoopを利用するには以下のように設定します。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-emulation-mode-2
+
+    asakusafw {
+        sdk.testkit 'mapreduce'
+    }
+
+..  attention::
+    通常はエミュレーションモードの利用を推奨しています。
+    エミュレーションモードが正常に動作しないなどの場合にのみ、この設定変更を検討してください。
 
 ..  tip::
     エミュレーションモードを有効する別の方法として、ビルドスクリプトにはモジュール設定を記述せず、 :jinrikisha:`Shafu<shafu.html>` の機能を使ってEclipse上で設定する方法があります。
@@ -81,7 +77,7 @@ Asakusa Framework バージョン 0.8.0 以降では、:doc:`../introduction/sta
 Gradle上でのテストドライバー実行
 --------------------------------
 
-`エミュレーションモードの有効化`_ を行った状態でGradleの :program:`test` タスクを実行すると、テストドライバーがエミュレーションモードで実行されます。
+`エミュレーションモードの設定`_ を有効化した状態でGradleの :program:`test` タスクを実行すると、テストドライバーがエミュレーションモードで実行されます。
 
 ..  tip::
     エミュレーションモードを有効にして Gradle上でテストを実行すると、Gradleが提供する `JaCoCo Plugin <http://www.gradle.org/docs/current/userguide/jacoco_plugin.html>`_ などのソースコードカバレッジ取得機能との連携が可能になります。
@@ -101,7 +97,7 @@ Gradle上でのテストドライバー実行
 Eclipse上でのテストドライバー実行
 ---------------------------------
 
-`エミュレーションモードの有効化`_ を行った状態でGradleの :program:`eclipse` タスクを実行すると、Eclipse上でアプリケーションプロジェクトに対してエミュレーションモードが有効になります。
+`エミュレーションモードの設定`_ を有効化した状態でGradleの :program:`eclipse` タスクを実行すると、Eclipse上でアプリケーションプロジェクトに対してエミュレーションモードが有効になります。
 
 この状態でEclipseからテストドライバーを利用するテストクラスやバッチテストランナーを実行すると、テストドライバーがエミュレーションモードで実行されます。
 
