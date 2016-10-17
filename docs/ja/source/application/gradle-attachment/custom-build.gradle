@@ -20,7 +20,7 @@ apply plugin: 'eclipse'
 asakusafw {
     basePackage 'foo.bar'
     spark {
-        compilerProperties += ['spark.input.direct':'false']
+        option 'spark.input.direct', 'false'
     }
 }
 
