@@ -123,14 +123,7 @@ Batch Application Plugin ( ``asakusafw`` ) への拡張
 ``m3bp.option``
     `コンパイラプロパティ`_ （コンパイラのオプション設定）を追加する。
 
-    後述する `コンパイラプロパティ`_ を ``<key>, <value>`` の形式で指定する。
-
-    既定値: (|M3BP_FEATURE|\ 向けのコンパイルに必要な最低限のもの)
-
-``m3bp.compilerProperties``
-    `コンパイラプロパティ`_ （コンパイラのオプション設定）を追加する。
-
-    ``m3bp.option`` と同じ機能であるが、この値はマップ型 ( ``java.util.Map`` ) であるため、プロパティのキーと値をマップのキーと値として追加可能。
+    後述する `コンパイラプロパティ`_ を ``<key>, <value>`` の形式で指定する [#]_ 。
 
     既定値: (|M3BP_FEATURE|\ 向けのコンパイルに必要な最低限のもの)
 
@@ -151,6 +144,7 @@ Batch Application Plugin ( ``asakusafw`` ) への拡張
     既定値: ``true`` (即座にコンパイルを停止する)
 
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
+..  [#] コンパイラプロパティを指定する方法は他にいくつかの方法があります。詳しくは :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` のメソッドの説明を参照してください。
 
 .. _m3bp-framework-organizer-plugin-ext:
 
@@ -231,11 +225,11 @@ Framework Organizer Plugin ( ``asakusafwOrganizer`` ) への拡張
 
 ..  program:: m3bpCompileBatchapps
 
-..  option:: --compiler-properties <k1=v1[,k2=v2[,...]]>
+..  option:: --options <k1=v1[,k2=v2[,...]]>
 
     追加のコンパイラプロパティを指定する。
 
-    規約プロパティ ``asakusafw.m3bp.compilerProperties`` で設定したものと同じキーを指定した場合、それらを上書きする。
+    規約プロパティ ``asakusafw.m3bp.option`` で設定したものと同じキーを指定した場合、それらを上書きする。
 
 ..  option:: --batch-id-prefix <prefix.>
 

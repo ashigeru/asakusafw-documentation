@@ -82,7 +82,7 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
     asakusafw {
         spark {
             include 'com.example.batch.*'
-            compilerProperties += ['spark.input.direct':'false']
+            option 'spark.input.direct', 'false'
         }
 
 この規約オブジェクトは以下のプロパティを持ちます。
@@ -123,10 +123,10 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
 
     既定値: ``null`` (コンパイラの標準設定を利用する)
 
-``spark.compilerProperties``
+``spark.option``
     `コンパイラプロパティ`_ （コンパイラのオプション設定）を追加する。
 
-    この値はマップ型 ( ``java.util.Map`` ) であるため、プロパティのキーと値をマップのキーと値として追加可能。
+    後述する `コンパイラプロパティ`_ を ``<key>, <value>`` の形式で指定する [#]_ 。
 
     既定値: (Spark向けのコンパイルに必要な最低限のもの)
 
@@ -147,6 +147,7 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
     既定値: ``true`` (即座にコンパイルを停止する)
 
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` が提供します。
+..  [#] コンパイラプロパティを指定する方法は他にいくつかの方法があります。詳しくは :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwCompilerExtension` のメソッドの説明を参照してください。
 
 .. _spark-framework-organizer-plugin-ext:
 
@@ -190,11 +191,11 @@ Asakusa on Spark Gradle Plugin は Framework Organizer Plugin に対して Asaku
 
 ..  program:: sparkCompileBatchapps
 
-..  option:: --compiler-properties <k1=v1[,k2=v2[,...]]>
+..  option:: --options <k1=v1[,k2=v2[,...]]>
 
     追加のコンパイラプロパティを指定する。
 
-    規約プロパティ ``asakusafw.spark.compilerProperties`` で設定したものと同じキーを指定した場合、それらを上書きする。
+    規約プロパティ ``asakusafw.spark.option`` で設定したものと同じキーを指定した場合、それらを上書きする。
 
 ..  option:: --batch-id-prefix <prefix.>
 
@@ -224,7 +225,7 @@ Asakusa DSL Compiler for Spark リファレンス
 コンパイラプロパティ
 --------------------
 
-Asakusa DSL Compiler for Sparkで利用可能なコンパイラプロパティについて説明します。これらの設定方法については、 `Batch Application Plugin ( asakusafw ) への拡張`_ の ``spark.compilerProperties`` の項を参照してください。
+Asakusa DSL Compiler for Sparkで利用可能なコンパイラプロパティについて説明します。これらの設定方法については、 `Batch Application Plugin ( asakusafw ) への拡張`_ の ``spark.option`` の項を参照してください。
 
 ``inspection.dsl``
     DSLの構造を可視化するためのファイル( ``etc/inspection/dsl.json`` )を生成するかどうか。
