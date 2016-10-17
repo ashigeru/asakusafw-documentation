@@ -34,6 +34,7 @@ Asakusa Framework入門
 * :doc:`sandbox/index`
 * :doc:`spark/index`
 * :doc:`m3bp/index`
+* :doc:`mapreduce/index`
 
 プロダクトについて
 ==================

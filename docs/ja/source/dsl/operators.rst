@@ -2371,9 +2371,9 @@ NULL値に対する集約関数の動作
 ..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.flow.processor.PartialAggregation`
 ..  [#] コンパイラオプションの設定については、以下の各コンパイラリファレンスを参照してください
 
-        * :doc:`mapreduce-compiler` - :ref:`mapreduce-compile-options`
         * :doc:`../spark/reference` - :ref:`spark-dsl-compiler-reference`
         * :doc:`../m3bp/reference` - :ref:`m3bp-dsl-compiler-reference`
+        * :doc:`../mapreduce/reference` - :ref:`mapreduce-dsl-compiler-reference`
 
 .. _fold-operator:
 

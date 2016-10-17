@@ -22,5 +22,6 @@
     sandbox/index
     spark/index
     m3bp/index
+    mapreduce/index
     product/index
     document/index
