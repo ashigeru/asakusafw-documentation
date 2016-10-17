@@ -213,6 +213,53 @@ Asakusa Gradle Pluginを利用する場合、このプラグインの該当バ�
 なお、検証されていない組み合わせの各Gradle PluginとAsakusa Frameworkバージョンを利用することは非推奨です。
 特別な理由がない限り、 ``asakusafwVersion`` の定義はビルドスクリプトでは指定しない（標準の構成を使用する）ことを推奨します。
 
+DSLコンパイラプロパティ
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  attention::
+    バージョン 0.8.0 より、 ``compiler`` ブロックの指定は非推奨となりました。
+    MapReduceコンパイラに対する設定は、後述の MapReduceプロパティ を使用してください。
+
+..  attention::
+    バージョン |version| 時点では、 ``compiler`` ブロックではMapReduce DSLコンパイラに対する設定がおこなわれます。
+
+DSLコンパイラ関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``compiler`` でアクセスできます [#]_ 。
+
+この規約オブジェクトは以下のプロパティを持ちます。
+
+..  list-table:: Batch Application Plugin - DSLコンパイラプロパティ ( ``compiler`` ブロック )
+    :widths: 2 1 2 5
+    :header-rows: 1
+
+    * - プロパティ名
+      - 型
+      - デフォルト値
+      - 説明
+    * - ``compiledSourcePackage``
+      - String
+      - ``${asakusafw.basePackage}.batchapp``
+      - DSLコンパイラが生成する各クラスに使用されるパッケージ名
+    * - ``compiledSourceDirectory``
+      - String
+      - ``${project.buildDir}/batchc``
+      - DSLコンパイラが生成する成果物の出力先
+    * - ``compilerOptions``
+      - String
+      - ``XjavaVersion=${targetCompatibility}`` [#]_
+      - DSLコンパイラオプション [#]_
+    * - ``compilerWorkDirectory``
+      - String
+      - ``未指定``
+      - DSLコンパイラのワーキングディレクトリ
+    * - ``hadoopWorkDirectory``
+      - String
+      - ``target/hadoopwork/${execution_id}``
+      - DSLコンパイラが生成するアプリケーション(Hadoopジョブ)が使用するHadoop上のワーキングディレクトリ
+
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.CompilerConfiguration` が提供します。
+..  [#] Javaコンパイラプロパティの ``targetCompatibility`` の値が設定されます。
+..  [#] DSLコンパイラオプションについては、 :doc:`../mapreduce/reference` - :ref:`mapreduce-dsl-compiler-reference` を参照してください。
+
 ThunderGateプロパティ
 ^^^^^^^^^^^^^^^^^^^^^
 

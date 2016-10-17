@@ -350,53 +350,6 @@ Javaコンパイラ関する規約プロパティは、 ``asakusafw`` ブロッ�
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.JavacConfiguration` が提供します。
 ..  [#] JDK6を利用するなどの場合に変更します。 詳しくは :doc:`using-jdk` を参照してください。
 
-DSLコンパイラプロパティ
-~~~~~~~~~~~~~~~~~~~~~~~
-
-..  attention::
-    バージョン 0.8.0 より、 ``compiler`` ブロックの指定は非推奨となりました。
-    MapReduceコンパイラに対する設定は、後述の MapReduceプロパティ を使用してください。
-
-..  attention::
-    バージョン |version| 時点では、 ``compiler`` ブロックではMapReduce DSLコンパイラに対する設定がおこなわれます。
-
-DSLコンパイラ関する規約プロパティは、 ``asakusafw`` ブロック内の参照名 ``compiler`` でアクセスできます [#]_ 。
-
-この規約オブジェクトは以下のプロパティを持ちます。
-
-..  list-table:: Batch Application Plugin - DSLコンパイラプロパティ ( ``compiler`` ブロック )
-    :widths: 2 1 2 5
-    :header-rows: 1
-
-    * - プロパティ名
-      - 型
-      - デフォルト値
-      - 説明
-    * - ``compiledSourcePackage``
-      - String
-      - ``${asakusafw.basePackage}.batchapp``
-      - DSLコンパイラが生成する各クラスに使用されるパッケージ名
-    * - ``compiledSourceDirectory``
-      - String
-      - ``${project.buildDir}/batchc``
-      - DSLコンパイラが生成する成果物の出力先
-    * - ``compilerOptions``
-      - String
-      - ``XjavaVersion=${targetCompatibility}`` [#]_
-      - DSLコンパイラオプション [#]_
-    * - ``compilerWorkDirectory``
-      - String
-      - ``未指定``
-      - DSLコンパイラのワーキングディレクトリ
-    * - ``hadoopWorkDirectory``
-      - String
-      - ``target/hadoopwork/${execution_id}``
-      - DSLコンパイラが生成するアプリケーション(Hadoopジョブ)が使用するHadoop上のワーキングディレクトリ
-
-..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.CompilerConfiguration` が提供します。
-..  [#] `Javaコンパイラプロパティ`_ の ``targetCompatibility`` の値が設定されます。
-..  [#] DSLコンパイラオプションについては、 :doc:`../dsl/mapreduce-compiler` - :ref:`mapreduce-compile-options` を参照してください。
-
 MapReduceプロパティ
 ~~~~~~~~~~~~~~~~~~~
 
