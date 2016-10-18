@@ -355,6 +355,14 @@ Javaコンパイラ関する規約プロパティは、 ``asakusafw`` ブロッ�
       - String
       - ``${project.buildDir}/generated-sources/annotations``
       - アノテーションプロセッサが生成するJavaソースの出力先
+    * - ``processorOption``
+      - Object
+      - アノテーションプロセッサによる生成処理に必要な最低限のもの
+      - アノテーションプロセッサに対するオプションを ``<key>, <value>`` の形式で指定する
+    * - ``processorOptions``
+      - Map<?, ?>
+      - アノテーションプロセッサによる生成処理に必要な最低限のもの
+      - アノテーションプロセッサに対するオプションをMap形式で指定する
     * - ``sourceEncoding``
       - String
       - ``UTF-8``
