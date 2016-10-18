@@ -73,28 +73,18 @@ Asakusa Gradle Pluginを使った標準的なアプリケーション開発環�
 
 プロジェクトテンプレートは、以下リンクからダウンロードします。
 
-
 ..  list-table:: プロジェクトテンプレートのダウンロード
     :widths: 3 4
     :header-rows: 1
 
     * - プロジェクトテンプレート
       - 説明
+    * - `asakusa-spark-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.0.tar.gz>`_
+      - :doc:`../spark/index` を利用するプロジェクトテンプレート
+    * - `asakusa-m3bp-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.9.0.tar.gz>`_
+      - :doc:`../m3bp/index` を利用するプロジェクトテンプレート
     * - `asakusa-mapreduce-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.9.0.tar.gz>`_
-      - Asakusa on MapReduceを利用するプロジェクトテンプレート
-    * - `asakusa-spark-template-0.4.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.4.0.tar.gz>`_
-      - :doc:`../spark/index` を利用するプロジェクトテンプレート
-    * - `asakusa-m3bp-template-0.2.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.2.0.tar.gz>`_
-      - :doc:`../spark/index` を利用するプロジェクトテンプレート
-
-..  seealso::
-    Asakusa on Spark , |M3BP_FEATURE| についてはこのドキュメントの更新とは独立してリリースが実施される可能性があり、
-    プロジェクトテンプレートも上記よりも新しいバージョンがリリースされている可能性があります。
-
-    それぞれの最新バージョンのプロジェクトテンプレートについては、以下のドキュメントを確認してください。
-
-    * :doc:`../spark/user-guide`
-    * :doc:`../m3bp/user-guide`
+      - :doc:`../mapreduce/index` を利用するプロジェクトテンプレート
 
 また、Asakusa Frameworkの `サンプルプログラム集 (GitHub)`_ では、サンプルアプリケーションのソースコード一式を含むサンプルアプリケーションプロジェクトを公開しています。
 
@@ -175,9 +165,11 @@ Gradleラッパーに関するディレクトリ及びファイルは、Gradle�
 
 プロジェクトテンプレートに含まれるビルドスクリプトには、以下の機能を利用するための設定があらかじめ定義されています。
 
+* :doc:`Asakusa DSL <../dsl/index>`
+* :doc:`Asakusa Data Model (DMDL) <../dmdl/index>`
+* :doc:`テストドライバ <../testing/index>`
 * :doc:`Direct I/O <../directio/index>`
 * :doc:`WindGate <../windgate/index>`
-* :doc:`エミュレーションモードによるテスト実行 <../testing/emulation-mode>`
 
 ソースディレクトリ
 ~~~~~~~~~~~~~~~~~~
@@ -247,9 +239,6 @@ Gradleラッパーに関するディレクトリ及びファイルは、Gradle�
     * - :file:`reports/tests`
       - :program:`check`
       - テストレポートファイルを生成するディレクトリ
-    * - :file:`batchc`
-      - :program:`compileBatchapp`
-      - MapReduceコンパイラによるバッチアプリケーション生成ディレクトリ
     * - :file:`spark-batchapps`
       - :program:`compileBatchapp`
       - Sparkコンパイラによるバッチアプリケーション生成ディレクトリ
@@ -274,35 +263,14 @@ Gradleラッパーに関するディレクトリ及びファイルは、Gradle�
 
     cd ~/workspace/example-basic-spark
 
-バージョンの確認
-----------------
-
-アプリケーションプロジェクトで使用する各コンポーネントのバージョンを表示するには、:program:`asakusaVersion` タスクを実行します。
-
-プロジェクト上でタスクを実行するには、以下のように :program:`gradlew` コマンドにタスク名を指定して実行します。
-
-..  code-block:: sh
-
-    ./gradlew asakusaVersion
-
-:program:`asakusaVersion` タスクが正しく実行されると、以下のようにプロジェクトで利用するコンポーネントのバージョンが表示されます。
-
-..  code-block:: none
-
-    :asakusaVersions
-    Asakusa Gradle Plug-ins: 0.9.0
-    Asakusa on Spark: 0.4.0
-    Asakusa SDK: 0.9.0
-    JVM: 1.7
-    Spark: 1.6.2
-    Hadoop: 2.7.2
-
 開発用のAsakusa Frameworkインストール
 -------------------------------------
 
 Asakusa Frameworkを開発環境にインストールします。
 
 Asakusa Frameworkを開発環境にインストールするには、インストールディレクトリパスを環境変数 ``ASAKUSA_HOME`` に定義した上で :program:`installAsakusafw` タスクを実行します。
+
+プロジェクト上でタスクを実行するには、以下のように :program:`gradlew` コマンドにタスク名を指定して実行します。
 
 ..  code-block:: sh
 
@@ -353,8 +321,7 @@ Asakusa DSLの記述や配置方法については :doc:`../dsl/index` を参照
     ./gradlew compileBatchapp
 
 このタスクは、ビルドスクリプトに適用されているプラグイン構成に従って、利用するBatch DSLコンパイラを実行します。
-例えばAsakusa on Sparkのプロジェクトテンプレートに含まれるビルドスクリプトの構成ではMapReduceとSpark向けのプラグインが設定されているため、
-この2つの環境向けのBatch DSLコンパイラが実行されます。
+例えばAsakusa on Sparkのプロジェクトテンプレートに含まれるビルドスクリプトの構成ではSpark向けのDSLコンパイラが実行されます。
 
 その他、バッチアプリケーションのコンパイルでは以下のようなタスクが利用できます。
 
@@ -368,14 +335,17 @@ Asakusa DSLの記述や配置方法については :doc:`../dsl/index` を参照
       - プロジェクトのプラグイン構成に従って、それぞれのBatch DSLコンパイラを実行する [#]_ 。
     * - :program:`mapreduceCompileBatchapps`
       - MapReduce向けのDSLコンパイラを実行し、 :file:`build/batchc` 配下にコンパイル済みのバッチアプリケーションを配置する。
+        このタスクを実行するにはプロジェクトのプラグイン構成に :doc:`../mapreduce/index` を含める必要がある。
     * - :program:`sparkCompileBatchapps`
       - Spark向けのDSLコンパイラを実行し、 :file:`build/spark-batchapps` 配下にコンパイル済みのバッチアプリケーションを配置する。
+        このタスクを実行するにはプロジェクトのプラグイン構成に :doc:`../spark/index` を含める必要がある。
     * - :program:`m3bpCompileBatchapps`
       - |M3BP_ENGINE| 向けのDSLコンパイラを実行し、 :file:`build/m3bp-batchapps` 配下にコンパイル済みのバッチアプリケーションを配置する。
+        このタスクを実行するにはプロジェクトのプラグイン構成に :doc:`../m3bp/index` を含める必要がある。
     * - :program:`jarBatchapp`
       - :program:`compileBatchapp` タスクで生成したバッチアプリケーションを含むjarファイルを生成し ``build/${project}-batchapps.jar`` に配置します。
 
-..  [#] 例えばAsakusa on Sparkのプロジェクトテンプレートの初期構成では :program:`compileBatchapp` は :program:`mapreduceCompileBatchapps` と :program:`sparkCompileBatchapps` を実行します。
+..  [#] 例えばAsakusa on Sparkのプロジェクトテンプレートの初期構成では :program:`compileBatchapp` は :program:`sparkCompileBatchapps` を実行します。
 
 デプロイメントアーカイブの構成
 ------------------------------
@@ -511,7 +481,7 @@ Asakusa Gradle Pluginのプラグイン規約プロパティは、以下に説�
     :language: groovy
     :caption: build.gradle
     :name: build.gradle-gradle-plugin-4
-    :lines: 20-25
+    :lines: 19-24
 
 ..  seealso::
     ``asakusafw`` ブロックの設定に関する機能は、Asakusa Gradle Pluginに含まれる Batch Application Plugin が提供します。
@@ -524,8 +494,7 @@ Asakusa Gradle Pluginのプラグイン規約プロパティは、以下に説�
 
 ``asakusafwOrganizer`` ブロックは設定のカテゴリ別にさらに階層化されています。
 
-以下の例では、MapReduceコンパイラの生成物をデプロイメントアーカイブに含めないよう ``mapreduce.enabled`` で指定しています。
-また、WindGateに対してリトライ処理を有効にする拡張コンポーネントを追加しています。
+以下の例では、WindGateに対してリトライ処理を有効にする拡張コンポーネントを追加しています。
 
 ``profiles`` から始まるブロックは、デプロイメントアーカイブの構成情報を管理するプロファイルに関する設定です。
 プロファイルについては後述の `プロファイルの管理`_ で詳しく説明します。
@@ -534,7 +503,7 @@ Asakusa Gradle Pluginのプラグイン規約プロパティは、以下に説�
     :language: groovy
     :caption: build.gradle
     :name: build.gradle-gradle-plugin-5
-    :lines: 27-36
+    :lines: 26-33
 
 ..  seealso::
     ``asakusafwOrganizer`` ブロックの設定に関する機能は、Asakusa Gradle Pluginに含まれる Framework Organizer Plugin が提供します。
@@ -562,7 +531,7 @@ Asakusa Gradle Pluginを適用したアプリケーションプロジェクト�
 
 ..  code-block:: groovy
     :caption: build.gradle
-    :name: build.gradle-gradle-plugin-10
+    :name: build.gradle-gradle-plugin-6
 
     asakusafw {
         sdk.hive true
@@ -587,8 +556,8 @@ Asakusa Gradle Pluginを適用したアプリケーションプロジェクト�
 ..  literalinclude:: gradle-attachment/custom-build.gradle
     :language: groovy
     :caption: build.gradle
-    :name: build.gradle-gradle-plugin-6
-    :lines: 37-45
+    :name: build.gradle-gradle-plugin-7
+    :lines: 35-37
 
 .. _dependency-library-gradle-plugin:
 
@@ -656,7 +625,7 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 
 ..  code-block:: groovy
     :caption: build.gradle
-    :name: build.gradle-gradle-plugin-7
+    :name: build.gradle-gradle-plugin-8
 
     asakusafwOrganizer {
         hive.enabled true
@@ -704,6 +673,27 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 ここでは、Asakusa Gradle Pluginの利用方法をいくつか紹介します。
 より詳しい情報は、:doc:`gradle-plugin-reference` や各タスクのGroovyDocを参照してください。
 
+プラグイン構成の追加
+--------------------
+
+プロジェクトテンプレートの初期構成に対して、プラグイン構成を後から追加、削除することができます。
+プラグイン構成を追加するには、ビルドスクリプト上に ``apply plugin: <プラグインID>`` のように利用するプラグイン構成を追加します。
+
+以下の設定例では、Asakusa on Spark向けのプロジェクトテンプレートに対して、 |M3BP_FEATURE| 用のプラグイン ``asakusafw-m3bp`` を追加しています。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-gradle-plugin-9
+
+    apply plugin: 'asakusafw-sdk'
+    apply plugin: 'asakusafw-organizer'
+    apply plugin: 'asakusafw-spark'
+    apply plugin: 'asakusafw-m3bp'
+    apply plugin: 'eclipse'
+
+..  seealso::
+    Asakusa Gradle Pluginが提供するプラグインの一覧は :doc:`gradle-plugin-reference` を参照してください。
+
 ..  _gradle-plugin-dslcompile-disable:
 
 デプロイメント構成に対するDSLコンパイラの無効化
@@ -711,16 +701,16 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 
 ビルドスクリプトの構成で有効となっているDSLコンパイラに対して、 デプロイメント構成ごとにDSLコンパイラの生成物を含めないよう設定することができます。
 
-以下の設定例では、すべてのデプロイメント構成に対してMapReduce向けのDSLコンパイラを無効にしています。
-この設定により、 :program:`assemble` タスクの実行時にMapReduceコンパイラのコンパイル処理がスキップされます。
+以下の設定例では、すべてのデプロイメント構成に対して |M3BP_FEATURE| コンパイラを無効にしています。
+この設定により、 :program:`assemble` タスクの実行時に |M3BP_FEATURE| コンパイラのコンパイル処理がスキップされます。
 
 ..  code-block:: groovy
     :caption: build.gradle
-    :name: build.gradle-gradle-plugin-8
+    :name: build.gradle-gradle-plugin-10
 
     asakusafwOrganizer {
         spark.enabled true
-        mapreduce.enabled false
+        m3bp.enabled false
     }
 
 これらの記述を省略した場合、各DSLコンパイラの利用は有効 ( ``true`` ) になります。
@@ -744,18 +734,19 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 
 ..  code-block:: groovy
     :caption: build.gradle
-    :name: build.gradle-gradle-plugin-9
+    :name: build.gradle-gradle-plugin-11
 
     asakusafw {
-        mapreduce {
-            include 'com.example.batch.Hoge'
-        }
         spark {
             exclude 'com.example.batch.Hoge'
         }
+        m3bp {
+            include 'com.example.batch.Hoge'
+        }
     }
 
-上記の設定例では、MapReduceコンパイラに対してはバッチクラス ``Hoge`` のみを含めるように指定し、Sparkコンパイラに対しては ``Hoge`` を除外しその他のバッチクラスを全て含めるよう指定しています。
+上記の設定例では、Asakusa on Sparkコンパイラに対してはバッチクラス ``com.example.batch.Hoge`` を除外しその他のバッチクラスを全て含めるよう指定しています。
+また |M3BP_FEATURE| コンパイラに対してはバッチクラス ``com.example.batch.Hoge`` のみを含めるよう指定しています。
 
 バッチクラス名の文字列には ``*`` をワイルドカードとして使用することもできます。
 
@@ -765,7 +756,7 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 コマンドラインの指定によるフィルタリングは、ビルドスクリプトの設定に対してコマンドライン上でバッチコンパイルの対象をフィルタリングします。
 
 コマンドラインの指定によるフィルタリングは、:program:`gradlew` コマンドを実行する際に各DSLコンパイラの実行用タスクの後に ``--update <バッチクラス名>`` と指定します。
-例えば、MapReduceコンパイラに対してフィルタリングを指定するには、 ``mapreduceCompileBatchapps --update <バッチクラス名>`` と指定します。
+例えば、Asakusa on Sparkコンパイラに対してフィルタリングを指定するには、 ``sparkCompileBatchapps --update <バッチクラス名>`` と指定します。
 
 バッチクラス名の文字列には ``*`` をワイルドカードとして使用することもできます。
 
@@ -773,12 +764,12 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 
 ..  code-block:: sh
 
-    ./gradlew mapreduceCompileBatchapps --update com.example.target.batch.* assemble
+    ./gradlew sparkCompileBatchapps --update com.example.target.batch.* assemble
 
 ..  attention::
     Asakusa Frameworkのバージョン ``0.7.6`` 以前では :program:`compileBatchapp` タスクに対して ``--update`` オプションを指定していましたが、
     バージョン ``0.8.0`` 以降は :program:`compileBatchapp` タスクに ``--update`` オプションを指定することはできなくなりました。
-    代わりに、各DSLコンパイラの実行用タスク ( :program:`mapreduceCompileBatchapps` タスクや :program:`sparkCompileBatchapps` タスク ) に ``--update`` オプションを指定します。
+    代わりに、各DSLコンパイラの実行用タスク ( :program:`sparkCompileBatchapps` など ) に ``--update`` オプションを指定します。
 
 バッチテストランナーの実行
 --------------------------

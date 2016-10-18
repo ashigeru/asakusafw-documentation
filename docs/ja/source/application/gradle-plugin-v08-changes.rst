@@ -228,7 +228,7 @@ Asakusa Frameworkバージョンの確認
 
     ./gradlew asakusaVersion
 
-:program:`asakusaVersion` タスクはビルドスクリプトの設定を解析し、以下のようにプロジェクトで利用するコンポーネントのバージョンが表示します。
+:program:`asakusaVersion` タスクはビルドスクリプトの設定を解析し、以下のようにプロジェクトで利用するコンポーネントのバージョンを表示します。
 
 ..  code-block:: none
 
