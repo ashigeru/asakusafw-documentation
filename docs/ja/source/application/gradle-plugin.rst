@@ -390,7 +390,7 @@ Asakusa Gradle Pluginでは運用環境にデプロイする必要がある実�
 
     ./gradlew assemble
 
-:program:`assemble` タスクを実行すると、 :file:`build` ディレクトリ配下に ``asakusafw-${asakusafwVersion}.tar.gz`` というファイル名でデプロイメントアーカイブファイルが生成されます。
+:program:`assemble` タスクを実行すると、 :file:`build` ディレクトリ配下に ``asakusafw-${project.name}.tar.gz`` というファイル名でデプロイメントアーカイブファイルが生成されます。
 
 デプロイメントアーカイブファイルは運用環境上の ``$ASAKUSA_HOME`` 配下に展開してデプロイします。
 運用環境へのデプロイメントや :program:`assemble` タスクの具体的な使用例については、 :doc:`../administration/deployment-guide` を参照してください。
@@ -674,7 +674,7 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
         }
     }
 
-デプロイメントアーカイブの生成を行うと、 ``build`` ディレクトリ配下に ``asakusafw-${asakusafwVersion}-<profile-name>.tar.gz`` というファイル名 [#]_ で プロファイルに対応したデプロイメントアーカイブが生成されます。
+デプロイメントアーカイブの生成を行うと、 ``build`` ディレクトリ配下に ``asakusafw-${project.name}-<profile-name>.tar.gz`` というファイル名 [#]_ で プロファイルに対応したデプロイメントアーカイブが生成されます。
 
 プロファイル内では上記で説明したコンポーネントごとの規約プロパティや ``assembly`` プロパティを使ったデプロイメントアーカイブの編集機能を使うことができます。
 
@@ -686,7 +686,7 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 ..  [#] これらの機能は :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerProfile` が提供します。
 ..  [#] ``dev`` プロファイルは主に :program:`installAsakusafw` タスクで開発環境にデプロイする構成として使用します。
         ``dev`` プロファイルはテストドライバー用の構成が有効になるなど、開発環境向けの既定値が設定されています。
-..  [#] 標準の設定では、プロファイル ``prod`` のデプロイメントアーカイブは ``asakusafw-${asakusafwVersion}.tar.gz`` というファイル名(プロファイル名が接尾辞につかない)で生成されます。
+..  [#] 標準の設定では、プロファイル ``prod`` のデプロイメントアーカイブは ``asakusafw-${project.name}.tar.gz`` というファイル名(プロファイル名が接尾辞につかない)で生成されます。
         上記の ``stage`` プロファイルの例のように、プロパティ ``archiveName`` を設定することで任意のファイル名を指定することもできます。
 
 ..  attention::

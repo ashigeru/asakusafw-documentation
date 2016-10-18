@@ -46,7 +46,7 @@ Asakusa Frameworkではこれらの実行モジュールを生成する様々な
 
     ./gradlew assemble
 
-アプリケーションプロジェクトの標準設定でGradleの :program:`assemble` タスクを実行すると、バッチアプリケーションのビルドが行われ、ビルドが成功した場合はデプロイメントアーカイブがプロジェクトの :file:`build` ディレクトリ配下に ``asakusafw-${asakusafwVersion}.tar.gz`` というファイル名で生成されます。
+アプリケーションプロジェクトの標準設定でGradleの :program:`assemble` タスクを実行すると、バッチアプリケーションのビルドが行われ、ビルドが成功した場合はデプロイメントアーカイブがプロジェクトの :file:`build` ディレクトリ配下に ``asakusafw-${project.name}.tar.gz`` というファイル名で生成されます。
 
 このデプロイメントアーカイブには以下のモジュールが含まれます。
 
@@ -216,7 +216,7 @@ Direct I/O Hiveを `MapR`_ 環境で利用する場合、Direct I/O HiveはMapR�
 
 標準で設定されているプロファイル ``profiles.prod`` に加えて、ステージング環境用のプロファイルとして ``profiles.stage`` を追加しています。
 
-この設定でデプロイメントアーカイブの生成を行うと、 :file:`build` ディレクトリ配下に標準のデプロイメントアーカイブに加えて、 ``asakusafw-${asakusafwVersion}-stage.tar.gz`` というファイル名で ``profiles.stage`` に対応したデプロイメントアーカイブが生成されます。
+この設定でデプロイメントアーカイブの生成を行うと、 :file:`build` ディレクトリ配下に標準のデプロイメントアーカイブに加えて、 ``asakusafw-${project.name}-stage.tar.gz`` というファイル名で ``profiles.stage`` に対応したデプロイメントアーカイブが生成されます。
 
 この例では、それぞれのプロファイル用に作成した設定ファイル用のディレクトリ( :file:`src/dist/prod`, :file:`src/dist/stage` )から設定ファイルを配置しています。
 
@@ -290,7 +290,7 @@ Hadoopクライアントマシン上でAsakusa Frameworkを配置しバッチア
 デプロイメントアーカイブの展開
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Hadoopクライアントマシンにデプロイメントアーカイブファイル ``asakusafw-${asakusafwVersion}.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
+Hadoopクライアントマシンにデプロイメントアーカイブファイル ``asakusafw-${project.name}.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
 展開後、 ``$ASAKUSA_HOME`` 配下の :file:`*.sh` に実行権限を追加します。
 
 ..  code-block:: sh
