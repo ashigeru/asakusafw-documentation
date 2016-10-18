@@ -30,7 +30,7 @@ TSVファイル連携モジュールを使用する場合はアプリケーシ�
 
     dependencies {
         ...
-        compile group: 'com.asakusafw.sandbox', name: 'asakusa-directio-dmdl-ext', version: asakusafw.asakusafwVersion
+        compile group: 'com.asakusafw.sandbox', name: 'asakusa-directio-dmdl-ext', version: asakusafw.core.version
 
 データモデルクラスの生成
 ========================

@@ -27,7 +27,7 @@ TSVファイル連携モジュールを使用する場合はアプリケーシ�
 
     dependencies {
         ...
-        compile group: 'com.asakusafw.sandbox', name: 'asakusa-windgate-dmdl-ext', version: asakusafw.asakusafwVersion
+        compile group: 'com.asakusafw.sandbox', name: 'asakusa-windgate-dmdl-ext', version: asakusafw.core.version
 
 モデルクラスの生成
 ==================
