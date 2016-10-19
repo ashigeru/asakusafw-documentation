@@ -802,8 +802,6 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
 ..  seealso::
     バッチテストランナーの詳細は :doc:`../testing/user-guide` - :ref:`testing-userguide-batch-test-runner` を参照してください。
 
-.. _gradle-plugin-task-hiveddl:
-
 テストツールタスクの実行
 ------------------------
 
@@ -816,6 +814,8 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
     テストツールタスクの利用例は :doc:`../testing/user-guide` - :ref:`testing-userguide-testtool-task` を参照してください。
 
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.TestToolTask`
+
+.. _gradle-plugin-task-hiveddl:
 
 Hive用DDLファイルの生成
 -----------------------
