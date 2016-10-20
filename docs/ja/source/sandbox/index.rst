@@ -17,6 +17,7 @@
 ..  toctree::
     :maxdepth: 1
 
+    asakusa-vanilla
     windgate-tsv
     directio-tsv
     asakusa-on-emr
