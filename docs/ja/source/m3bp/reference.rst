@@ -15,7 +15,7 @@
 ``asakusafw-m3bp``
     アプリケーションプロジェクトで、|M3BP_FEATURE|\ のさまざまな機能を有効にする。
 
-    このプラグインは ``asakusafw`` プラグインや ``asakusafw-organizer`` プラグインを拡張するように作られているため、それぞれのプラグインも併せて有効にする必要がある（ ``apply plugin: 'asakusafw-m3bp'`` だけではほとんどの機能を利用できません）。
+    このプラグインは ``asakusafw-sdk`` プラグインや ``asakusafw-organizer`` プラグインを拡張するように作られているため、それぞれのプラグインも併せて有効にする必要がある（ ``apply plugin: 'asakusafw-m3bp'`` だけではほとんどの機能を利用できません）。
 
 タスク
 ------
@@ -23,7 +23,7 @@
 ``m3bpCompileBatchapps``
     |M3BP_COMPILER|\ を利用してDSLをコンパイルする [#]_ 。
 
-    ``asakusafw`` プラグインが有効である場合にのみ利用可能。
+    ``asakusafw-sdk`` プラグインが有効である場合にのみ利用可能。
 
 ``attachComponentM3bp``
     デプロイメントアーカイブに\ |M3BP_FEATURE|\ 向けのバッチアプリケーションを実行するためのコンポーネントを追加する。
@@ -35,7 +35,7 @@
 ``attachM3bpBatchapps``
     デプロイメントアーカイブに ``m3bpCompileBatchapps`` でコンパイルした結果を含める。
 
-    ``asakusafw`` , ``asakusafw-organizer`` の両プラグインがいずれも有効である場合にのみ利用可能。
+    ``asakusafw-sdk`` , ``asakusafw-organizer`` の両プラグインがいずれも有効である場合にのみ利用可能。
 
     ``asakusafwOrganizer.batchapps.enabled`` に ``true`` が指定されている場合、自動的に有効になる。
 
@@ -47,17 +47,17 @@
 ``assemble``
     デプロイメントアーカイブを生成する。
 
-    ``asakuafw-m3bp`` と ``asakusafw-organizer`` プラグインがいずれも有効である場合、 ``m3bpCompileBatchapps`` が依存関係に追加される。
+    ``asakusafw-m3bp`` と ``asakusafw-organizer`` プラグインがいずれも有効である場合、 ``m3bpCompileBatchapps`` が依存関係に追加される。
 
 ``compileBatchapp``
     Asakusa DSLコンパイラを使ってバッチアプリケーションのコンパイルを行い、実行可能モジュールを生成する。
 
-    ``asakuafw-m3bp`` プラグインが有効である場合、 ``m3bpCompileBatchapps`` が依存関係に追加される。
+    ``asakusafw-m3bp`` プラグインが有効である場合、 ``m3bpCompileBatchapps`` が依存関係に追加される。
 
 ``jarBatchapp``
     ``compileBatchapp`` タスクで生成したバッチアプリケーションを含むjarファイルを生成する。
 
-    ``asakuafw-m3bp`` プラグインが有効である場合、 ``m3bpCompileBatchapps`` タスクの生成物がjarファイルの内容に追加される。
+    ``asakusafw-m3bp`` プラグインが有効である場合、 ``m3bpCompileBatchapps`` タスクの生成物がjarファイルの内容に追加される。
 
 規約プロパティ拡張
 ------------------
