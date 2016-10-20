@@ -410,16 +410,15 @@ Javaコンパイラ関する規約プロパティは、 ``asakusafw`` ブロッ�
       - ``UTF-8``
       - プロジェクトのソースファイルのエンコーディング
     * - ``sourceCompatibility``
-      - JavaVersion。Stringも利用可能。 例： ``'1.7'`` [#]_
-      - ``1.7``
+      - JavaVersion。Stringも利用可能。 例： ``'1.8'``
+      - ``1.8``
       - Javaソースのコンパイル時に使用するJavaバージョン互換性
     * - ``targetCompatibility``
-      - JavaVersion。Stringも利用可能。例： ``'1.7'``
-      - ``1.7``
+      - JavaVersion。Stringも利用可能。例： ``'1.8'``
+      - ``1.8``
       - クラス生成のターゲットJavaバージョン
 
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwPluginConvention.JavacConfiguration` が提供します。
-..  [#] JDK6を利用するなどの場合に変更します。 詳しくは :doc:`using-jdk` を参照してください。
 
 MapReduceプロパティ
 ~~~~~~~~~~~~~~~~~~~

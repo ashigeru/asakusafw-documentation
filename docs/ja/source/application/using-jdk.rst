@@ -36,15 +36,13 @@ GradleやEclipseなどの開発ツールが利用するためのJDKの設定を�
 アプリケーションプロジェクトの設定
 ==================================
 
-Asakusa Frameworkのバージョン |version| では、アプリケーション開発環境のJavaバージョンの設定は、デフォルトでJDK 7(JDK 1.7)を利用する環境向けに設定されています。
-
-その他のバージョンを使用する場合、必要に応じてこれらの設定を変更します。
+Asakusa Frameworkのバージョン |version| では、アプリケーション開発環境のJavaバージョンの設定は、デフォルトでJDK 8(JDK 1.8)を利用する環境向けに設定されています。
 
 ..  attention::
-    Asakusa Framework バージョン 0.8.0 からJDK 6の利用は非対応となりました。
+    Asakusa Framework バージョン 0.9.0 からJDK 7の利用は非対応となりました。
 
 ..  attention::
-    Asakusa Framework バージョン 0.7.0 からアプリケーション開発環境向けのデフォルト設定が JDK 6からJDK 7に変更になりました。
+    Asakusa Framework バージョン 0.9.0 からアプリケーション開発環境向けのデフォルト設定が JDK 7からJDK 8に変更になりました。
     過去バージョンからのマイグレーションに関する注意点などは、 :doc:`migration-guide` も参照してください。
 
 Javaバージョンに関する設定
@@ -54,15 +52,15 @@ Javaバージョンに関する設定
 
 ソースコードのバージョン ( ``source`` )
   javac(Javaコンパイラ)が受け付けるソースコードのバージョンを指定します。
-  Asakusa Frameworkのバージョン |version| ではデフォルトでこの値が ``1.7`` に設定されています。
+  Asakusa Frameworkのバージョン |version| ではデフォルトでこの値が ``1.8`` に設定されています。
 
 ターゲットのクラスファイルバージョン ( ``target`` )
   javacが生成するクラスファイルのバージョンを指定します。
-  Asakusa Frameworkのバージョン |version| ではデフォルトでこの値が ``1.7`` に設定されています。
+  Asakusa Frameworkのバージョン |version| ではデフォルトでこの値が ``1.8`` に設定されています。
 
 EclipseのJRE用クラスパスコンテナ
   Eclipseがプロジェクトに対して使用するJDKのバージョンを指定します。
-  Asakusa Frameworkのバージョン |version| ではこの値が ``JavaSE-1.7`` に設定されています [#]_ 。
+  Asakusa Frameworkのバージョン |version| ではこの値が ``JavaSE-1.8`` に設定されています [#]_ 。
 
 ..  [#] Asakusa Gradle Plugin はソースコードのバージョンに対応するEclipseのJRE用クラスパスコンテナを設定します。
 
