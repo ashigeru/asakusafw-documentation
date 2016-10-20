@@ -317,7 +317,7 @@ Asakusa DSL Compiler for MapReduceで利用可能なコンパイラプロパテ�
       - ``ENABLED``
       - アプリケーションのパッケージングを行うかどうか。
     * - ``javaVersion``
-      - ``1.7`` [#]_
+      - ``1.8`` [#]_
       - DSLコンパイラがコンパイル時に指定するJavaのバージョン
 
 ..  tip::

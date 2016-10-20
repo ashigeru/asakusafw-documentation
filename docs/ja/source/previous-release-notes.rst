@@ -687,7 +687,7 @@ Dec 24, 2013
 
 * JDK 7に対応
 
- * 開発環境におけるJDK 7の利用については、 :doc:`application/develop-with-jdk7` を参照してください。
+ * 開発環境におけるJDK 7の利用については、 `application/develop-with-jdk7` を参照してください。
 
 * Hadoopディストリビューション、アプリケーション開発環境の動作検証プラットフォームをアップデート
 

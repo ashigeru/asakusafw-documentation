@@ -25,7 +25,7 @@ Asakusa Frameworkを開発環境で利用するためには、開発環境に以
       - バージョン
       - 備考
     * - JDK
-      - JDK 7 または JDK 8
+      - JDK 8
       - JREは利用不可
     * - Eclipse
       - 4.4.2 以上を推奨
