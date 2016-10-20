@@ -7,7 +7,7 @@ Asakusa Gradle Plugin リファレンス
 リポジトリ
 ==========
 
-Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリに以下のMavenアーティファクトとして登録されています。
+Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリ( http://asakusafw.s3.amazonaws.com/maven/releases )に以下のMavenアーティファクトが登録されています。
 
 ..  list-table:: Asakusa Gradle PluginのMavenアーティファクト
     :widths: 2 2 6
@@ -16,9 +16,12 @@ Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリに以下のMave
     * - グループID
       - アーティファクトID
       - 説明
+    * - ``com.asakusafw.gradle``
+      - ``asakusa-distribution``
+      - Asakusa Gradle Pluginの標準機能に加えて、このリリースバージョンで利用可能なサブプロジェクトの機能をまとめて提供する ( `ディストリビューションプラグインの利用`_ )。
     * - ``com.asakusafw``
       - ``asakusa-gradle-plugins``
-      - Asakusa Gradle Pluginの標準機能を提供する
+      - Asakusa Gradle Pluginの標準機能に加えて、:doc:`../mapreduce/index` 向けの機能を提供する。
     * - ``com.asakusafw.spark``
       - ``asakusa-spark-gradle``
       - Asakusa Gradle Pluginの標準機能に加えて、 :doc:`../spark/index` 向けの機能を提供する。
@@ -26,7 +29,31 @@ Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリに以下のMave
       - ``asakusa-m3bp-gradle``
       - Asakusa Gradle Pluginの標準機能に加えて、 :doc:`../m3bp/index` 向けの機能を提供する。
 
-アプリケーションプロジェクトからAsakusa Gradle Pluginを利用する場合、ビルドスクリプトに下記を含めます。
+ディストリビューションプラグインの利用
+--------------------------------------
+
+Asakusa Gradle Pluginを利用する場合、通常はディストリビューションプラグイン ``com.asakusafw.gradle:asakusa-distribution`` の利用を推奨します。
+
+ディストリビューションプラグインはAsakusa Frameworkのリリース時に動作検証を行った各サブプロジェクトの組み合わせによる
+Gradle Pluginのバージョンを自動的に適用し、これらを単一のバージョンで利用できるようにします。
+将来サブプロジェクトが追加された場合や構成が変更になった場合にも、マイグレーションの手順がシンプルになります。
+
+例えば、ディストリビューションプラグインのバージョン 0.9.0 は以下のGradle Pluginを自動的に適用します。
+
+* ``com.asakusafw:asakusa-gradle-plugins:0.9.0``
+* ``com.asakusafw.spark:asakusa-spark-gradle:0.4.0``
+* ``com.asakusafw.m3bp:asakusa-m3bp-gradle:0.2.0``
+
+..  seealso::
+    Gradle Pluginによってアプリケーションプロジェクトに適用される各コンポーネントのバージョンを確認する方法は、後述の `バージョンの確認`_ を参照してください。
+
+使用方法
+--------
+
+アプリケーションプロジェクトからAsakusa Gradle Pluginを利用する場合、
+ビルドスクリプト ``build.gradle`` の ``buildscript`` ブロック内に利用するAsakusa Gradle PluginのMavenアーティファクトと、これを取得するためのMavenリポジトリのURLを定義します。
+
+以下は、ビルドスクリプトにディストリビューションプラグインを適用する例です。
 
 ..  code-block:: groovy
     :caption: build.gradle
@@ -37,15 +64,9 @@ Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリに以下のMave
             maven { url 'http://asakusafw.s3.amazonaws.com/maven/releases' }
         }
         dependencies {
-            classpath group: 'com.asakusafw', name: 'asakusa-gradle-plugins', version: '0.9.0'
+            classpath group: 'com.asakusafw.gradle', name: 'asakusa-distribution', version: '0.9.0'
         }
     }
-
-..  seealso::
-    Asakusa on Spark , |M3BP_FEATURE| を利用する場合の設定例については、それぞれ以下のドキュメントを確認してください。
-
-    * :doc:`../spark/user-guide`
-    * :doc:`../m3bp/user-guide`
 
 Asakusa Gradle Plugin 一覧
 ==========================
@@ -108,8 +129,29 @@ Asakusa Gradle Pluginの各プラグインを使うためには、ビルドス�
 
     apply plugin: 'asakusafw-sdk'
     apply plugin: 'asakusafw-organizer'
-    apply plugin: 'asakusafw-mapreduce'
     apply plugin: 'asakusafw-spark'
+    apply plugin: 'asakusafw-m3bp'
+
+バージョンの確認
+----------------
+
+アプリケーションプロジェクトで使用する各コンポーネントのバージョンを表示するには、:program:`asakusaVersion` タスクを実行します。
+
+..  code-block:: sh
+
+    ./gradlew asakusaVersion
+
+:program:`asakusaVersion` タスクはビルドスクリプトの設定を解析し、以下のようにプロジェクトで利用するコンポーネントのバージョンを表示します。
+
+..  code-block:: none
+
+    :asakusaVersions
+    Asakusa Gradle Plug-ins: 0.9.0
+    Asakusa SDK: 0.9.0
+    JVM: 1.8
+    Asakusa on Spark: 0.4.0
+    Spark: 2.0.1
+    Asakusa on M3BP: 0.2.0
 
 .. _batch-application-plugin-reference:
 

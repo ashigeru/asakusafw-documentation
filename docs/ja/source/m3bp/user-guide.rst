@@ -146,7 +146,7 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 開発環境の構築
 ==============
 
-バッチアプリケーションの開発環境には、従来のAsakusa Frameworkの開発環境に加え、実行環境上で動作するネイティブライブラリをビルドするための環境が必要となります。
+バッチアプリケーションの開発環境には、通常のAsakusa Frameworkの開発環境に加え、実行環境上で動作するネイティブライブラリをビルドするための環境が必要となります。
 
 |M3BP_FEATURE|\ を利用して実行モジュールを作成するには、以下または互換のソフトウェアが必要になります。
 
@@ -157,6 +157,7 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 
   * gcc
   * g++
+
 
 ..  attention::
     |M3BP_FEATURE|\ を利用する場合、開発環境で使用するJavaはJDK8が必要です。JDK7以下には対応していません。
@@ -170,6 +171,12 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 
     参考URL: https://cmake.org/Wiki/CMake_Cross_Compiling
 
+..  hint::
+    通常のAsakusa Frameworkの開発環境を準備するには以下のドキュメントなどを参考にしてください。
+
+    * :doc:`../introduction/start-guide`
+    * :basic-tutorial:`Asakusa Framework チュートリアル <index.html>`
+
 ..  [#] https://cmake.org/
 ..  [#] https://www.gnu.org/software/make/
 ..  [#] https://gcc.gnu.org/
@@ -180,14 +187,24 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 
 開発環境上で Asakusa Frameworkのバッチアプリケーションを開発し、\ |M3BP_FEATURE|\ のアプリケーションをビルドする方法を見ていきます。
 
-ここでは、 :doc:`../introduction/start-guide` などで使用しているサンプルアプリケーション「カテゴリー別売上金額集計バッチ」を\ |M3BP_FEATURE|\ 向けにビルドするよう設定します。
-
-プロジェクトテンプレートのダウンロード
---------------------------------------
+プロジェクトテンプレート
+------------------------
 
 |M3BP_FEATURE|\ を利用する構成を持つアプリケーション開発用のプロジェクトテンプレートは、以下リンクからダウンロードします。
 
-* `asakusa-m3bp-template-0.2.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.2.0.tar.gz>`_
+* `asakusa-m3bp-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.9.0.tar.gz>`_
+
+..  seealso::
+    プロジェクトテンプレートの構成や利用方法については、 :doc:`../application/gradle-plugin` を参照してください。
+
+サンプルアプリケーション
+------------------------
+
+`サンプルプログラム集 (GitHub)`_ に含まれるプロジェクト ``example-basic-m3bp`` は |M3BP_FEATURE|\ を利用する基本的なサンプルアプリケーションプロジェクトです。
+
+このプロジェクトは |M3BP_FEATURE|\ 用のプロジェクトテンプレートに対して、 :doc:`../introduction/start-guide` などで説明しているサンプルアプリケーション「カテゴリー別売上金額集計バッチ」用のソースコードが追加されています。
+
+..  _`サンプルプログラム集 (GitHub)`: http://github.com/asakusafw/asakusafw-examples
 
 ..  _user-guide-gradle-plugin:
 
@@ -196,17 +213,11 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 
 |M3BP_FEATURE| Gradle Pluginは、アプリケーションプロジェクトに対して\ |M3BP_FEATURE|\ のさまざまな機能を追加します。
 
-`プロジェクトテンプレートのダウンロード`_ で説明したプロジェクトテンプレートでは、\ |M3BP_FEATURE| Gradle Pluginがあらかじめ利用可能になっています。
+`プロジェクトテンプレート`_ や `サンプルアプリケーション`_ で紹介したプロジェクトには、 \ |M3BP_FEATURE| Gradle Pluginがあらかじめ利用可能になっています。
 
-その他のプロジェクトで \ |M3BP_FEATURE| Gradle Pluginを有効にするには、アプリケーションプロジェクトのビルドスクリプト ( :file:`build.gradle` )に対して以下の設定を追加します。
+その他のプロジェクトで  \ |M3BP_FEATURE|  Gradle Pluginを有効にするには、アプリケーションプロジェクトのビルドスクリプト ( :file:`build.gradle` )に対して以下の設定を追加します。
 
-* ``buildscript/dependencis`` ブロックに指定しているAsakusa Gradle Pluginの指定を\ |M3BP_FEATURE| Gradle Pluginの指定に置き換える [#]_
-
-  * ``group: 'com.asakusafw.m3bp', name: 'asakusa-m3bp-gradle', version: '0.2.0'``
-
-* |M3BP_FEATURE| Gradle Pluginを適用する定義を追加する
-
-  * ``apply plugin: 'asakusafw-m3bp'``
+* ``apply plugin: 'asakusafw-m3bp'``
 
 以下は\ |M3BP_FEATURE| Gradle Pluginの設定を追加したビルドスクリプトの例です。
 
@@ -214,9 +225,9 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
     :language: groovy
     :caption: build.gradle
     :name: build.gradle-m3bp-user-guide-1
-    :emphasize-lines: 8,15
 
-..  [#] Asakusa on Sparkと\ |M3BP_FEATURE|\ を同時に利用する場合は、Asakusa on Spark Gradle Plugin の設定と\ |M3BP_FEATURE| Gradle Plugin の両方を記述します。
+..  seealso::
+    Asakusa on Spark Gradle Pluginのより詳細な情報は、 :doc:`../application/gradle-plugin-reference` や :doc:`reference` などを参照してください。
 
 アプリケーションのビルド
 ------------------------
@@ -284,7 +295,7 @@ Hadoopとの連携
 
         asakusafwOrganizer {
             extension {
-                libraries += ["com.asakusafw.m3bp.bridge:asakusa-m3bp-workaround-hadoop:0.2.0"]
+                libraries += ["com.asakusafw.m3bp.bridge:asakusa-m3bp-workaround-hadoop:${asakusafw.m3bp.version}"]
             }
         }
 

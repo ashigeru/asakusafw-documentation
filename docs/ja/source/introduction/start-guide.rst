@@ -148,18 +148,30 @@ Eclipse上で環境変数 ``ASAKUSA_HOME`` が有効になっていることを�
 アプリケーションプロジェクトを作成するには、オンライン上に公開されているAsakusa Frameworkのプロジェクトテンプレートを利用すると便利です。
 このプロジェクトテンプレートにはプロジェクトで利用するビルドツール(Gradle)の設定や実行環境、および開発環境で利用する設定ファイルなどが含まれます。
 
-コマンドライン上から作成する場合、以下のURLに公開されているプロジェクトテンプレートのアーカイブを展開します。
+プロジェクトテンプレートは、以下リンクからダウンロードします。
 
-* `asakusa-mapreduce-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.9.0.tar.gz>`_
+..  list-table:: プロジェクトテンプレートのダウンロード
+    :widths: 3 4
+    :header-rows: 1
 
-Asakusa on Sparkを利用する場合のプロジェクトテンプレートは、 :doc:`../spark/user-guide` に記載のリンクからダウンロードします。
+    * - プロジェクトテンプレート
+      - 説明
+    * - `asakusa-spark-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.0.tar.gz>`_
+      - :doc:`../spark/index` を利用するプロジェクトテンプレート
+    * - `asakusa-m3bp-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.9.0.tar.gz>`_
+      - :doc:`../m3bp/index` を利用するプロジェクトテンプレート
+    * - `asakusa-mapreduce-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.9.0.tar.gz>`_
+      - :doc:`../mapreduce/index` を利用するプロジェクトテンプレート
+
+コマンドライン上から作成する場合、上記のURLに公開されているプロジェクトテンプレートのアーカイブを展開します。
+以下は :doc:`../spark/index` 用のプロジェクトテンプレートを展開する例です。
 
 ..  code-block:: sh
 
     cd <work-dir>
-    curl -OL http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.9.0.tar.gz
-    tar xf asakusa-mapreduce-template-0.9.0.tar.gz
-    mv asakusa-mapreduce-template my-batchapp
+    curl -OL http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.0.tar.gz
+    tar xf asakusa-spark-template-0.9.0.tar.gz
+    mv asakusa-spark-template my-batchapp
     cd my-batchapp
 
 Shafuを導入した開発環境では、オンライン上に公開されているAsakusa Frameworkのプロジェクトテンプレートカタログを利用して、テンプレートプロジェクトをベースに新規プロジェクトを作成することができます。
@@ -169,11 +181,16 @@ Shafuを導入した開発環境では、オンライン上に公開されてい
 #. :guilabel:`テンプレートからプロジェクトを作成` ダイアログで :guilabel:`URLを指定してプロジェクトテンプレートをダウンロードする` が選択状態になっていることを確認して、画面右の :guilabel:`選択` ボタンを押下します。
 #. :guilabel:`プロジェクトテンプレート` ダイアログにオンラインに公開されている、利用可能なプロジェクトテンプレートの一覧が表示されます。
 
-   *  MapReduce向けのテンプレートを利用する場合は、 :guilabel:`Asakusa Project Template <MapReduce> - 0.9.0` を選択します。
-   *  Spark向けのテンプレートを利用する場合は、 :guilabel:`Asakusa Project Template <Spark> - <version>` を選択します [#]_ 。
-#. :guilabel:`Finish` ボタンを押すと選択したプロジェクトテンプレートを読み込み、Eclipseプロジェクトとして新規プロジェクトが作成されます。
+    *  :doc:`../spark/index` を利用するプロジェクトテンプレートを利用する場合は、以下を選択します。
+        * :guilabel:`Asakusa Project Template <Spark> - <version>`
 
-..  [#] Asakusa on Sparkで利用可能なバージョンは、 :doc:`../spark/index` のドキュメントを確認してください。
+    *  :doc:`../m3bp/index` を利用するプロジェクトテンプレートを利用する場合は、以下を選択します。
+        * :guilabel:`Asakusa Project Template <M3BP> - <version>`
+
+    *  :doc:`../mapreduce/index` を利用するプロジェクトテンプレートを利用する場合は、以下を選択します。
+        * :guilabel:`Asakusa Project Template <MapReduce> - <version>`
+
+#. :guilabel:`Finish` ボタンを押すと選択したプロジェクトテンプレートを読み込み、Eclipseプロジェクトとして新規プロジェクトが作成されます。
 
 Asakusa Frameworkのインストール
 -------------------------------
@@ -220,13 +237,16 @@ Next Step
 サンプルアプリケーションの実行
 ==============================
 
-ここでは、Asakusa Frameworkのサンプルアプリケーションを使って、実行環境上でバッチアプリケーションを実行する手順を簡単に説明します。
+ここでは、Asakusa Frameworkのサンプルアプリケーションを使って、Spark環境上でバッチアプリケーションを実行する手順を簡単に説明します。
+
+Spark環境はあらかじめ準備されているものとします。
+また、入出力ファイルの配置にはHadoopファイルシステムを利用するため、Hadoop環境も合わせて準備されているものとします。
 
 サンプルアプリケーションの概要
 ------------------------------
 
 Asakusa Frameworkの `サンプルプログラム集 (GitHub)`_ ではいくつかのサンプルアプリケーションが公開されています。
-その中から、ここでは ``examle-directio-csv`` ディレクトリ配下に含まれるサンプルアプリケーション「カテゴリー別売上金額集計バッチ」を使います。
+その中から、ここでは ``examle-basic-spark`` ディレクトリ配下に含まれるサンプルアプリケーション「カテゴリー別売上金額集計バッチ」を使います。
 
 カテゴリー別売上金額集計バッチは、売上トランザクションデータと、商品マスタ、店舗マスタを入力として、エラーチェックを行った後、売上データを商品マスタのカテゴリ毎に集計するアプリケーションです。
 
@@ -254,7 +274,8 @@ Shafuを導入した開発環境では、オンライン上に公開されてい
 #. Javaパースペクティブ上のメニューバーから :menuselection:`File --> New --> Gradleプロジェクトをテンプレートから生成` を選択します。
 #. :guilabel:`新規プロジェクト情報` ダイアログで、プロジェクト名などを入力します。
 #. :guilabel:`テンプレートからプロジェクトを作成` ダイアログで :guilabel:`URLを指定してプロジェクトテンプレートをダウンロードする` が選択状態になっていることを確認して、画面右の :guilabel:`選択` ボタンを押下します。
-#. :guilabel:`プロジェクトテンプレート` ダイアログにオンラインに公開されている、利用可能なプロジェクトテンプレートの一覧が表示されます。ここでは :guilabel:`Asakusa Example Projects - 0.9.0` を選択します。
+#. :guilabel:`プロジェクトテンプレート` ダイアログにオンラインに公開されている、利用可能なプロジェクトテンプレートの一覧が表示されます。ここでは以下を選択します。
+    * :guilabel:`Asakusa Example Projects - 0.9.0`
 #. :guilabel:`Finish` ボタンを押すと選択したプロジェクトテンプレートを読み込み、Eclipseプロジェクトとして新規プロジェクトが作成されます。
 #. :guilabel:`テンプレートからプロジェクトを作成` ダイアログで ``example-basic-spark`` を選択して :guilabel:`OK` ボタンを押下します。
 
@@ -278,7 +299,7 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 * Asakusa DSLとデータモデル定義DSLから、HadoopやSparkなどの各処理系で実行可能なプログラム群を生成
 * アプリケーションを実行環境に配置するためのデプロイメントアーカイブファイルを生成
 
-デプロイメントアーカイブファイルはプロジェクトの :file:`build` ディレクトリ配下に ``asakusafw-0.9.0.tar.gz`` というファイル名で生成されます。
+デプロイメントアーカイブファイルはプロジェクトの :file:`build` ディレクトリ配下に ``example-basic-spark.tar.gz`` というファイル名で生成されます。
 
 .. _introduction-start-guide-deploy-app:
 
@@ -287,9 +308,9 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 
 `サンプルアプリケーションのビルド`_ で作成したデプロイメントアーカイブファイルを運用環境にデプロイします。
 
-通常、デプロイ対象となるノードはHadoopクライアントモジュールがインストールされているHadoopクラスターのノードを選択します。
+通常、デプロイ対象となるノードはHadoopやSparkのクライアントモジュールがインストールされているノードを選択します。
 
-以降の手順を行う前に、デプロイメントアーカイブファイル ``asakusafw-0.9.0.tar.gz`` をデプロイ対象となるノードに転送しておいてください。
+以降の手順を行う前に、デプロイメントアーカイブファイル ``example-basic-spark.tar.gz`` をデプロイ対象となるノードに転送しておいてください。
 
 環境変数の設定
 ~~~~~~~~~~~~~~
@@ -297,8 +318,7 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 運用環境上でAsakusa Frameworkを配置しバッチアプリケーションを実行するためのOSユーザーに対して、以下の環境変数を設定します。
 
 * ``JAVA_HOME``: Javaのインストールパス
-* ``HADOOP_CMD``: :program:`hadoop` コマンドのパス
-* ``SPARK_CMD``: :program:`spark-submit` コマンドのパス ( :doc:`../spark/index` を利用する場合 )
+* ``SPARK_CMD``: :program:`spark-submit` コマンドのパス
 * ``ASAKUSA_HOME``: Asakusa Frameworkのインストールパス
 
 以下は環境変数の設定例です。
@@ -306,26 +326,21 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 ..  code-block:: sh
 
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-    export HADOOP_CMD=/usr/lib/hadoop/bin/hadoop
     export SPARK_CMD=/opt/spark/bin/spark-submit
     export ASAKUSA_HOME=$HOME/asakusa
 
 デプロイメントアーカイブの展開
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`サンプルアプリケーションのビルド`_ で作成したデプロイメントアーカイブファイル ``asakusafw-0.9.0.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
+`サンプルアプリケーションのビルド`_ で作成したデプロイメントアーカイブファイル ``example-basic-spark.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
 展開後、 ``$ASAKUSA_HOME`` 配下の :file:`*.sh` に実行権限を追加します。
 
 ..  code-block:: sh
 
     mkdir -p "$ASAKUSA_HOME"
     cd "$ASAKUSA_HOME"
-    tar -xzf /path/to/asakusafw-0.9.0.tar.gz
+    tar -xzf /path/to/example-basic-spark.tar.gz
     find "$ASAKUSA_HOME" -name "*.sh" | xargs chmod u+x
-
-..  hint::
-    試用や疏通確認などの場合は、Hadoopクラスターの代わりにJinrikishaなどを使って構築した開発環境（ローカル）を利用することもできます。
-    詳しくは :jinrikisha:`Jinrikishaのドキュメント <index.html>` を参照してください。
 
 サンプルデータの配置
 --------------------
@@ -357,14 +372,6 @@ Asakusa Frameworkでは、バッチアプリケーションを実行するため
 
 サンプルアプリケーション「カテゴリー別売上金額集計バッチ」は「 ``example.summarizeSales`` 」というバッチIDを持っています。
 また、このバッチは引数に処理対象の売上日時( ``date`` )を指定し、この値に基づいて処理対象CSVファイルを特定します。
-
-サンプルアプリケーションの標準の構成では、バッチアプリケーションはHadoop(MapReduce)を利用する構成と、Spark を利用する構成の2つの構成が配置されています。
-
-MapReduceを利用するバッチアプリケーションは、そのままバッチIDとバッチ引数を指定して、以下のようにバッチアプリケーションを実行します。
-
-..  code-block:: sh
-
-    $ASAKUSA_HOME/yaess/bin/yaess-batch.sh example.summarizeSales -A date=2011-04-01
 
 Sparkを利用するバッチアプリケーションは、Spark向けのバッチアプリケーションはバッチIDの接頭辞に spark. を付与して実行します。
 

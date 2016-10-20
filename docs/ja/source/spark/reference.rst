@@ -17,7 +17,7 @@ Asakusa on Spark Gradle Pluginが提供する機能とインターフェース�
 ``asakusafw-spark``
     アプリケーションプロジェクトで、Asakusa on Sparkのさまざまな機能を有効にする [#]_ 。
 
-    このプラグインは ``asakusafw`` プラグインや ``asakusafw-organizer`` プラグインを拡張するように作られているため、それぞれのプラグインも併せて有効にする必要がある（ ``apply plugin: 'asakusafw-spark'`` だけではほとんどの機能を利用できません）。
+    このプラグインは ``asakusafw-sdk`` プラグインや ``asakusafw-organizer`` プラグインを拡張するように作られているため、それぞれのプラグインも併せて有効にする必要がある（ ``apply plugin: 'asakusafw-spark'`` だけではほとんどの機能を利用できません）。
 
 ..  [#] :asakusa-spark-gradle-groovydoc:`com.asakusafw.spark.gradle.plugins.AsakusafwSparkPlugin`
 
@@ -27,7 +27,7 @@ Asakusa on Spark Gradle Pluginが提供する機能とインターフェース�
 ``sparkCompileBatchapps``
     Asakusa DSL Compiler for Sparkを利用してDSLをコンパイルする [#]_ 。
 
-    ``asakusafw`` プラグインが有効である場合にのみ利用可能。
+    ``asakusafw-sdk`` プラグインが有効である場合にのみ利用可能。
 
 ``attachComponentSpark``
     デプロイメントアーカイブにSpark向けのバッチアプリケーションを実行するためのコンポーネントを追加する。
@@ -39,7 +39,7 @@ Asakusa on Spark Gradle Pluginが提供する機能とインターフェース�
 ``attachSparkBatchapps``
     デプロイメントアーカイブに ``sparkCompileBatchapps`` でコンパイルした結果を含める。
 
-    ``asakusafw`` , ``asakusafw-organizer`` の両プラグインがいずれも有効である場合にのみ利用可能。
+    ``asakusafw-sdk`` , ``asakusafw-organizer`` の両プラグインがいずれも有効である場合にのみ利用可能。
 
     ``asakusafwOrganizer.batchapps.enabled`` に ``true`` が指定されている場合、自動的に有効になる。
 
@@ -51,17 +51,17 @@ Asakusa on Spark Gradle Pluginが提供する機能とインターフェース�
 ``assemble``
     デプロイメントアーカイブを生成する。
 
-    ``asakuafw-spark`` と ``asakusafw-organizer`` プラグインがいずれも有効である場合、 ``sparkCompileBatchapps`` が依存関係に追加される。
+    ``asakusafw-spark`` と ``asakusafw-organizer`` プラグインがいずれも有効である場合、 ``sparkCompileBatchapps`` が依存関係に追加される。
 
 ``compileBatchapp``
     Asakusa DSLコンパイラを使ってバッチアプリケーションのコンパイルを行い、実行可能モジュールを生成する。
 
-    ``asakuafw-spark`` プラグインが有効である場合、 ``sparkCompileBatchapps`` が依存関係に追加される。
+    ``asakusafw-spark`` プラグインが有効である場合、 ``sparkCompileBatchapps`` が依存関係に追加される。
 
 ``jarBatchapp``
     ``compileBatchapp`` タスクで生成したバッチアプリケーションを含むjarファイルを生成する。
 
-    ``asakuafw-spark`` プラグインが有効である場合、 ``sparkCompileBatchapps`` タスクの生成物がjarファイルの内容に追加される。
+    ``asakusafw-spark`` プラグインが有効である場合、 ``sparkCompileBatchapps`` タスクの生成物がjarファイルの内容に追加される。
 
 規約プロパティ拡張
 ------------------

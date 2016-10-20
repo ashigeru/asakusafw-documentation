@@ -17,7 +17,7 @@ Asakusa on MapReduce Gradle Pluginが提供する機能とインターフェー�
 ``asakusafw-mapreduce``
     アプリケーションプロジェクトで、Asakusa on MapReduceのさまざまな機能を有効にする [#]_ 。
 
-    このプラグインは ``asakusafw`` プラグインや ``asakusafw-organizer`` プラグインを拡張するように作られているため、それぞれのプラグインも併せて有効にする必要がある（ ``apply plugin: 'asakusafw-mapreduce'`` だけではほとんどの機能を利用できません）。
+    このプラグインは ``asakusafw-sdk`` プラグインや ``asakusafw-organizer`` プラグインを拡張するように作られているため、それぞれのプラグインも併せて有効にする必要がある（ ``apply plugin: 'asakusafw-mapreduce'`` だけではほとんどの機能を利用できません）。
 
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.mapreduce.gradle.plugins.AsakusafwMapReducePlugin`
 
@@ -27,7 +27,7 @@ Asakusa on MapReduce Gradle Pluginが提供する機能とインターフェー�
 ``mapreduceCompileBatchapps``
     Asakusa DSL Compiler for MapReduceを利用してDSLをコンパイルする [#]_ 。
 
-    ``asakusafw`` プラグインが有効である場合にのみ利用可能。
+    ``asakusafw-sdk`` プラグインが有効である場合にのみ利用可能。
 
 ``attachComponentMapReduce``
     デプロイメントアーカイブにMapReduce向けのバッチアプリケーションを実行するためのコンポーネントを追加する。
@@ -39,7 +39,7 @@ Asakusa on MapReduce Gradle Pluginが提供する機能とインターフェー�
 ``attachMapReduceBatchapps``
     デプロイメントアーカイブに ``mapreduceCompileBatchapps`` でコンパイルした結果を含める。
 
-    ``asakusafw`` , ``asakusafw-organizer`` の両プラグインがいずれも有効である場合にのみ利用可能。
+    ``asakusafw-sdk`` , ``asakusafw-organizer`` の両プラグインがいずれも有効である場合にのみ利用可能。
 
     ``asakusafwOrganizer.batchapps.enabled`` に ``true`` が指定されている場合、自動的に有効になる。
 
@@ -51,17 +51,17 @@ Asakusa on MapReduce Gradle Pluginが提供する機能とインターフェー�
 ``assemble``
     デプロイメントアーカイブを生成する。
 
-    ``asakuafw-mapreduce`` と ``asakusafw-organizer`` プラグインがいずれも有効である場合、 ``mapreduceCompileBatchapps`` が依存関係に追加される。
+    ``asakusafw-mapreduce`` と ``asakusafw-organizer`` プラグインがいずれも有効である場合、 ``mapreduceCompileBatchapps`` が依存関係に追加される。
 
 ``compileBatchapp``
     Asakusa DSLコンパイラを使ってバッチアプリケーションのコンパイルを行い、実行可能モジュールを生成する。
 
-    ``asakuafw-mapreduce`` プラグインが有効である場合、 ``mapreduceCompileBatchapps`` が依存関係に追加される。
+    ``asakusafw-mapreduce`` プラグインが有効である場合、 ``mapreduceCompileBatchapps`` が依存関係に追加される。
 
 ``jarBatchapp``
     ``compileBatchapp`` タスクで生成したバッチアプリケーションを含むjarファイルを生成する。
 
-    ``asakuafw-mapreduce`` プラグインが有効である場合、 ``mapreduceCompileBatchapps`` タスクの生成物がjarファイルの内容に追加される。
+    ``asakusafw-mapreduce`` プラグインが有効である場合、 ``mapreduceCompileBatchapps`` タスクの生成物がjarファイルの内容に追加される。
 
 規約プロパティ拡張
 ------------------
