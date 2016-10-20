@@ -64,12 +64,12 @@ Asakusa on Sparkが動作を検証しているHadoopディストリビューシ�
 Spark
 -----
 
-本ドキュメントのバージョンでは、Spark 1.6.2 で動作を検証しています。
+本ドキュメントのバージョンでは、Spark 2.0.1 で動作を検証しています。
 
 また、Sparkの動作モードとして、YARN cluster mode、および YARN client modeで動作を確認しています。
 
 ..  attention::
-    Asakusa on Spark バージョン 0.3.0 以降は、 Spark 1.5.2 以前のバージョンでは動作しません。
+    Asakusa on Spark バージョン 0.4.0 ( Asakusa Framework バージョン 0.9.0 ) 以降は、 Spark 1.6.x 以前のバージョンでは動作しません。
 
 ..  seealso::
     SparkのYARN上での動作モードについては、Sparkのドキュメント `Running Spark on YARN`_ を参照してください。
