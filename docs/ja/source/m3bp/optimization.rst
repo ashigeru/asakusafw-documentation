@@ -189,24 +189,6 @@
 
       また、システムにインストールされたHadoopを利用する場合にも、\ |M3BP_FEATURE|\ 利用時のみ異なる設定を行うには、ここで指定するのがよいでしょう。
 
-
-..  _ASAKUSA_M3BP_OPTS:
-
-Java VMの設定
-=============
-
-|M3BP_FEATURE|\ でバッチアプリケーションを実行する際には、Java VMをひとつ起動してそのプロセス内で\ |M3BP_ENGINE|\ やAsakusaの演算子を実行します。
-
-このとき、対象のJava VMを起動する際のオプション引数を、環境変数 ``ASAKUSA_M3BP_OPTS`` で指定できます。
-
-以下は環境変数の設定例です。
-
-..  code-block:: sh
-
-    export ASAKUSA_M3BP_OPTS='-Xmx16g'
-
-上記のように書いた場合、Open JDKなどでJavaのヒープ領域の最大値を ``16GB`` に設定できます。
-
 ..  _windgate-jdbc-direct-mode:
 
 WindGate JDBC ダイレクト・モード
