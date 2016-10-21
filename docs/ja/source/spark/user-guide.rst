@@ -211,8 +211,8 @@ Sparkのセットアップ
 
 以降の説明で実施する手順は、Sparkがセットアップ済みのHadoopクラスターを対象とします。SparkのセットアップについてはSparkのドキュメントや利用するHadoopディストリビューションのドキュメント等を参考にして下さい。
 
-spark-submitの検索方法
-----------------------
+実行コマンドの設定
+------------------
 
 Sparkを起動する際には、起動する対象の :program:`spark-submit` コマンドの配置場所を環境変数に指定する必要があります。
 Spark向けのバッチアプリケーションを実行する際には、次の手順で :program:`spark-submit` コマンドを検索します。
@@ -234,6 +234,16 @@ Asakusa on Sparkの実行に環境変数を利用する場合、 :file:`$ASAKUSA
     Asakusa on Sparkを利用する場合、コマンドラインジョブのプロファイル ``command.spark`` が利用できます。 :file:`$ASAKUSA_HOME/yaess/conf/yaess.properties` に ``command.spark.env.SPARK_CMD`` といったような設定を追加することで、YAESSからSparkを実行する際に環境変数が設定されます。
 
     YAESSのコマンドラインジョブの設定方法について詳しくは、 :doc:`../yaess/user-guide` - :ref:`yaess-profile-command-section` などを参照してください。
+
+:program:`spark-submit` コマンドに対するオプション引数は、環境変数 ``ASAKUSA_SPARK_OPTS`` で指定できます。
+
+以下は ``ASAKUSA_SPARK_OPTS`` の設定例です。
+
+..  code-block:: sh
+
+    export ASAKUSA_SPARK_OPTS="--master yarn --deploy-mode cluster"
+
+環境変数 ``SPARK_CMD_LAUNCHER`` は実行コマンドの先頭に任意のコマンド文字列を追加します。
 
 バッチアプリケーションの実行
 ----------------------------
