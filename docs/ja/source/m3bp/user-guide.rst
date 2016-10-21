@@ -271,15 +271,15 @@ Hadoopとの連携
     :name: build.gradle-m3bp-user-guide-2
     :emphasize-lines: 19
 
-..  warning::
-    多くのHadoopコマンドは、Java VMのヒープ容量の最大値に非常に小さな値を標準で指定します。
-    この設定を上書きする方法は、 :ref:`ASAKUSA_M3BP_OPTS` を参照してください。
-
 なお、実行環境にインストールされたHadoopを利用する際、以下の順序で ``hadoop`` コマンドを探して利用します (上にあるものほど優先度が高いです)。
 
 * 環境変数に ``HADOOP_CMD`` が設定されている場合、 ``$HADOOP_CMD`` コマンドを経由して起動します。
 * 環境変数に ``HADOOP_HOME`` が設定されている場合、 :file:`$HADOOP_HOME/bin/hadoop` コマンドを経由して起動します。
 * :program:`hadoop` コマンドのパスが通っている場合、 :program:`hadoop` コマンドを経由して起動します。
+
+..  warning::
+    多くのHadoopコマンドは、Java VMのヒープ容量の最大値に非常に小さな値を標準で指定します。
+    この設定を上書きする方法は、 `Java VMの設定`_ を参照してください。
 
 ..  attention::
     MapRなどの一部の環境で ``useSystemHadoop true`` を利用した際に、バッチアプリケーション起動時にデッドロックが発生しアプリケーションが正しく実行されないことがある問題が確認されています。
@@ -294,11 +294,6 @@ Hadoopとの連携
                 libraries += ["com.asakusafw.m3bp.bridge:asakusa-m3bp-workaround-hadoop:${asakusafw.m3bp.version}"]
             }
         }
-
-..  attention::
-    Hadoopと連携してバッチアプリケーションを実行した際に、利用する環境によってはバッチアプリケーションのログがHadoopのログ設定の上で出力される可能性があります。
-
-    \ |M3BP_FEATURE|\ のログ設定を優先したい場合は、環境変数 ``HADOOP_USER_CLASSPATH_FIRST=true`` を設定してください。
 
 アプリケーションの実行
 ======================
@@ -333,3 +328,39 @@ Asakusa Frameworkの実行環境の構築方法やバッチアプリケーショ
     空きメモリ容量を増やすか、またはAsakusa on Sparkなどの利用を検討してください。
 
     この制約は将来緩和される可能性があります。
+
+Java VMの設定
+-------------
+
+|M3BP_FEATURE|\ でバッチアプリケーションを実行する際には、Java VMをひとつ起動してそのプロセス内で\ |M3BP_ENGINE|\ やAsakusaの演算子を実行します。
+
+このとき、対象のJava VMを起動する際のオプション引数を、環境変数 ``ASAKUSA_M3BP_OPTS`` で指定できます。
+
+以下は環境変数の設定例です。
+
+..  code-block:: sh
+
+    export ASAKUSA_M3BP_OPTS='-Xmx16g'
+
+上記のように書いた場合、Javaのヒープ領域の最大値を ``16GB`` に設定できます。
+
+実行コマンドの設定
+------------------
+
+|M3BP_FEATURE|\ 実行用のJVMプロセスを起動するJavaコマンドは、環境変数 ``JAVA_CMD`` で設定することができます。
+``JAVA_CMD`` が未設定の場合、 ``PATH`` 環境変数に含まれる ``java`` コマンドが使用されます。
+
+`Hadoopとの連携`_ を設定した場合、Asakusa Vanilla実行用のJVMプロセスを起動するコマンドには ``hadoop`` コマンドが使用されます。
+この場合に利用される ``hadoop`` コマンドの検索方法は `Hadoopとの連携`_ の説明を参照してください。
+
+環境変数 ``ASAKUSA_M3BP_LAUNCHER`` は実行コマンドの先頭に任意のコマンド文字列を追加します。
+
+ログの設定
+----------
+
+|M3BP_FEATURE|\ の実行時のログ設定は、Logback設定ファイル ``$ASAKUSA_HOME/m3bp/conf/logback.xml`` で設定します。
+
+..  attention::
+    `Hadoopとの連携`_ を設定してバッチアプリケーションを実行した際に、利用する環境によってはバッチアプリケーションのログがHadoopのログ設定の上で出力される可能性があります。
+
+    \ |M3BP_FEATURE|\ のログ設定を優先したい場合は、環境変数 ``HADOOP_USER_CLASSPATH_FIRST=true`` を設定してください。
