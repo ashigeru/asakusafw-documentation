@@ -207,6 +207,8 @@ Java VMの設定
 
 上記のように書いた場合、Open JDKなどでJavaのヒープ領域の最大値を ``16GB`` に設定できます。
 
+..  _windgate-jdbc-direct-mode:
+
 WindGate JDBC ダイレクト・モード
 ================================
 
