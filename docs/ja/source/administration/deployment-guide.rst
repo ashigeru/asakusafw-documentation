@@ -2,19 +2,47 @@
 Asakusa Framework デプロイメントガイド
 ======================================
 
-この文書は、運用環境(Hadoopクラスター)に対してAsakusa Frameworkの実行環境をセットアップする方法に関して説明します。
+この文書は、運用環境に対してAsakusa Frameworkの実行環境をセットアップする方法に関して説明します。
 
-Hadoopクラスターの構築について
-==============================
+..  seealso::
+    :basic-tutorial:`Asakusa Framework チュートリアル <index.html>` の後半にも実行環境のセットアップについて説明しています。
 
-以降の説明では、Asakusa Frameworkの実行環境となるHadoopクラスターが準備済みであることを前提とします。
+運用環境の準備
+==============
+
+まず、Asakusa Frameworkの実行環境をセットアップするための運用環境を準備します。
+
+Asakusa on MapReduce / Asakusa on Spark 実行環境
+------------------------------------------------
+
+Asakusa on MapReduce や Asakusa on Spark を利用する場合には、通常は運用環境にHadoopクラスターを用意します。
 
 Hadoopクラスターの具体的な構築手順は、利用するHadoopディストリビューションのドキュメント等を参考にして下さい。
+
+また、SparkのセットアップはHadoopディストリビューションが提供するSparkを利用する方法や、
+`Apache Sparkのダウンロードサイト`_ からSparkの実行バイナリを入手してセットアップする方法などがあります。
+
+..  _Apache Sparkのダウンロードサイト: http://spark.apache.org/downloads.html
+
+|M3BP_FEATURE| 実行環境
+-----------------------
+
+|M3BP_FEATURE| を利用する場合には、 :doc:`../m3bp/user-guide` - :ref:`m3bp-target-platform` の「実行環境」に記載する構成を持つ環境を準備します。
+
+..  hint::
+    Red Hat Enterprise Linux 7.2 (またはCentOS 7.2) を利用する場合、OSの初期セットアップの方法にもよりますが多くの場合
+    GNU C++ Library 及び GNU C Library は初期構成に含まれます。
+
+    また、Portable Hardware Localityを追加するコマンド例は以下の通りです。
+
+    ..  code-block:: sh
+
+        yum install hwloc
 
 Asakusa Frameworkのデプロイメント
 =================================
 
-ここでは、運用環境にAsakusa FrameworkをデプロイしてHadoopクラスター上でバッチアプリケーションの実行を行うまでの手順を、以下のトピックに分けて説明します。
+ここでは、運用環境にAsakusa Frameworkをデプロイしてバッチアプリケーションの実行を行うまでの手順を、以下のトピックに分けて説明します。
 
 * `デプロイメントアーカイブの作成`_
 * `デプロイメントアーカイブの配置`_
@@ -54,6 +82,26 @@ Asakusa Frameworkではこれらの実行モジュールを生成する様々な
 * プロジェクトに含まれるすべてのバッチアプリケーション
 * Asakusa Frameworkの標準設定の設定ファイル
 
+プラグイン構成の追加
+~~~~~~~~~~~~~~~~~~~~
+
+プロジェクトテンプレートの初期構成に対して、プラグイン構成を後から追加、削除することができます。
+プラグイン構成を追加するには、ビルドスクリプト上に ``apply plugin: <プラグインID>`` のように利用するプラグイン構成を追加します。
+
+以下の設定例では、Asakusa on Spark向けのプロジェクトテンプレートに対して、 Asakusa on MapReduce用のプラグイン ``asakusafw-mapreduce`` を追加しています。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-deployment-guide-6
+
+    apply plugin: 'asakusafw-sdk'
+    apply plugin: 'asakusafw-organizer'
+    apply plugin: 'asakusafw-spark'
+    apply plugin: 'asakusafw-mapreduce'
+    apply plugin: 'eclipse'
+
+この状態で :program:`assemble` タスクを実行すると、Spark環境向けのバッチアプリケーションとMapReduce環境向けのバッチアプリケーションが生成されます。
+
 設定ファイルの同梱
 ~~~~~~~~~~~~~~~~~~
 
@@ -75,7 +123,8 @@ Asakusa Frameworkではこれらの実行モジュールを生成する様々な
 
 デプロイメントアーカイブの構成を変更するには、アプリケーションプロジェクトのビルドスクリプト :file:`build.gradle` の ``asakusafwOrganizer`` ブロックを編集します。
 
-また、標準のデプロイメント構成用のプロファイル [#]_  である ``profile.prod`` ブロック内の設定を編集します。
+また、標準のデプロイメント構成用のプロファイルである ``profile.prod`` ブロック内の設定を編集します。
+プロファイルについては後述の `複数の運用環境向けのデプロイ管理`_ にて説明します。
 
 ``assembly.into`` は引数に指定したパス上にファイルを含めることを意味します。
 例では引数に ``(.)`` と記述しており、これはデプロイメントアーカイブのルートディレクトリに対してファイルを含める指定となります。
@@ -94,12 +143,10 @@ Asakusa Frameworkではこれらの実行モジュールを生成する様々な
          └── conf
              └── yaess.properties
 
-..  [#] プロファイルについては後述の `複数の運用環境向けのデプロイ管理`_ にて説明します。
-
 ``asakusafwOrganizer`` ブロック上では上記の他にも様々な構成に関する設定が可能です。
-いくつかの構成例を以下に紹介します。
+詳しくは :doc:`../application/gradle-plugin` や :doc:`../application/gradle-plugin-reference` を参照してください。
 
-``asakusafwOrganizer`` ブロックに関する設定やこれを提供するAsakusa Gradle Pluginの詳細な説明は、 :doc:`../application/gradle-plugin` を参照してください。
+以下は、 ``asakusafwOrganizer`` ブロック に対するいくつかの設定例を紹介します。
 
 拡張モジュールの同梱
 ~~~~~~~~~~~~~~~~~~~~
@@ -140,7 +187,7 @@ Hiveライブラリの指定
     asakusafwOrganizer {
         hive.enabled true
         profiles.prod {
-            hive.libraries = ['org.apache.hive:hive-exec:0.13.0-mapr-1501-protobuf250@jar']
+            hive.libraries = ['org.apache.hive:hive-exec-1.2.0-mapr-1609@jar']
         }
     }
 
@@ -169,8 +216,9 @@ Direct I/O Hiveを `MapR`_ 環境で利用する場合、Direct I/O HiveはMapR�
 
     asakusafwOrganizer {
         extension {
-            libraries += ['joda-time:joda-time:2.5']
+            libraries += ["com.asakusafw.sandbox:asakusa-directio-runtime-ext:${asakusafw.core.version}"]
         }
+    }
 
 ..  attention::
     この機能では、指定したライブラリの推移的依存関係となるライブラリは含まれません。
@@ -254,7 +302,9 @@ Direct I/O Hiveを `MapR`_ 環境で利用する場合、Direct I/O HiveはMapR�
 
 `デプロイメントアーカイブの作成`_ で作成したデプロイメントアーカイブを運用環境に配置します。
 
-ここでは、運用環境上に構築したHadoopクラスターの各ノードうち、Asakusa Frameworkを配置してバッチアプリケーションの実行操作を行うノードを「Hadoopクライアントマシン」と呼びます。
+以降では、Asakusa on SparkとAsakusa on MapReduce向けのバッチアプリケーションを実行するために、Hadoopクラスターに配置する例を説明します。
+
+また、ここでは運用環境上に構築したHadoopクラスターの各ノードうち、Asakusa Frameworkを配置してバッチアプリケーションの実行操作を行うノードを「Hadoopクライアントマシン」と呼びます。
 
 環境変数の設定
 ~~~~~~~~~~~~~~
@@ -263,7 +313,7 @@ Hadoopクライアントマシン上でAsakusa Frameworkを配置しバッチア
 
 * ``JAVA_HOME``: YAESSが使用するJavaのインストールパス
 * ``HADOOP_CMD``: YAESSが使用する :program:`hadoop` コマンドのパス
-* ``SPARK_CMD``: YAESSが使用する :program:`spark-submit` コマンドのパス ( :doc:`../spark/index` を利用する場合 )
+* ``SPARK_CMD``: YAESSが使用する :program:`spark-submit` コマンドのパス
 * ``ASAKUSA_HOME``: Asakusa Frameworkのインストールパス
 
 :file:`~/.profile` をエディタで開き、最下行に以下の定義を追加します。
@@ -284,8 +334,8 @@ Hadoopクライアントマシン上でAsakusa Frameworkを配置しバッチア
     . ~/.profile
 
 ..  attention::
-    実際に必要となる環境変数は利用するコンポーネントやHadoopの構成によって異なります。
-    これらの詳細はAsakusa Frameworkの各コンポーネントのドキュメントや利用するHadoopディストリビューションのドキュメントを参照してください
+    実際に必要となる環境変数は利用するコンポーネントや構成によって異なります。
+    これらの詳細はAsakusa Frameworkの各コンポーネントのドキュメントを参照してください
 
 デプロイメントアーカイブの展開
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -328,12 +378,27 @@ Hadoopクライアントマシンにデプロイメントアーカイブファ�
     実行するバッチアプリケーションが利用する外部システム連携機能によって、入力データの配置箇所は異なります。
     例えば、WindGate/JDBC を利用する場合はデータベースに対して入力データを配置します。
 
+..  hint::
+    |M3BP_FEATURE| を標準の設定で利用する場合、Direct I/Oのファイルシステムパスは通常OS標準のファイルシステムに対応します。
+
+    このため、入力データを配置する例は以下のようになります。
+
+    ..  code-block:: sh
+
+        mkdir -p "$HOME/target/testing/directio"
+        cp -a /path/to/example-dataset/master $HOME/target/testing/directio/master
+        cp -a /path/to/example-dataset/sales $HOME/target/testing/directio/sales
+
+    なお、 |M3BP_FEATURE| をHadoopファイルシステムと連携して利用する方法については、 :doc:`../m3bp/user-guide` の「Hadoopとの連携」の項を参照してください。
+
 バッチアプリケーションの実行
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 デプロイしたバッチアプリケーションをYAESSを使って実行します。
 
 :program:`$ASAKUSA_HOME/yaess/bin/yaess-batch.sh` コマンドに実行するバッチIDとバッチ引数を指定してバッチを実行します。
+
+:doc:`../mapreduce/index` を利用したバッチアプリケーションの場合、バッチIDをそのまま指定して実行します。
 
 ..  code-block:: sh
 
@@ -344,6 +409,13 @@ Hadoopクライアントマシンにデプロイメントアーカイブファ�
 ..  code-block:: sh
 
     $ASAKUSA_HOME/yaess/bin/yaess-batch.sh spark.example.summarizeSales -A date=2011-04-01
+
+:doc:`../m3bp/index` を利用したバッチアプリケーションの場合、バッチIDのプレフィックスに ``m3bp.`` を付与して実行します。
+
+..  code-block:: sh
+
+    $ASAKUSA_HOME/yaess/bin/yaess-batch.sh m3bp.example.summarizeSales -A date=2011-04-01
+
 
 バッチの実行が成功すると、コマンドの標準出力の最終行に ``Finished: SUCCESS`` と出力されます。
 
@@ -373,40 +445,28 @@ YAESSでは実際のアプリケーションの実行は行わず、環境構成
 
 バッチアプリケーションが出力したデータの内容を確認します。
 
-Direct I/O をバッチの出力に利用するアプリケーションについては、以下のツールなどを利用してHadoopファイルシステム上のファイル内容を確認することができます。
+Direct I/O をバッチの出力に利用するアプリケーションについては、以下のツールなどを利用してファイルシステム上のファイル内容を確認することができます。
 
 * :program:`$ASAKUSA_HOME/directio/bin/list-file.sh <base-path> <resource-pattern>`
 
   * Direct I/Oの入出力ディレクトリやファイルの一覧を表示
 * :program:`hadoop fs -text <file-path>`
 
-  * 指定したファイルパスの内容を表示
+  * Hadoopファイルシステム上の指定したファイルパスの内容を表示
 
 関連するトピック
 ================
 
 運用環境の構築や設定に関する情報として、以下のドキュメントも参考にしてください。
 
-システム構成の検討
-------------------
+実行エンジンの最適化に関する設定
+--------------------------------
 
-外部システム連携モジュールを用いた場合のシステム構成に関して以下のドキュメントで紹介しています。
-
-* :doc:`deployment-architecture`
-
-Hadoopパラメータの設定
-----------------------
-
-以下のドキュメントでは、Hadoopジョブの実行に関してAkakusa Framework特有のチューニングパラメータなどを説明しています。
+以下のドキュメントでは、各実行環境のチューニングパラメータなどを説明しています。
 
 * :doc:`configure-hadoop-parameters`
-
-Asakusa on Sparkの最適化設定
-----------------------------
-
-以下のドキュメントでは、Asakusa on Sparkを使ったSparkアプリケーションの実行に関してAkakusa Framework特有のチューニングパラメータなどを説明しています。
-
 * :doc:`../spark/optimization`
+* :doc:`../m3bp/optimization`
 
 各コンポーネントの設定
 ----------------------
@@ -416,4 +476,8 @@ Asakusa Frameworkの各コンポーネントの設定に関しては、各コン
 * :doc:`../directio/user-guide`
 * :doc:`../windgate/user-guide`
 * :doc:`../yaess/user-guide`
+
+また、外部システム連携モジュールを用いた場合のシステム構成に関して以下のドキュメントで紹介しています。
+
+* :doc:`deployment-architecture`
 
