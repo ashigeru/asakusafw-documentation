@@ -1,6 +1,6 @@
-===================================
-Asakusa Gradle Pluginユーザーガイド
-===================================
+====================================
+Asakusa Gradle Plugin ユーザーガイド
+====================================
 
 この文書では、\ `Gradle <http://www.gradle.org/>`_\ にAsakusa Framework を使ったアプリケーションの開発やデプロイを行うための機能を追加するAsakusa Gradle Pluginについて説明します。
 
@@ -542,7 +542,7 @@ Asakusa Gradle Pluginを適用したアプリケーションプロジェクト�
     :doc:`SDKアーティファクト <sdk-artifact>` を追加するという方法を採用していましたが、この方法はバージョン 0.9.0 からは非推奨となりました。
 
 ..  seealso::
-    ``asakusafw.sdk`` ブロックで設定可能な全てのプロパティについては :doc:`gradle-plugin-reference` - :ref:`batch-application-plugin-reference` を参照してください。
+    ``sdk`` に対して設定可能な全てのプロパティについては :doc:`gradle-plugin-reference` - :ref:`batch-application-plugin-reference` を参照してください。
 
 コンパイラ拡張ライブラリ
 ------------------------
