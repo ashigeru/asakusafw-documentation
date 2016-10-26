@@ -16,14 +16,14 @@ Asakusa Frameworkの開発環境(OSやAsakusa Frameworkが利用するソフト�
 
 * :doc:`gradle-plugin`
 * :doc:`gradle-plugin-reference`
-* :doc:`gradle-plugin-migration-guide`
-* :doc:`gradle-plugin-v08-changes`
-* :doc:`sdk-artifact`
 
 マイグレーション
 ================
 
 * :doc:`migration-guide`
+* :doc:`gradle-plugin-migration-guide`
+* :doc:`gradle-plugin-v09-changes`
+* :doc:`gradle-plugin-v08-changes`
 * :doc:`previous-migration-guide`
 
 開発ツールの利用
@@ -47,6 +47,7 @@ Asakusa Frameworkが提供する開発ツールに関するドキュメントで
 Asakusa Framework バージョン |version| において、以下のドキュメントで説明する機能は非推奨となっています。
 
 * :doc:`gradle-plugin-deprecated`
+* :doc:`sdk-artifact`
 * :doc:`legacy-module-guide`
 * :doc:`yaess-log-visualization`
 
@@ -62,14 +63,15 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
 
     gradle-plugin
     gradle-plugin-reference
-    gradle-plugin-migration-guide
-    gradle-plugin-v08-changes
-    sdk-artifact
     migration-guide
+    gradle-plugin-migration-guide
+    gradle-plugin-v09-changes
+    gradle-plugin-v08-changes
     previous-migration-guide
     dsl-visualization
-    yaess-log-visualization
     using-hadoop
     using-jdk
     gradle-plugin-deprecated
+    sdk-artifact
     legacy-module-guide
+    yaess-log-visualization

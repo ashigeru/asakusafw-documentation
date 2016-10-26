@@ -39,7 +39,6 @@ TestDriver
 ----------------
 * Experimental shell script
 
-
 運用ツール
 ----------
 * Asakusa Cleaner [#]_
@@ -177,4 +176,3 @@ Experimental shell script 生成用のコンパイラプラグインを追加す
 Asakusa Cleaner はバージョン0.2までは アプリケーションプロジェクトに対して ``mvn assembly:single`` を実行すると Asakusa Cleaner用のデプロイアーカイブが作成されましたが、バージョン0.4からは標準ではこのデプロイアーカイブは作成されません。
 
 Asakusa Cleaner を利用する場合は、 :doc:`../administration/deployment-cleaner` の手順に従ってデプロイを行なってください。
-

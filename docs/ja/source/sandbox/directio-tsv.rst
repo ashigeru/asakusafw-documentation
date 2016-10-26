@@ -26,11 +26,13 @@ TSVファイル連携モジュールの利用方法
 
 TSVファイル連携モジュールを使用する場合はアプリケーションプロジェクトの :file:`build.gradle` の ``dependencies`` ブロック内に依存定義を追加します。
 
-..  code-block:: groovy
+..  code-block:: none
+    :caption: build.gradle
+    :name: build.gradle-directio-tsv-1
 
     dependencies {
-        ...
         compile group: 'com.asakusafw.sandbox', name: 'asakusa-directio-dmdl-ext', version: asakusafw.core.version
+    ｝
 
 データモデルクラスの生成
 ========================
