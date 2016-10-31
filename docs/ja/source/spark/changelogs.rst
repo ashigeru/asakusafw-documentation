@@ -2,6 +2,30 @@
 Changelogs
 ==========
 
+..  attention::
+    Asakusa on Spark バージョン 0.4.0 以降のChangelogsは以下を参照してください
+
+    * :doc:`../changelogs`
+
+Release 0.3.2
+=============
+
+(in development)
+
+* [ :milestone-asakusafw-spark:`0.3.2` ]
+* [ :milestone-asakusafw-compiler:`0.3.2` ]
+
+..  list-table:: Bundled Components
+    :widths: 7 3
+    :header-rows: 1
+
+    * - Component
+      - Version
+    * - Asakusa Framework Core
+      - 0.8.2 (|VERSION_UP|)
+    * - Asakusa Framework Language Toolset
+      - 0.3.2 (|VERSION_UP|)
+
 Release 0.3.1
 =============
 

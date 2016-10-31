@@ -125,6 +125,8 @@ CSV形式の設定
 ..  [#] ``org.apache.hadoop.io.compress.CompressionCodec``
 ..  [#] ``org.apache.hadoop.io.compress.DefaultCodec`` などが標準で用意されています
 
+.. _directio-csv-field-settings:
+
 CSVフィールドの設定
 -------------------
 

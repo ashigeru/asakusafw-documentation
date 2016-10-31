@@ -2,6 +2,65 @@
 Changelogs
 ==========
 
+Release 0.9.0
+=============
+
+(in development)
+
+..  list-table:: Bundled Components
+    :widths: 3 1 6
+    :header-rows: 1
+
+    * - Component
+      - Version
+      - Milestone
+    * - Asakusa Framework Distribution
+      - 0.9.0 (NEW)
+      - [ :milestone-asakusafw-distribution:`0.9.0` ]
+    * - Asakusa Framework Documentation
+      - 0.9.0 (NEW)
+      - [ :milestone-asakusafw-documentation:`0.9.0` ]
+    * - Asakusa Framework Core
+      - 0.9.0 (|VERSION_UP|)
+      - [ :milestone-asakusafw:`0.9.0` ]
+    * - Asakusa Framework SDK
+      - 0.9.0 (|VERSION_UP|)
+      - [ :milestone-asakusafw-sdk:`0.9.0` ]
+    * - Asakusa on MapReduce
+      - 0.9.0 (|VERSION_UP|)
+      - [ :milestone-asakusafw:`0.9.0` ]
+    * - Asakusa Framework Language Toolset
+      - 0.4.0 (|VERSION_UP|)
+      - [ :milestone-asakusafw-compiler:`0.4.0` ]
+    * - Asakusa on Spark
+      - 0.4.0 (|VERSION_UP|)
+      - [ :milestone-asakusafw-spark:`0.4.0` ]
+    * - |M3BP_FEATURE|
+      - 0.2.0 (|VERSION_UP|)
+      - [ :milestone-asakusafw-m3bp:`0.2.0` ]
+    * - |M3BP_ENGINE|
+      - 0.1.2
+      - [ :milestone-m3bp:`0.1.2` ]
+
+Release 0.8.2
+=============
+
+(in development)
+
+* [ :milestone-asakusafw:`0.8.2` ]
+* [ :milestone-asakusafw-sdk:`0.8.2` ]
+
+..  list-table:: Bundled Components
+    :widths: 7 3
+    :header-rows: 1
+
+    * - Component
+      - Version
+    * - Asakusa Framework Core
+      - 0.8.2 (|VERSION_UP|)
+    * - Asakusa on MapReduce
+      - 0.8.2 (|VERSION_UP|)
+
 Release 0.8.1
 =============
 
