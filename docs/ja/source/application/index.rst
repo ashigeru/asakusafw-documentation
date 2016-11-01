@@ -48,8 +48,6 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
 
 * :doc:`gradle-plugin-deprecated`
 * :doc:`sdk-artifact`
-* :doc:`legacy-module-guide`
-* :doc:`yaess-log-visualization`
 
 ..  attention::
     非推奨となった機能のうち、その多くは、現在のバージョンで代替となる推奨機能が提供されています。
@@ -73,5 +71,3 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
     using-jdk
     gradle-plugin-deprecated
     sdk-artifact
-    legacy-module-guide
-    yaess-log-visualization

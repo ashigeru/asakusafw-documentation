@@ -78,6 +78,9 @@ Gradleラッパーのアップデートに関する変更
     * - ``asakuafw``
       - 次のプラグイン機能を導入する: ``asakusafw-sdk`` , ``asakusafw-mapreduce``, ``asakusafw-legacy`` [#]_
 
+..  warning::
+    バージョン 0.9.0 より、 ``asakusafw-legacy`` は削除されました。
+
 ..  [#] このプラグインは Asakusa on Spark Gradle Pluginが提供します。詳しくは :doc:`../spark/user-guide` を参照してください。
 
 ..  [#] 現時点では過去バージョンとの互換性のために必要なプラグイン機能を適用しています。なお、今後のバージョンで導入される機能が変更される可能性があります。
