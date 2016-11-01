@@ -45,9 +45,13 @@ Asakusa Frameworkを開発環境で利用するには、以下の環境変数が
     :header-rows: 1
 
     * - 変数名
-      - 説明
+      - 値
     * - ``ASAKUSA_HOME``
-      - Asakusa Frameworkのインストールディレクトリ
+      - Asakusa Frameworkのインストールディレクトリを指定
+    * - ``JAVA_HOME``
+      - JDKのインストールディレクトリを指定
+    * - ``PATH``
+      - JDKのコマンドパスを追加: ``${JAVA_HOME}/bin``
 
 Asakusa Frameworkの開発支援ツール
 ---------------------------------
