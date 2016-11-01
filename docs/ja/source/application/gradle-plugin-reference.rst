@@ -112,10 +112,6 @@ Asakusa Gradle Pluginはいくつかのプラグインから構成されてい�
       - |M3BP_FEATURE| Plugin
       - ``-``
       - |M3BP_ENGINE| 向けのバッチアプリケーションを生成、実行するための機能を導入する。
-    * - ``asakusafw-legacy``
-      - Legacy Modules Plugin
-      - ``-``
-      - ThunderGateなどのレガシーモジュールを利用するための機能を導入する
 
 使用方法
 --------

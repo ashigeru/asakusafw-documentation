@@ -26,21 +26,6 @@ Asakusa Frameworkが提供する運用ツールに関するドキュメントで
 
 * :doc:`utility-tool-user-guide`
 
-その他
-======
-
-* :doc:`generate-deployment-archive-from-source`
-
-非推奨機能
-==========
-
-Asakusa Framework バージョン |version| において、以下のドキュメントで説明する機能は非推奨となっています。
-
-* :doc:`deployment-cleaner`
-
-..  attention::
-    非推奨となった機能のうち、その多くは、現在のバージョンで代替となる推奨機能が提供されています。
-
 関連するドキュメント
 ====================
 
@@ -55,6 +40,3 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
     deployment-runtime-plugins
     migration-guide
     utility-tool-user-guide
-    generate-deployment-archive-from-source
-    deployment-cleaner
-
