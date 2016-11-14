@@ -39,6 +39,8 @@ extlinks = {
     'milestone-asakusafw-spark': ("https://github.com/asakusafw/asakusafw-spark/issues?&q=milestone:%s", 'asakusafw-spark milestone:'),
     'milestone-asakusafw-dag': ("https://github.com/asakusafw/asakusafw-dag/issues?&q=milestone:%s", 'asakusafw-dag milestone:'),
     'milestone-asakusafw-m3bp': ("https://github.com/asakusafw/asakusafw-m3bp/issues?&q=milestone:%s", 'asakusafw-m3bp milestone:'),
+    'milestone-asakusafw-distribution': ("https://github.com/asakusafw/asakusafw-distribution/issues?&q=milestone:%s", 'asakusafw-distribution milestone:'),
+    'milestone-asakusafw-documentation': ("https://github.com/asakusafw/asakusafw-documentation/issues?&q=milestone:%s", 'asakusafw-documentation milestone:'),
     'milestone-m3bp': ("https://github.com/fixstars/m3bp/issues?&q=milestone:%s", 'm3bp milestone:'),
     'jinrikisha': ('http://docs.asakusafw.com/jinrikisha/ja/html/%s', None),
     'apiref': ('http://docs.asakusafw.com/0.9.0/release/api/%s', None),

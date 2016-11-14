@@ -2,242 +2,165 @@
 リリースノート
 ==============
 
-Release 0.8.1
-=============
-
-Jul 25, 2016
-
-`Asakusa Framework 0.8.1 documentation`_
-
-..  _`Asakusa Framework 0.8.1 documentation`: http://docs.asakusafw.com/0.8.1/release/ja/html/index.html
-
-新機能と主な変更点
-------------------
-
-Direct I/O 出力カウンターの改善
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Direct I/O の出力時に表示されるカウンターに、出力ポートごとの統計情報が表示されるようになりました。
-
-..  code-block:: none
-
-    com.asakusafw.directio.output.port.Statistics
-      categorySummary.bytes=91
-      categorySummary.files=1
-      categorySummary.records=3
-      errorRecord.bytes=432
-      errorRecord.files=1
-      errorRecord.records=3
-
-Direct I/O line を正式機能としてリリース
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-バージョン 0.7.5 から試験的機能として公開していた :doc:`Direct I/O line <directio/directio-line>` を正式機能として公開しました。
-
-Direct I/O line は任意のテキストファイルを行ごとに読み書きするための機能です。
-Direct I/Oが対応していないファイルフォーマットの入出力や、入力ファイルの整形や形式変換、バリデーションチェックなどの事前処理などに利用することができます。
-
-Direct I/O lineの詳細は、以下のドキュメントを参照してください。
-
-* :doc:`directio/directio-line`
-
-Asakusa Framework チュートリアル
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Asakusa Frameworkのサンプルアプリケーションを作成しながら、フレームワークの基本的な使い方や開発の流れを紹介するチュートリアルを公開しました。
-
-* :basic-tutorial:`Asakusa Framework チュートリアル <index.html>`
-
-その他の変更点
-~~~~~~~~~~~~~~
-
-その他、細かな機能改善およびバグフィックスが含まれます。
+Asakusa Frameworkのリリースノートです。
 すべての変更点は :doc:`changelogs` を参照してください。
 
-互換性に関して
---------------
-
-非推奨機能
-~~~~~~~~~~
-
-以下の機能の利用が非推奨になりました。
-
-* :ref:`gradle-plugin-v08-specify-asakusafw-version` ( ビルドスクリプトの設定 )
-
-  * バージョン 0.8.0 より、Asakusa FrameworkバージョンはAsakusa Gradle Pluginのバージョンから自動的に設定される値を利用することを推奨しています。
-  * 特にバージョン 0.7.6 以前に作成したプロジェクトから移行する場合は :doc:`application/migration-guide` を確認して、必要に応じてビルドスクリプトを修正してください。
-* :doc:`application/yaess-log-visualization`
-
-  * この機能はバージョン 0.6.2 から試験的機能として提供していましたが、MapReduce以外の実行プラットフォームでは適切な分析が行えないなどの問題があるため、本バージョンより非推奨となりました。
-
-ライブラリの構成変更
-~~~~~~~~~~~~~~~~~~~~
-
-Direct I/O lineが含まれるSDKアーティファクトが変更になりました。
-過去バージョンのDirect I/O lineを利用しているプロジェクトについては、:doc:`application/migration-guide` を確認してください。
-
-将来のバージョンにおける非互換性を含む変更
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-将来のバージョンにおいて、以下のプロダクトバージョンを対応プラットフォームから除外することを計画しています。
-
-* Java: JDK7（JDK8にのみ対応）
-
-Release 0.8.0
+Release 0.9.0
 =============
 
-Apr 08, 2016
+(開発中)
 
-`Asakusa Framework 0.8.0 documentation`_
+`Asakusa Framework 0.9.0 documentation`_
 
-..  _`Asakusa Framework 0.8.0 documentation`: http://docs.asakusafw.com/0.8.0/release/ja/html/index.html
+..  _`Asakusa Framework 0.9.0 documentation`: http://docs.asakusafw.com/0.9.0/release/ja/html/index.html
 
 はじめに
 --------
 
-Asakusa Frameworkは優れた開発生産性、高いパフォーマンスを発揮するバッチアプリケーションの開発、実行基盤として様々な改善を続けています。
+今回のリリースよりAsakusa Frameworkのリリース方式を変更し、
+Asakusa Frameworkのコアや拡張コンポーネント群をまとめた「ディストリビューション」形式でリリースを行います。
 
-今回のリリースでは、 新しい実行基盤である |M3BP_FEATURE| の新規公開、昨年からDeveloper Previewとして公開していた Asakusa on Spark の正式公開など重要なアップデートが多数含まれています。
+従来のリリース方式ではAsakusa Frameworkが提供する各コンポーネントは個別にリリースされていました。
+このためアプリケーション開発者は利用するコンポーネントのバージョンを個別に把握して設定する必要がありました。
+またこれにより、互換性がないコンポーネントバージョンを組み合わせて設定してしまう恐れがありました。
 
-また今回のリリースでは、より優れたプラットフォームへの対応を積極的に行うために、いくつかの古いプラットフォームの対応を削除しています。
+今回採用するディストリビューション形式のリリースにより、
+Asakusa Frameworkが提供する様々なコンポーネントを単一のバージョンで利用可能にします。
+ディストリビューションに含まれる各コンポーネントの組み合わせは互換性があることが保証されます。
+
+今回のリリース以降、このドキュメントはディストリビューションのリリース単位で作成されます。
+このドキュメントに記載するAsakusa Frameworkのバージョンは、特別な記載がない限りディストリビューションのバージョンを表します。
+
+ディストリビューションに含まれる各コンポーネントとそのバージョンは :doc:`changelogs` に記載しています。
 
 新機能と主な変更点
 ------------------
 
-|M3BP_FEATURE|
-~~~~~~~~~~~~~~
+Asakusa Framework Core/SDK
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|M3BP_FEATURE| は、Asakusa DSLを始めとするAsakusa Frameworkの開発基盤を利用して作成したバッチアプリケーションに対して、 |M3BP_ENGINE| (https://github.com/fixstars/m3bp) を実行基盤として利用するための機能セットを提供します。
+Asakusa Gradle Plugin - ディストリビューションプラグイン
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-|M3BP_ENGINE| はDAG (Directed Acyclic Graph; 有向非循環グラフ) の形で表現されたタスクをマルチコア環境で効率よく処理するためのフレームワークで、以下のような特徴があります。
+`はじめに`_ で説明したディストリビューションを利用するために、
+Asakusa Gradle Pluginに「ディストリビューションプラグイン」を追加しました。
+Asakusa Framework 0.9.0 以降のプロジェクトテンプレートを利用する場合、標準でこのディストリビューションプラグインが使用されます。
 
-* 単一ノード上のマルチコア/マルチプロセッサ用に最適化
-* 細粒度で動的なタスクスケジューリング
-* ほぼすべてオンメモリで処理
+バージョン 0.8系を利用しているプロジェクトからのマイグレーションについては、以下のドキュメントを参照してください。
 
-上記のような特徴のため、 小規模〜中規模のデータを扱うバッチに対して、|M3BP_FEATURE| によって単一ノード上で高速に処理できるようになりました。
+* :doc:`application/gradle-plugin-v09-changes`
 
-|M3BP_FEATURE| の詳細は、以下のドキュメントを参照してください。
+WindGate - データベース接続時の最適化オプション
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* :doc:`../m3bp/index`
+WindGateのデータベースとの接続時に利用する最適化オプションを設定する機能が追加されました。
+この機能は主にデータベース固有の最適化機能を利用するために使用することを想定しています。
+
+Asakusa Framework 0.9.0 では Oracleのダイレクト・パス・インサートを利用するクエリーを発行するためのオプションが追加されています。
+
+詳しくは、以下のドキュメントを参照してください。
+
+* :doc:`windgate/user-guide` - :ref:`windgate-resource-jdbc-optimizations`
+
+Direct I/O - CSVフィールドのクォート方式の指定
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Direct I/O CSVでフィールド値の内容に関わらず、常にクォート処理を行うモードが追加されました。
+また、CSVの各フィールドで個別にモードを指定するためのDMDL記述が追加されました。
+
+Direct I/O CSVと連携するプロダクトでCSVフォーマットのクォートに関する制約がある場合に、この機能を利用することで連携時の問題を解消できる可能性があります。
+
+詳しくは、以下のドキュメントを参照してください。
+
+* :doc:`directio/csv-format` - :ref:`directio-csv-field-settings`
 
 Asakusa on Spark
 ~~~~~~~~~~~~~~~~
 
-2015年からDeveloper Previewとして公開していた Asakusa on Spark を正式機能として公開しました。
+Direct I/Oの出力処理をSpark上で実行
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Asakusa on Sparkは、Asakusa DSLを始めとするAsakusa Frameworkの開発基盤を利用して作成したバッチアプリケーションに対して、Apache Spark (http://spark.apache.org) を実行基盤として利用するための機能セットを提供します。
+これまでのバージョンでは、Asakusa on Sparkを利用する場合でもDirect I/Oの出力処理はMapReduceジョブによって実行されていましたが、
+本バージョンより、Direct I/Oの出力処理はSpark上で実行されるようになりました。
 
-特に中規模〜大規模のデータを扱うバッチに対して、Asakusa on Sparkは優れたパフォーマンスを発揮します。
+この改善により、Asakusa on Spark上でDirect I/Oを利用するバッチアプリケーションについては、Hadoop MapReduceを実行するための環境設定は不要になりました。
+またMapReduceジョブの実行に必要なオーバーヘッドがなくなることで、バッチアプリケーションの実行性能が向上する可能性があります。
 
-Asakusa on Spark の詳細は、以下のドキュメントを参照してください。
+なお、この動作はコンパイラオプション ``spark.output.direct`` により変更可能です。詳しくは、以下のドキュメントを参照してください。
 
-* :doc:`../spark/index`
+* :doc:`spark/reference`
 
-Asakusa on Spark Iterative Extensions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+またこの改善により、 :doc:`spark/iterative-extension` ではDirect I/Oの出力処理でも反復変数が利用可能になりました。
 
-Asakusa on Spark の拡張機能「Iterative Extensions」を試験的機能として公開しました。
+Spark 2.0に対応
+^^^^^^^^^^^^^^^
 
-Iterative Extensionsは、あるバッチに対してバッチ引数の一部または全部を変えながら同じバッチを連続して実行するための機能です。
+本リリースより Spark 2.0 以降のバージョンに対応しました。
 
-Iterative Extensionsを適用したバッチを「反復バッチ」と呼びます。
-反復バッチは通常のバッチを連続して実行する場合と比べて、次の点で高速に実行できる可能性があります。
+なお、本リリースより Spark 1.6 以前のバージョンは非対応になりました。
 
-* 連続処理によるリソースの効率的な利用
+|M3BP_FEATURE|
+~~~~~~~~~~~~~~~~
 
- 連続するバッチアプリケーションを1つのSparkアプリケーションとして実行するため、特にYARN上での実行においては、アプリケーションコンテナの初期化などの分散オーバーヘッドが極小化される、コンテナリソースをシンプルな設定で最大限に利用できる、などの利点があります。
+WindGate JDBC ダイレクト・モード (試験的機能)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* 差分処理による最適化
+WindGate JDBC ダイレクト・モードとは、WindGateを利用したバッチアプリケーションの実行時にデータフロー処理を行うプロセスの内部で直接
+WindGate JDBCによるデータベースへのインポート処理とエクスポート処理を行うように動作する、 |M3BP_FEATURE| 固有の最適化設定です。
 
- 反復バッチでは連続するバッチ間で再計算が不要な箇所は実行結果を再利用することがあるため、特に実行するバッチアプリケーション間での変更箇所が少ない場合には、バッチ間の差分処理による利点が大きくなります。
+WindGate JDBC ダイレクト・モードを利用することで、通常のWindGateよりもバッチアプリケーション全体の実行時間が大きく短縮できる可能性があります。
 
-反復バッチは、日付範囲を指定した日次バッチの一括実行や、パラメータ・スイープによるシミュレーションといった用途に適しています。
+詳しくは、以下のドキュメントを参照してください。
 
-Iterative Extensionsは、反復バッチを定義するためのAsakusa DSLの拡張構文、反復バッチを生成するするためのAsakusa DSLコンパイラの拡張、および反復バッチを実行するためのインターフェースや実行モジュールなどを提供します。
+* :doc:`m3bp/optimization` - :ref:`windgate-jdbc-direct-mode`
 
-Asakusa on Spark Iterative Extensions の詳細は、以下のドキュメントを参照してください。
+その他
+~~~~~~
 
-* :doc:`../spark/iterative-extension`
+Asakusa Vanilla (試験的機能)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-対応プラットフォームの更新
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Asakusa Vanillaは、Asakusa Frameworkの内部機能として提供するDAG実行エンジン実装用のツールセットを使った、実行エンジンのリファレンス実装です。
 
-アプリケーションプロジェクトで使用するGradleの標準バージョンを2.12にアップデートしました。
+Asakusa Vanillaは単一ノード上でアプリケーションを実行します。
+軽量で比較的コンパイル速度が速く、実行時にJVM以外の環境を必要としない、といった特徴を持っています。
+このため将来のバージョンでは、Asakusa Vanillaを :doc:`testing/emulation-mode` で利用する標準の実行エンジンに採用することを計画しています。
 
-その他、いくつかの動作検証プラットフォームを更新しています。
-詳しくは、 以下のドキュメントを参照してください。
+詳しくは、以下のドキュメントを参照してください。
 
-* :doc:`product/target-platform`
-
-また冒頭で述べた通り、今回のリリースではいくつかの古いプラットフォームの対応を削除しています。
-
-詳しくは後述の互換性に関する説明を参照してください。
-
-Asakusa Gradle Pluginの改善
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-|M3BP_FEATURE| や Asakusa on Spark のリリースに伴い、Gradle Plugin上で複数の実行基盤を統一的な方法で扱うための改善や、ビルド設定をシンプルに管理するための改善などをおこないました。
-
-Asakusa Gradle Pluginの変更点については、以下のドキュメントを参照してください。
-
-* :doc:`application/gradle-plugin-v08-changes`
-
-その他の変更点
-~~~~~~~~~~~~~~
-
-その他、細かな機能改善およびバグフィックスが含まれます。
-
-すべての変更点は :doc:`changelogs` を参照してください。
+* :doc:`sandbox/asakusa-vanilla`
 
 互換性に関して
 --------------
 
-変更点
-~~~~~~
+対応プラットフォーム
+~~~~~~~~~~~~~~~~~~~~
 
 本リリースでは、対応プラットフォームに関する重要な変更と非互換性があります。
 
-..  warning::
-    バージョン 0.8.0 は以前のバージョンからいくつかの重要な変更が行われました。
-    過去のバージョンからのマイグレーションを検討する際には必ず以下の内容を確認してください。
-
 Java (JDK)
-  Java6、およびJDK 6は非対応になりました。
+  Java7、およびJDK 7は非対応になりました。
 
-  Java6、およびJDK 6を利用している場合、Java 7(JDK 7)、またはJava 8 (JDK 8)に移行する必要があります。
+  Java7、およびJDK 7を利用している場合、Java 8 (JDK 8)に移行する必要があります。
 
-Hadoop
-  Hadoop1系は非対応となりました。
+Spark
+  Spark 1.6 以前のバージョンは非対応になりました。
 
-  開発環境にHadoop1系をインストールしている場合、Hadoop2系をインストールしてAsakusa FrameworkからはHadoop2系を利用するよう設定してください。
-
-  運用環境でHadoop1系を利用している場合、Hadoop2系に移行する必要があります。
-
-Gradle
-  Gradleのバージョン1系は非対応になりました。
-
-  また、Asakusa Gradle Pluginにいくつか仕様変更が行われ、一部のタスクの動作やビルドスクリプトの設定方法が変更されています。
-
-Maven
-  Mavenの利用は非対応になりました。
-
-  Mavenを利用しているアプリケーションプロジェクトは、Gradleを利用するよう移行する必要があります。
-
-Asakusa Framework
-  Hadoop1系が非対応となったことにより、Asakusa Framwork バージョン 0.7.0 から導入された「Hadoopバージョン」が廃止になりました。
-
-  Asakusa Framework 0.7系では、Asakusa Framworkのバージョンは ``<version>-hadoop1``, ``<version>-hadoop2`` のように、利用するHadoopのバージョンを持つバージョン体系を導入していました。
-
-  本リリース以降は、Asakusa Frameworkのバージョンは単一のバージョン体系 ( 例えば本リリースのバージョンは ``0.8.0`` ) を使用します。
+  Spark 1.6、およびそれ以前のバージョンを利用している場合、Spark 2.0 以降のバージョンに移行する必要があります。
 
 変更内容の詳細やマイグレーション手順については、以下のドキュメント説明しています。
 
 * :doc:`application/migration-guide`
 * :doc:`administration/migration-guide`
 
-..  attention::
-    過去のバージョンからのマイグレーション作業を行う場合、必ず :doc:`application/migration-guide` と :doc:`administration/migration-guide` を確認してください。
+削除された機能
+~~~~~~~~~~~~~~
+
+本リリースより、以下の機能は削除されました。
+
+* レガシーモジュール
+* Asakusa Legacy Gradle Plugin
+* YAESSログの可視化 ( ``summarizeYaessJob`` タスク )
 
 リンク
 ======

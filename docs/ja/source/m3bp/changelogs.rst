@@ -2,6 +2,35 @@
 Changelogs
 ==========
 
+..  attention::
+    |M3BP_FEATURE| バージョン 0.2.0 以降のChangelogsは以下を参照してください
+
+    * :doc:`../changelogs`
+
+Release 0.1.3
+=============
+
+(in development)
+
+* [ :milestone-m3bp:`0.1.2` ]
+* [ :milestone-asakusafw-dag:`0.1.3` ]
+* [ :milestone-asakusafw-m3bp:`0.1.3` ]
+
+..  list-table:: Bundled Components
+    :widths: 7 3
+    :header-rows: 1
+
+    * - Component
+      - Version
+    * - Asakusa Framework Core
+      - 0.8.2 (|VERSION_UP|)
+    * - Asakusa Framework Language Toolset
+      - 0.3.2 (|VERSION_UP|)
+    * - Asakusa Framework DAG Toolset
+      - 0.1.3 (|VERSION_UP|)
+    * - |M3BP_ENGINE|
+      - 0.1.2
+
 Release 0.1.2
 =============
 
