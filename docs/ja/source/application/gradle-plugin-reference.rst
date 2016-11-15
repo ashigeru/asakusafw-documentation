@@ -146,7 +146,7 @@ Asakusa Gradle Pluginの各プラグインを使うためには、ビルドス�
     Asakusa SDK: 0.9.0
     JVM: 1.8
     Asakusa on Spark: 0.4.0
-    Spark: 2.0.1
+    Spark: 2.0.2
     Asakusa on M3BP: 0.2.0
 
 .. _batch-application-plugin-reference:
