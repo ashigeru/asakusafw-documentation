@@ -45,7 +45,7 @@ extlinks = {
     'jinrikisha': ('http://docs.asakusafw.com/jinrikisha/ja/html/%s', None),
     'apiref': ('http://docs.asakusafw.com/0.9.0/release/api/%s', None),
     'epub': ('http://docs.asakusafw.com/0.9.0/release/ja/epub/%s', None),
-    'basic-tutorial': ('http://docs.asakusafw.com/basic-tutorial/0.8/release/ja/html/%s', None),
+    'basic-tutorial': ('http://docs.asakusafw.com/basic-tutorial/0.9/release/ja/html/%s', None),
 }
 javadoclinks = {
     'asakusafw-javadoc': ('http://docs.asakusafw.com/0.9.0/release/api/%s.html', ""),
