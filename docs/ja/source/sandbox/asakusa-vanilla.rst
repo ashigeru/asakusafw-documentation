@@ -46,6 +46,8 @@ Eclipse上でテストを実行する場合は上記設定後に ``./gradlew ecl
 アプリケーションのビルド
 ------------------------
 
+Asakusa Vanillaは主にテストドライバ上で利用することを想定していますが、DSLコンパイルによってバッチアプリケーションを生成し、これを実行することも可能です。
+
 `Asakusa Vanillaの有効化`_ を設定した状態で、Gradleタスク :program:`vanillaCompileBatchapps` を実行すると、Asakusa Vanilla 向けのバッチアプリケーションのビルドを実行します。
 
 ..  code-block:: sh
@@ -56,6 +58,17 @@ Eclipse上でテストを実行する場合は上記設定後に ``./gradlew ecl
 
 標準の設定では、Asakusa Vanillaのバッチアプリケーションは接頭辞に ``vanilla.`` が付与されます。
 例えば、サンプルアプリケーションのバッチID ``example.summarizeSales`` の場合、Asakusa VanillaのバッチアプリケーションのバッチIDは ``vanilla.example.summarizeSales`` となります。
+
+なお、標準の設定では :program:`assemble` タスクの実行などによるデプロイメントアーカイブの作成時にAsakusa Vanilla向けのバッチアプリケーションを生成する機能は無効になっています。
+この設定を有効にするには、ビルドスクリプトに対して以下の定義を追加します。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-asakusa-vanilla-3
+
+    asakusafwOrganizer {
+        vanilla.enabled true
+    }
 
 ..  note::
     その他、アプリケーションのデプロイや実行などの方法は他の実行エンジンと同様です。
@@ -221,7 +234,7 @@ Asakusa Vanilla Gradle Plugin は Framework Organizer Plugin に対してAsakusa
 
     ``true`` を指定した場合にはコンポーネントを追加し、 ``false`` を指定した場合には追加しない。
 
-    既定値: ``true`` (コンポーネント群を追加する)
+    既定値: ``false`` (コンポーネント群を追加しない)
 
 ``vanilla.useSystemHadoop``
     デプロイメントアーカイブのAsakusa Vanillaが、実行環境にインストールされているHadoopを利用するかどうかを指定する。
