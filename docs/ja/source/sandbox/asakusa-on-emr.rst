@@ -2,20 +2,21 @@
 Amazon EMR上でAsakusa Frameworkを利用する
 =========================================
 
-* 対象バージョン: Asakusa Framework ``0.8.0`` 以降
+* 対象バージョン: Asakusa Framework ``0.9.0`` 以降
 
-この文書は、 `Amazon Web Services`_ (AWS) が提供するクラウド環境上のHadoopサービス `Amazon Elastic MapReduce`_ (Amazon EMR) 上でAsakusa Frameworkを利用する方法について説明します。
+この文書は、 `Amazon Web Services`_ (AWS) が提供するクラウド環境上のHadoopサービス `Amazon EMR`_ 上でAsakusa Frameworkを利用する方法について説明します。
 
-以降では、 `Amazon Web Services`_ を「AWS」、 `Amazon Elastic MapReduce`_ を「EMR」と表記します。
+以降では、 `Amazon Web Services`_ を「AWS」、 `Amazon EMR`_ を「EMR」と表記します。
 
 また、本書ではAsakusa Frameworkのデプロイやアプリケーションの実行時に、AWSが提供するストレージサービスである `Amazon Simple Storage Service`_ （Amazon S3）を利用します。以降では、 `Amazon Simple Storage Service`_ を「S3」と表記します。
 
 AWSが提供する各サービスの詳細はAWSが提供するドキュメントを参照してください。
 
 ..  _`Amazon Web Services`: http://aws.amazon.com/
-..  _`Amazon Elastic MapReduce`: http://aws.amazon.com/elasticmapreduce/
+..  _`Amazon EMR`: http://aws.amazon.com/emr/
 ..  _`Amazon Simple Storage Service`: http://aws.amazon.com/s3/
-..  _`EMR Developer Guide`: http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/
+..  _`Amazon EMR Management Guide`: http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/
+..  _`Amazon EMR Release Guide`: http://docs.aws.amazon.com/ElasticMapReduce/latest/ReleaseGuide/
 
 はじめに
 ========
@@ -71,7 +72,7 @@ Asakusa Framework実行環境の構成とデプロイ
 
 EMRを利用する上では、様々な方法でAsakusa Frameworkをデプロイすることができますが、ここではAsakusa FrameworkのデプロイメントアーカイブをEMRクラスター [#]_ の起動前にS3に配置し、EMRクラスターの起動後にこれをEMRクラスターのマスターノードにデプロイするものとします。
 
-..  [#] `EMR Developer Guide`_ の記述に基づき、EMRを利用して構築したHadoopクラスターをEMRクラスターと呼びます
+..  [#] `Amazon EMR Management Guide`_ の記述に基づき、EMRを利用して構築したクラスター環境をEMRクラスターと呼びます
 
 Direct I/Oの設定
 ----------------
@@ -180,7 +181,7 @@ S3に対するファイルアップロードはAWS CLIからも実行するこ�
 
 ..  code-block:: sh
 
-    aws s3 cp build/asakusafw-0.8.0-emr.tar.gz s3://[mybucket]/asakusafw/
+    aws s3 cp build/example-basic-spark-emr.tar.gz s3://[mybucket]/asakusafw/
 
 S3上のファイルを表示し、正しくアップロードされたことを確認します。
 
@@ -204,30 +205,23 @@ EMRクラスターの起動
 
 `AWSマネジメントコンソール`_ からEMRクラスターを起動することができます。
 
-1. `AWSマネジメントコンソール`_  の画面左上のメニューから :menuselection:`Services --> Elastic MapReduce` を選択する。
+1. `AWSマネジメントコンソール`_  の画面左上のメニューから :menuselection:`Services --> EMR` を選択する。
 
-2. EMRのクラスター一覧 (Cluster List) 画面で、画面上部の :guilabel:`Create cluster` ボタンを押下する。
+2. EMRのクラスターリスト画面で、画面上部の :guilabel:`クラスターを作成` ボタンを押下する。
 
     ..  figure:: attachment/emr-console-menu-createcluster.png
-        :width: 50%
+        :width: 80%
 
 3. EMRクラスターの起動パラメータを入力する
-
-   EMRクラスター起動手順の例は、 `Get Started: Launch the Cluster`_ ( `EMR Developer Guide`_ ) などを参照してください。
 
    コンソールで指定する起動パラメータについては、 後述の `起動パラメータ`_ で説明しているのでこちらも参照してください。
 
     ..  figure:: attachment/emr-console-create-cluster.png
         :width: 80%
 
-4. 画面下の :guilabel:`Create cluster` ボタンを押下する。
+4. 画面下の :guilabel:`クラスターを作成` ボタンを押下する。
 
-    ..  figure:: attachment/emr-console-create-cluster-bottom.png
-        :width: 50%
-
-   EMRクラスターの起動処理が開始され、クラスター詳細画面 ( :guilabel:`Cluster Details` ) が表示されます。
-
-..  _`Get Started: Launch the Cluster`: http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-get-started-count-words-step-5.html
+   EMRクラスターの起動処理が開始され、クラスター詳細画面が表示されます。
 
 CLI
 ~~~
@@ -238,62 +232,68 @@ EMRクラスターの起動はAWS CLIから実行することができます。
 ..  code-block:: sh
 
     aws emr create-cluster \
-     --ami-version 4.3.0 \
-     --instance-groups \
-     InstanceGroupType=MASTER,InstanceCount=1,InstanceType=c3.xlarge \
-     InstanceGroupType=CORE,InstanceCount=1,InstanceType=c3.xlarge \
-     --name asakusa-batch \
+     --name asakusafw-cluster \
      --log-uri s3://[mybucket]/mylog \
-     --enable-debugging
+     --enable-debugging \
+     --release-label emr-5.2.0 \
+     --applications Name=Hadoop Name=Hive Name=Spark \
+     --instance-type m3.xlarge \
+     --instance-count 1 \
+     --ec2-attributes KeyName=[myKey]
 
 起動パラメータ
 ~~~~~~~~~~~~~~
 
 EMRクラスターの起動パラメータ（オプション）の概要を説明します。
+起動パラメータの詳細やここに記載していないパラメータについては、コンソールのヘルプやEMRのドキュメントなどを参照してください。
 
-起動パラメータの詳細についてはコンソールのヘルプやAWS CLI Referenceの `create cluster <http://docs.aws.amazon.com/cli/latest/reference/emr/create-cluster.html>`_ などを参照してください。
 各パラメータは以下の表記で説明しています。
 
 ``コンソール上の項目名`` ``(--CLIのオプション名 )``
 
-:guilabel:`Cluster name` ``(--name)``
+:guilabel:`クラスター名` ``(--name)``
   EMRクラスター名です。
   この名前はコンソールやCLIから参照するクラスター一覧などで表示されます。
 
-:guilabel:`Logging` ``(--log-uri)``
+:guilabel:`ログ記録(S3フォルダー)` ``(--log-uri)``
   このオプションを有効にすると、EMRクラスターの各ノードのログを定期的な間隔(およそ5分ごと)でS3にコピーする機能が有効になります。
   ログを配置するS3バケット上のパスを合わせて指定します。
 
-:guilabel:`Debugging` ``(--enable-debugging)``
+:guilabel:`デバッグ` ``(--enable-debugging | --no-enable-debugging)``
   このオプションを有効にすると、コンソール上から各ログファイルを参照するためのインデックスが生成されます。
 
-:guilabel:`AMI version` ``(--ami-version)``
-  EMRクラスターのマシンイメージ(AMI)のバージョンです。
-  指定可能なAMIバージョンについては `AMI Versions Supported in Amazon EMR`_ ( `EMR Developer Guide`_ ) などを参照してください。
+:guilabel:`起動モード` ``(--auto-terminate | --no-auto-terminate)``
+  起動モードに「クラスター」 ``(--no-auto-terminate)`` を指定した場合は明示的にEMRクラスターを停止させるまでクラスターは起動し続けます。
+  「ステップ実行」 ``(--auto-terminate)`` を指定した場合は、EMRクラスター起動時に指定したステップ(EMRクラスターで実行させる処理、詳細は後述)
+  の実行が完了すると、自動的にEMRクラスターは停止します。
+  CLIを利用する場合、これらのオプションを指定しない場合は ``--no-auto-terminate`` がデフォルトで設定されます。
 
-:guilabel:`Network`
-  VPCの使用有無を指定します。
-  VPCを使用しない場合は :guilabel:`EC2 avaliability zone` を、VPCを使用する場合は :guilabel:`EC2 Subnet` をそれぞれ指定します。
-  デフォルトではVPCは使用しません。
+:guilabel:`リリース` ``(--release-label)``
+  EMRクラスターのリリースバージョンを指定します。
+  指定可能なバージョンについては  `Amazon EMR Release Guide`_ などを参照してください。
 
-:guilabel:`Master/Core/Task` ``(--instance-groups InstanceGroupType=MASTER, ...)``
-  EMRクラスターのインスタンス構成を指定します。
-  起動するインスタンスグループ(Master/Core/Task)ごとのインスタンス数やインスタンスタイプなどを指定します。
+:guilabel:`アプリケーション` ``(--applications)``
+  EMRクラスターに含めるアプリケーションを指定します。
+  このドキュメントではAsakusa on Sparkを利用するため、Sparkが含まれる項目を指定してください。
+
+:guilabel:`インスタンスタイプ` ``(--instance-type)``
+  EMRクラスターで使用するインスタンスタイプを指定します。
+
+:guilabel:`インスタンス数` ``(--instance-count)``
+  EMRクラスターで使用するインスタンス数を指定します。
 
 ..  hint::
-    デプロイメント構成の確認やアプリケーションとの疎通確認など、試験的に実行する段階ではEC2インスタンスタイプは低コストで利用できるインスタンスタイプを使用し、ノード数も少なめで確認するのがよいでしょう。
+    デプロイメント構成の確認やアプリケーションとの疎通確認など、試験的に実行する段階ではインスタンスタイプは低コストで利用できるインスタンスタイプを使用し、ノード数も少なめで確認するのがよいでしょう。
 
-:guilabel:`EC2 key pair` ``(--ec2-attributes KeyName=[key-name])``
+:guilabel:`EC2 キーペア` ``(--ec2-attributes KeyName=[key-name])``
   EMRクラスターの各ノードにSSH接続するためのキーペアを指定します。
   デフォルトではキーペアの指定がありません。
   SSH接続を行う場合は、このオプションを指定します。
 
-..  _`AMI Versions Supported in Amazon EMR`: http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/ami-versions-supported.html
+クラスターID
+------------
 
-ジョブフローID (クラスターID)
------------------------------
-
-EMRクラスターの起動を実行すると、コンソールやCLIの出力としてクラスターを一意に特定するためのジョブフローID(クラスターID)が出力されます。
+EMRクラスターの起動を実行すると、コンソールやCLIの出力としてクラスターを一意に特定するためのクラスターIDが出力されます。
 
 CLI
 ~~~
@@ -315,9 +315,9 @@ CLIではEMRクラスターに対する処理を行う際に、このIDを指定
 コンソール
 ~~~~~~~~~~
 
-`EMRクラスターの起動`_ 後に表示されるクラスター詳細画面 (Cluster Details) などで確認します。
+`EMRクラスターの起動`_ 後に表示されるクラスター詳細画面などで確認します。
 
-クラスター詳細画面では、画面上部 :guilabel:`Cluster: <name>` の右側に色付きの文字列で表示されます ( 下例では :guilabel:`Starting` ) 。
+クラスター詳細画面では、画面上部 :guilabel:`クラスター: <クラスター名>` の右側に色付きの文字列で表示されます ( 下例では :guilabel:`開始中` ) 。
 
 ..  figure:: attachment/emr-console-cluster-starting.png
     :width: 80%
@@ -342,23 +342,21 @@ CLI
     :program:`aws` コマンドには他にも様々なオプションが利用できます。
     詳しくは AWS CLI Reference の `Command Reference <http://docs.aws.amazon.com/cli/latest/index.html>`_ などを参照してください。
 
-主なステータス [#]_ には以下のようなものがあります。
+主なステータスには以下のようなものがあります。
 
-``STARTING``
+開始中 ( ``STARTING`` )
   EMRクラスターが起動中
 
-``WAITING``
+待機中 ( ``WAITING`` )
   EMRクラスターがアイドル状態（ステップの実行待ち）
 
-``RUNNING``
+実行中 ( ``RUNNING`` )
   EMRクラスターがステップを実行中
 
-``TERMINATED``
+終了済み ( ``TERMINATED`` )
   EMRクラスターが停止済み
 
-`EMRクラスターの起動`_ の手順でEMRクラスターが正常に起動し、ステータスが ``Waiting`` になっていることを確認して以降の手順に進みます。
-
-..  [#] EMRが管理するステータスの意味やその種類については、 `Life Cycle of a Cluster <http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/ProcessingCycle.html>`_ ( `EMR Developer Guide`_ ) などを参照してください。
+`EMRクラスターの起動`_ の手順でEMRクラスターが正常に起動し、ステータスが 待機中 ( ``WAITING`` ) になっていることを確認して以降の手順に進みます。
 
 EMRクラスターにAsakusa Frameworkをデプロイ
 ==========================================
@@ -372,57 +370,53 @@ EMRクラスターに対して処理を要求するには、コンソールやCL
 
 クラスター詳細画面で以下の手順でデプロイを実行します。
 
-1. 画面上部の :guilabel:`Add step` ボタンを押下する
+1. 画面上部の :guilabel:`ステップの追加` ボタンを押下する
 
     ..  figure:: attachment/emr-console-menu-addstep.png
-        :width: 50%
+        :width: 80%
 
-2. :guilabel:`Add Step` ダイアログで以下の通りに入力し、 :guilabel:`Add` ボタンを押下する
+2. :guilabel:`ステップの追加` ダイアログで以下の通りに入力し、 :guilabel:`追加` ボタンを押下する
 
     ..  figure:: attachment/emr-console-addstep-deploy.png
         :width: 100%
 
-    :guilabel:`Step type`
-      ``Custom JAR`` を選択
+    :guilabel:`ステップタイプ`
+      ``カスタム JAR`` を選択
 
-    :guilabel:`Name`
+    :guilabel:`名前`
       任意のステップ名を入力 (この名前はステップ一覧に表示されます)
 
-    :guilabel:`JAR locations`
+    :guilabel:`JAR の場所`
       以下のS3パスを入力 [#]_
 
       * ``s3://elasticmapreduce/libs/script-runner/script-runner.jar``
 
-    :guilabel:`Arguments`
+    :guilabel:`引数`
       以下2つの引数を半角スペース区切りで指定 [#]_
 
       * 第1引数:  ``s3://asakusafw/emr/deploy-asakusa.sh``
       * 第2引数:  `デプロイメントアーカイブをS3に配置`_ で配置したデプロイメントアーカイブのS3パス
 
-        * 例: ``s3://[mybucket]/asakusafw/asakusafw-0.8.0-emr.tar.gz``
+        * 例: ``s3://[mybucket]/asakusafw/example-basic-spark.tar.gz``
 
-    :guilabel:`Action on failure`
-      * ``Continue`` を選択
+    :guilabel:`失敗時の動作`
+      * ``次へ`` を選択
 
 以上の手順でマスターノード上にAsakusa Frameworkのデプロイ処理が実行されます。
 
-正常にデプロイが完了したことを確認するには、クラスター詳細画面の :guilabel:`Steps` セクションを展開して、ステップ一覧に表示されるデプロイ用のステップを確認します。
+正常にデプロイが完了したことを確認するには、クラスター詳細画面の :guilabel:`ステップ` セクションを展開して、ステップ一覧に表示されるデプロイ用のステップを確認します。
 
-..  figure:: attachment/emr-console-running-deploy.png
-    :width: 70%
+..  figure:: attachment/emr-console-complete-deploy.png
+    :width: 100%
 
-デプロイ用のステップのステータスが ``Completed`` と表示されればデプロイは成功です。
+デプロイ用のステップのステータスが ``完了`` と表示されればデプロイは成功です。
 
-デプロイ用のステップのステータスが ``Failed`` と表示されデプロイが失敗した場合は、ダイアログの入力内容を確認してください。
+デプロイ用のステップのステータスが ``失敗`` と表示されデプロイが失敗した場合は、ダイアログの入力内容を確認してください。
 もしくは、EMRクラスター上のステップのログを確認します。
 ステップのログの確認方法は後述の `アプリケーションの実行結果を確認`_ を参照してください。
 
 ..  [#] :program:`script-runner.jar` はEMRが提供する、任意のスクリプトをマスターノード上で実行するためのツールです。
-        詳しくは `Run a Script in a Cluster`_ ( `EMR Developer Guide`_ ) を参照してください。
-
 ..  [#] :program:`deploy-asakusa.sh` はAsakusa Frameworkが公開しているデプロイ用のスクリプトで、引数に指定したS3パスに配置されているデプロイメントアーカイブを :file:`$HOME/asakusa` に展開します。
-
-..  _`Run a Script in a Cluster`: http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-hadoop-script.html
 
 CLI
 ---
@@ -437,7 +431,7 @@ AWS CLI を使ったデプロイ例を以下に示します。
     ActionOnFailure=CONTINUE,\
     Jar=s3://elasticmapreduce/libs/script-runner/script-runner.jar,\
     Args=s3://asakusafw/emr/deploy-asakusa.sh,\
-    s3://[mybucket]/asakusafw/asakusafw-0.8.0-emr.tar.gz
+    s3://[mybucket]/asakusafw/example-basic-spark.tar.gz
 
 ステップを登録すると、以下のようにステップIDが表示されます。
 ステップIDはステップの実行結果を確認する場合などで使用します。
@@ -524,37 +518,37 @@ CLI
 
 クラスター詳細画面で以下の手順でデプロイを実行します。
 
-1. 画面上部の :guilabel:`Add step` ボタンを押下する
+1. 画面上部の :guilabel:`ステップの追加` ボタンを押下する
 
     ..  figure:: attachment/emr-console-menu-addstep.png
-        :width: 50%
+        :width: 80%
 
-2. :guilabel:`Add Step` ダイアログで以下の通りに入力し、 :guilabel:`Add` ボタンを押下する
+2. :guilabel:`ステップの追加` ダイアログで以下の通りに入力し、 :guilabel:`追加` ボタンを押下する
 
     ..  figure:: attachment/emr-console-addstep-runbatch.png
         :width: 100%
 
-    :guilabel:`Step type`
-      ``Custom JAR`` を選択
+    :guilabel:`ステップタイプ`
+      ``カスタム JAR`` を選択
 
-    :guilabel:`Name`
+    :guilabel:`名前`
       任意のステップ名を入力 (この名前はステップ一覧に表示されます)
 
-    :guilabel:`JAR locations`
+    :guilabel:`JAR の場所`
       以下のS3パスを入力 [#]_
 
       * ``s3://asakusafw/emr/asakusa-script-runner.jar``
 
-    :guilabel:`Arguments`
+    :guilabel:`引数`
       以下2つの引数を半角スペース区切りで指定 [#]_
 
       * 第1引数:  ``$ASAKUSA_HOME/yaess/bin/yaess-batch.sh``
       * 第2引数以降:  ``yaess-batch.sh`` の引数
 
-        * 例: ``example.summarizeSales -A date=2011-04-01``
+        * 例: ``spark.example.summarizeSales -A date=2011-04-01``
 
-    :guilabel:`Action on failure`
-      * ``Continue`` を選択
+    :guilabel:`失敗時の動作`
+      * ``次へ`` を選択
 
 以上の手順でバッチアプリケーションが実行されます。
 
@@ -574,7 +568,7 @@ AWS CLI を使ったバッチアプリケーション実行例を以下に示し
     Name=ExampleBatch,\
     ActionOnFailure=CONTINUE,\
     Jar=s3://asakusafw/emr/asakusa-script-runner.jar,\
-    Args='[$ASAKUSA_HOME/yaess/bin/yaess-batch.sh,example.summarizeSales,-A,date=2011-04-01]'
+    Args='[$ASAKUSA_HOME/yaess/bin/yaess-batch.sh,spark.example.summarizeSales,-A,date=2011-04-01]'
 
 ..  attention::
     ``Args`` の値全体は上の例のように ``'[`` ``]'`` で囲むことを推奨します。
@@ -595,20 +589,20 @@ AWS CLI を使ったバッチアプリケーション実行例を以下に示し
 ..  figure:: attachment/emr-console-running-batch.png
     :width: 100%
 
-アプリケーションを実行したステップのステータスが ``Completed`` と表示されればアプリケーションの実行は正常に完了しています。
+アプリケーションを実行したステップのステータスが ``完了`` と表示されればアプリケーションの実行は正常に完了しています。
 
-ステップのステータスが ``Failed`` と表示されアプリケーションが失敗した場合は、ステップのログを確認します。
+ステップのステータスが ``失敗`` と表示されアプリケーションが失敗した場合は、ステップのログを確認します。
 
-ステップのログは、ステップ一覧の列 :guilabel:`Log files` 上の :guilabel:`View logs` を選択します。
-このログは定期的(およそ5分ごと)にEMRクラスターの各ノードのログが収集されるため、ログの収集が終わっていない場合は、 ``No logs created Yet`` のように表示されます。
-その場合、間隔をおいてリロードアイコンを押下します。
+ステップのログは、ステップ一覧の列 :guilabel:`ログファイル` 上の :guilabel:`ログの表示` を選択します。
+このログは定期的(およそ5分ごと)にEMRクラスターの各ノードのログが収集されます。
+ログの収集が終わっていない場合は、間隔をおいてリロードアイコンを押下します。
 
 ログが収集されると、以下のようにログの種類ごとにリンクが表示されます。
 
 ..  figure:: attachment/emr-console-steplog.png
-    :width: 100%
+    :width: 30%
 
-デフォルトの設定では、Hadoop上のログは :guilabel:`syslog`, YAESSのログは :guilabel:`stderr` に リダイレクトされるので、これらのログを確認します。
+デフォルトの設定では、HadoopやSpark上のログは :guilabel:`stdout`, YAESSのログは :guilabel:`stderr` からそれぞれ確認できます。
 
 CLI
 ~~~
@@ -677,17 +671,11 @@ EMRクラスターの停止
 1. クラスター詳細画面上部の :guilabel:`Terminate` ボタンを押下する。
 
     ..  figure:: attachment/emr-console-menu-terminate.png
-        :width: 50%
-
-2. :guilabel:`Terminate cluster` ダイアログで :guilabel:`Terminate` ボタンを押下する
-
-    EMRクラスター起動時のデフォルト設定では :guilabel:`Termination protection` が ``On`` になっています。
-    この状態では :guilabel:`Terminate` ボタンが無効になっているので、 :guilabel:`Termination protection` の :guilabel:`Change` を選択して ``Off`` に変更します。
-
-    ..  figure:: attachment/emr-console-terminate-cluster.png
         :width: 80%
 
-EMRクラスターが完全に停止すると、画面上部のステータスが ``Terminated`` と表示されます。
+2. :guilabel:`クラスターを終了` ダイアログで :guilabel:`削除` ボタンを押下する
+
+EMRクラスターが完全に停止すると、画面上部のステータスが ``削除`` と表示されます。
 
 CLI
 ---
