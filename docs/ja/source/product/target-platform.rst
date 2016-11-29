@@ -9,35 +9,29 @@ Asakusa Framework は、以下のHadoopディストリビューションと組�
 
 ..  list-table:: 動作検証プラットフォーム(Hadoopディストリビューション)
     :header-rows: 1
-    :widths: 3 2 3 2
+    :widths: 4 2 4
 
     * - Distribution
       - Version
       - OS
-      - JDK
     * - Hortonworks Data Platform
-      - 2.4.0
+      - 2.5.0
       - CentOS 7 (7.2)
-      - JDK 8 (1.8.0_60)
     * - MapR
-      - 5.1.0 (MRv2) [#]_
+      - 5.2.0 [#]_
       - Red Hat Enterprise Linux 7.2
-      - JDK 8 (1.8.0_51)
     * - CDH
-      - 5.7.0 (MRv2) [#]_
-      - CentOS 6 (6.7)
-      - JDK 7 (1.7.0_67)
+      - 5.9.0 [#]_
+      - CentOS 7 (7.2)
     * - Amazon EMR
-      - 4.7.1
-      - Amazon Linux 2016.03 based
-      - JDK 8 (1.8.0_71)
+      - 5.1.0
+      - Amazon Linux 2016.09 based
     * - Microsoft Azure HDInsight
-      - 3.4
-      - Ubuntu 14.04.4
-      - JDK 7 (1.7.0_95)
+      - 3.5
+      - Ubuntu 16.04.4
 
-..  [#] MapReduce Version 1 (MRv1) では動作検証を行なっていません。
-..  [#] MapReduce Version 1 (MRv1) では動作検証を行なっていません。
+..  [#] MapReduce Version 1 (MRv1) には対応していません。
+..  [#] MapReduce Version 1 (MRv1) には対応していません。
 
 アプリケーション開発環境
 ========================
@@ -62,19 +56,19 @@ Asakusa Frameworkを利用したバッチアプリケーションの開発環境
       - 10.11
     * - Java
       - JDK [#]_ [#]_
-      - 1.8.0_101
+      - 1.8.0_111
     * - ビルドツール
       - Gradle [#]_
       - 3.1
     * - IDE
       - Eclipse IDE for Java Developers
-      - 4.5.2 / 4.6.0
+      - 4.6.1
     * - IDE
       - IntelliJ IDEA Community Edition [#]_
       - 2016.1
     * - Hadoop
       - Apache Hadoop [#]_
-      - 2.7.2
+      - 2.7.3
 
 ..  [#] Windows上ではテストドライバーを利用したテストは :doc:`エミュレーションモード <../testing/emulation-mode>` のみ使用できます。Windowsの利用については、 :doc:`../introduction/start-guide-windows` を参照してください。
 ..  [#] MacOSX上では基本的な動作のみ検証しています。
