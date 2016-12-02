@@ -98,34 +98,14 @@ Hadoopディストリビューション
 
   * HDFSを経由してWindGateの入出力を授受
 
-|M3BP_FEATURE|\ は、以下のHadoopディストリビューションと組み合わせた運用環境で動作を検証しています。
-
-..  list-table:: 動作検証プラットフォーム(Hadoopディストリビューション)
-    :widths: 3 3 3 3
-    :header-rows: 1
-
-    * - Distribution
-      - Version
-      - OS
-      - JDK
-    * - Hortonworks Data Platform
-      - 2.4 (Apache Hadoop 2.7.1)
-      - Red Hat Enterprise Linux 7.2
-      - Java SE Development Kit 8u74
-    * - MapR [#]_
-      - 5.1.0 (Apache Hadoop 2.7.0)
-      - CentOS 7.2
-      - Java SE Development Kit 8u74
-
 Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください。
 
-..  [#] |M3BP_FEATURE| をMapRと連携して利用する場合において、バッチアプリケーションの起動時にデッドロックが発生しアプリケーションが実行されないことがある問題を確認しています。
-        この問題の回避方法について `Hadoopとの連携`_ に記載しています。
+|M3BP_FEATURE|\ が動作を検証しているHadoopディストリビューションは、
+:doc:`../product/target-platform` の「Hadoopディストリビューション」を参照してください。
 
-マイグレーション
-~~~~~~~~~~~~~~~~
-
-過去の |M3BP_FEATURE| バージョンを利用している開発環境、およびアプリケーションプロジェクトのバージョンアップ手順は、:doc:`../application/migration-guide` を参照してください。
+..  attention::
+    |M3BP_FEATURE| をMapRと連携して利用する場合において、バッチアプリケーションの起動時にデッドロックが発生しアプリケーションが実行されないことがある問題を確認しています。
+    この問題の回避方法について `Hadoopとの連携`_ に記載しています。
 
 制限事項
 --------
@@ -136,12 +116,6 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 
   * 「input group is too large; please use larger addressing mode instead」という主旨のエラーログが表示されます
   * 詳しくは :ref:`最適化設定 <optimization_properties>` の「入出力バッファのアクセス方式 (``com.asakusafw.m3bp.buffer.access``)」を参照してください
-
-非対応機能
-----------
-
-|M3BP_FEATURE|\ は、Asakusa Framework の該当バージョンで非推奨となっている機能には対応していません。
-
 
 開発環境の構築
 ==============
