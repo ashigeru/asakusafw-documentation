@@ -48,18 +48,12 @@ Asakusa DSL
 ..  note::
     Asakusa on Spark バージョン 0.3系およびそれ以前のバージョンでは、Direct I/Oの出力処理にMapReduceを利用するためMapReduceの実行環境が合わせて必要でした。
 
-    Asakusa on Spark バージョン 0.4.0 からはDirect I/Oの出力処理もSpark上で実行するようになったため、MapReduceの実行環境は必須ではなくなりました。
+    Asakusa on Spark バージョン 0.4.0 ( Asakusa Framework バージョン 0.9.0 ) からはDirect I/Oの出力処理もSpark上で実行するようになったため、MapReduceの実行環境は必須ではなくなりました。
 
 ..  _spark-target-platform:
 
 対応プラットフォーム
 ====================
-
-Hadoopディストリビューション
-----------------------------
-
-Asakusa on Sparkが動作を検証しているHadoopディストリビューションは、
-:doc:`../product/target-platform` の「Hadoopディストリビューション」を参照してください。
 
 Spark
 -----
@@ -76,45 +70,11 @@ Spark
 
 ..  _`Running Spark on YARN`: https://spark.apache.org/docs/latest/running-on-yarn.html
 
-マイグレーション
-~~~~~~~~~~~~~~~~
+Hadoopディストリビューション
+----------------------------
 
-過去のAsakusa on Sparkバージョンを利用している開発環境、およびアプリケーションプロジェクトのバージョンアップ手順は、 :doc:`../application/migration-guide` を参照してください。
-
-..  attention::
-    Asakusa on Spark 0.2.2 以前のバージョンからマイグレーションを行う場合、Asakusa Framework バージョン は 0.7系からのマイグレーションとなります。
-    このため、 :doc:`../application/migration-guide` の「バージョン 0.8.0 へのマイグレーション」に関する記述を必ず確認してください。
-
-非対応機能
-~~~~~~~~~~
-
-Asakusa on Sparkは、Asakusa Frameworkの該当バージョンで非推奨となっている機能には対応していません。
-
-リンク
-------
-
-各対応プラットフォームへのリンクです。
-
-..  list-table::
-    :widths: 3 7
-    :header-rows: 1
-
-    * - Product
-      - Link
-    * - Apache Spark
-      - http://spark.apache.org/
-    * - Hortonworks Data Platform
-      - http://hortonworks.com/hdp/
-    * - MapR
-      - http://www.mapr.com/
-    * - Amazon EMR
-      - http://aws.amazon.com/elasticmapreduce/
-    * - Microsoft Azure HDInsight
-      - https://azure.microsoft.com/services/hdinsight/
-    * - JDK (Java SE)
-      - http://www.oracle.com/technetwork/java/javase/index.html
-    * - Gradle
-      - http://www.gradle.org/
+Asakusa on Sparkが動作を検証しているHadoopディストリビューションは、
+:doc:`../product/target-platform` の「Hadoopディストリビューション」を参照してください。
 
 開発環境の構築
 ==============

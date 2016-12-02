@@ -26,11 +26,9 @@
 ----------------
 
 * `asakusafw-compiler (GitHub)`_
-* `asakusafw-dag (GitHub)`_
 * `asakusafw-m3bp (GitHub)`_
 
 ..  _`asakusafw-compiler (GitHub)`: https://github.com/asakusafw/asakusafw-compiler
-..  _`asakusafw-dag (GitHub)`: https://github.com/asakusafw/asakusafw-dag
 ..  _`asakusafw-m3bp (GitHub)`: https://github.com/asakusafw/asakusafw-m3bp
 
 APIリファレンス
