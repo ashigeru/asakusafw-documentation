@@ -181,7 +181,7 @@ S3に対するファイルアップロードはAWS CLIからも実行するこ�
 
 ..  code-block:: sh
 
-    aws s3 cp build/example-basic-spark-emr.tar.gz s3://[mybucket]/asakusafw/
+    aws s3 cp build/asakusafw-example-basic-spark-emr.tar.gz s3://[mybucket]/asakusafw/
 
 S3上のファイルを表示し、正しくアップロードされたことを確認します。
 
@@ -397,7 +397,7 @@ EMRクラスターに対して処理を要求するには、コンソールやCL
       * 第1引数:  ``s3://asakusafw/emr/deploy-asakusa.sh``
       * 第2引数:  `デプロイメントアーカイブをS3に配置`_ で配置したデプロイメントアーカイブのS3パス
 
-        * 例: ``s3://[mybucket]/asakusafw/example-basic-spark.tar.gz``
+        * 例: ``s3://[mybucket]/asakusafw/asakusafw-example-basic-spark.tar.gz``
 
     :guilabel:`失敗時の動作`
       * ``次へ`` を選択
@@ -431,7 +431,7 @@ AWS CLI を使ったデプロイ例を以下に示します。
     ActionOnFailure=CONTINUE,\
     Jar=s3://elasticmapreduce/libs/script-runner/script-runner.jar,\
     Args=s3://asakusafw/emr/deploy-asakusa.sh,\
-    s3://[mybucket]/asakusafw/example-basic-spark.tar.gz
+    s3://[mybucket]/asakusafw/asakusafw-example-basic-spark.tar.gz
 
 ステップを登録すると、以下のようにステップIDが表示されます。
 ステップIDはステップの実行結果を確認する場合などで使用します。

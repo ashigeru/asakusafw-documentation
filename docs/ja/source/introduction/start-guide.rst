@@ -303,7 +303,7 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 * Asakusa DSLとデータモデル定義DSLから、HadoopやSparkなどの各処理系で実行可能なプログラム群を生成
 * アプリケーションを実行環境に配置するためのデプロイメントアーカイブファイルを生成
 
-デプロイメントアーカイブファイルはプロジェクトの :file:`build` ディレクトリ配下に ``example-basic-spark.tar.gz`` というファイル名で生成されます。
+デプロイメントアーカイブファイルはプロジェクトの :file:`build` ディレクトリ配下に ``asakusafw-example-basic-spark.tar.gz`` というファイル名で生成されます。
 
 .. _introduction-start-guide-deploy-app:
 
@@ -314,7 +314,7 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 
 通常、デプロイ対象となるノードはHadoopやSparkのクライアントモジュールがインストールされているノードを選択します。
 
-以降の手順を行う前に、デプロイメントアーカイブファイル ``example-basic-spark.tar.gz`` をデプロイ対象となるノードに転送しておいてください。
+以降の手順を行う前に、デプロイメントアーカイブファイル ``asakusafw-example-basic-spark.tar.gz`` をデプロイ対象となるノードに転送しておいてください。
 
 環境変数の設定
 ~~~~~~~~~~~~~~
@@ -336,14 +336,14 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 デプロイメントアーカイブの展開
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`サンプルアプリケーションのビルド`_ で作成したデプロイメントアーカイブファイル ``example-basic-spark.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
+`サンプルアプリケーションのビルド`_ で作成したデプロイメントアーカイブファイル ``asakusafw-example-basic-spark.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
 展開後、 ``$ASAKUSA_HOME`` 配下の :file:`*.sh` に実行権限を追加します。
 
 ..  code-block:: sh
 
     mkdir -p "$ASAKUSA_HOME"
     cd "$ASAKUSA_HOME"
-    tar -xzf /path/to/example-basic-spark.tar.gz
+    tar -xzf /path/to/asakusafw-example-basic-spark.tar.gz
     find "$ASAKUSA_HOME" -name "*.sh" | xargs chmod u+x
 
 サンプルデータの配置
