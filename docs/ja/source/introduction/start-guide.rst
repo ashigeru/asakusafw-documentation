@@ -160,11 +160,11 @@ Eclipse上で環境変数 ``ASAKUSA_HOME`` が有効になっていることを�
 
     * - プロジェクトテンプレート
       - 説明
-    * - `asakusa-spark-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.0.tar.gz>`_
+    * - `asakusa-spark-template-0.9.1.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.1.tar.gz>`_
       - :doc:`../spark/index` を利用するプロジェクトテンプレート
-    * - `asakusa-m3bp-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.9.0.tar.gz>`_
+    * - `asakusa-m3bp-template-0.9.1.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-m3bp-template-0.9.1.tar.gz>`_
       - :doc:`../m3bp/index` を利用するプロジェクトテンプレート
-    * - `asakusa-mapreduce-template-0.9.0.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.9.0.tar.gz>`_
+    * - `asakusa-mapreduce-template-0.9.1.tar.gz <http://www.asakusafw.com/download/gradle-plugin/asakusa-mapreduce-template-0.9.1.tar.gz>`_
       - :doc:`../mapreduce/index` を利用するプロジェクトテンプレート
 
 コマンドライン上から作成する場合、上記のURLに公開されているプロジェクトテンプレートのアーカイブを展開します。
@@ -173,8 +173,8 @@ Eclipse上で環境変数 ``ASAKUSA_HOME`` が有効になっていることを�
 ..  code-block:: sh
 
     cd <work-dir>
-    curl -OL http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.0.tar.gz
-    tar xf asakusa-spark-template-0.9.0.tar.gz
+    curl -OL http://www.asakusafw.com/download/gradle-plugin/asakusa-spark-template-0.9.1.tar.gz
+    tar xf asakusa-spark-template-0.9.1.tar.gz
     mv asakusa-spark-template my-batchapp
     cd my-batchapp
 
@@ -269,9 +269,9 @@ Direct I/Oを利用して、Hadoopファイルシステム上のCSVファイル�
 ..  code-block:: sh
 
     cd <work-dir>
-    curl -OL https://github.com/asakusafw/asakusafw-examples/archive/0.9.0.tar.gz
-    tar xf 0.9.0.tar.gz
-    cd asakusafw-examples-0.9.0/example-basic-spark
+    curl -OL https://github.com/asakusafw/asakusafw-examples/archive/0.9.1.tar.gz
+    tar xf 0.9.1.tar.gz
+    cd asakusafw-examples-0.9.1/example-basic-spark
 
 Shafuを導入した開発環境では、オンライン上に公開されているAsakusa Frameworkのプロジェクトテンプレートカタログを利用して、サンプルアプリケーションのプロジェクトをEclipse上に取り込みます。
 
@@ -279,7 +279,7 @@ Shafuを導入した開発環境では、オンライン上に公開されてい
 #. :guilabel:`新規プロジェクト情報` ダイアログで、プロジェクト名などを入力します。
 #. :guilabel:`テンプレートからプロジェクトを作成` ダイアログで :guilabel:`URLを指定してプロジェクトテンプレートをダウンロードする` が選択状態になっていることを確認して、画面右の :guilabel:`選択` ボタンを押下します。
 #. :guilabel:`プロジェクトテンプレート` ダイアログにオンラインに公開されている、利用可能なプロジェクトテンプレートの一覧が表示されます。ここでは以下を選択します。
-    * :guilabel:`Asakusa Example Projects - 0.9.0`
+    * :guilabel:`Asakusa Example Projects -` |version|
 #. :guilabel:`Finish` ボタンを押すと選択したプロジェクトテンプレートを読み込み、Eclipseプロジェクトとして新規プロジェクトが作成されます。
 #. :guilabel:`テンプレートからプロジェクトを作成` ダイアログで ``example-basic-spark`` を選択して :guilabel:`OK` ボタンを押下します。
 
