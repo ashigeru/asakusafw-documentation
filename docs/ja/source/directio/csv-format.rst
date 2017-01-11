@@ -4,6 +4,11 @@ Direct I/O CSV
 
 この文書では、Direct I/OからCSVフォーマットのファイルをインポート/エクスポートする方法について説明します。
 
+..  note::
+    Direct I/O で CSVフォーマットを取り扱う方法として、本書で説明する方法の他に :doc:`formatted-text` を利用することもできます。
+    それぞれの機能のおおまかな差異や使い分けの指針については :doc:`formatted-text` - :ref:`directio-formatted-text-comparison` を参照してください。
+
+
 CSV形式のDataFormatの作成
 =========================
 

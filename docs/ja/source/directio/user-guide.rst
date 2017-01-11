@@ -634,11 +634,11 @@ Direct I/Oはいくつかのファイルフォーマットにおいて、 ``Data
 
 Direct I/Oが提供する各ファイルフォーマットの利用方法については、以下のドキュメントを参照してください。
 
-* :doc:`csv-format`
+* :doc:`csv-format` (CSV形式のテキストファイルの入出力)
+* :doc:`formatted-text` (区切り文字によってレコードやフィールドが構成される汎用的なテストファイルの入出力)
 * :doc:`directio-line` (任意の行文字列の入出力)
-* :doc:`sequencefile-format`
+* :doc:`sequencefile-format` (Hadoopシーケンスファイルの利用)
 * :doc:`using-hive` (カラムナフォーマットファイルの利用)
-* :doc:`../sandbox/directio-tsv` (試験的機能:特定フォーマットを持つTSVの入出力)
 
 .. _directio-dsl-input-description:
 

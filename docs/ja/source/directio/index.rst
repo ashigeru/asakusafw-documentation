@@ -39,12 +39,8 @@ Asakusa Frameworkの外部で作成されたシーケンスファイルを利用
     start-guide
     user-guide
     csv-format
+    formatted-text
     directio-line
     sequencefile-format
     using-hive
     tools-guide
-
-試験的機能
-----------
-
-* :doc:`../sandbox/directio-tsv`
