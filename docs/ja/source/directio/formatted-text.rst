@@ -110,7 +110,7 @@ Direct I/O formatted text を利用したデータフォーマットを定義す
 他のデータフォーマット機能との関係
 ==================================
 
-Direct I/O でテキストフォーマットファイルを扱うには、本書で説明する Direct I/O formatted text の他にも以下のような機能を利用できます。
+Direct I/O でテキストファイルを扱うには、本書で説明する Direct I/O formatted text の他にも以下のような機能を利用できます。
 
 * :doc:`csv-format`
 * :doc:`../sandbox/directio-tsv` (試験的機能)
