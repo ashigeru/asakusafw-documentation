@@ -4,6 +4,9 @@ Direct I/O TSV
 
 この文書では、Direct I/Oを使ってTSVフォーマットのファイルをインポート/エクスポートするための拡張機能の使い方について説明します。
 
+..  attention::
+    バージョン |version| では、TSV形式のデータフォーマットを扱うには :doc:`../directio/formatted-text` を利用することを推奨します。
+
 Mavenアーティファクト
 =====================
 
