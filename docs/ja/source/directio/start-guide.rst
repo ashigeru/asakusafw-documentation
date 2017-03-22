@@ -264,6 +264,8 @@ Direct I/Oでは論理パスに配置したデータソース内のファイル�
 
 以降ではアプリケーションの開発における、Direct I/O特有の部分について紹介します。
 
+.. _directio-generate-datamodel-class:
+
 データモデルクラスの生成
 ------------------------
 
@@ -273,6 +275,10 @@ DMDLの記述方法については「 :doc:`../dmdl/start-guide` 」などを参
 DMDLスクリプトはプロジェクトの :file:`src/main/dmdl` ディレクトリ以下に配置し、スクリプトのファイル名には :file:`.dmdl` の拡張子を付けて保存します。
 
 データモデルクラスを作成するには、データモデルの定義情報を記述後にGradleの :program:`compileDMDL` タスクを実行します。
+
+..  code-block:: sh
+
+    ./gradlew compileDMDL
 
 CSV入出力への対応
 ~~~~~~~~~~~~~~~~~

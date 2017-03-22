@@ -4,6 +4,8 @@
 
 この文書では、Asakusa Frameworkを使ったバッチアプリケーションをテストする方法について紹介します。
 
+.. _testing-userguide-operator-testing:
+
 演算子のテスト
 ==============
 
@@ -157,7 +159,7 @@
 
 ..  [#] 実行時プラグインについては、 :doc:`../administration/deployment-runtime-plugins` を参照してください。
 
-.. _testing-userguide-dataflow-test:
+.. _testing-userguide-dataflow-testing:
 
 データフローのテスト
 ====================
