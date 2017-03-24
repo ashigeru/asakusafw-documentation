@@ -107,16 +107,6 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
     |M3BP_FEATURE| をMapRと連携して利用する場合において、バッチアプリケーションの起動時にデッドロックが発生しアプリケーションが実行されないことがある問題を確認しています。
     この問題の回避方法について `Hadoopとの連携`_ に記載しています。
 
-制限事項
---------
-
-現在、\ |M3BP_FEATURE|\ には以下の制限があります。
-
-* 標準設定では、単一の入力グループが2GB以上になるとエラーが発生する
-
-  * 「input group is too large; please use larger addressing mode instead」という主旨のエラーログが表示されます
-  * 詳しくは :ref:`最適化設定 <optimization_properties>` の「入出力バッファのアクセス方式 (``com.asakusafw.m3bp.buffer.access``)」を参照してください
-
 開発環境の構築
 ==============
 
