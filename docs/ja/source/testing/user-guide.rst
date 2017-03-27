@@ -30,52 +30,12 @@
 ..  [#] このクラスは「演算子実装クラス」と呼ばれ、Operator DSLコンパイラが自動的に生成します。
     詳しくは :doc:`../dsl/user-guide` を参照してください。
 
-結果型を利用する演算子のテスト
-------------------------------
-
-いくつかの演算子メソッドでは、出力を表す ``Result`` [#]_ 型のオブジェクトを引数に取ります。
-これを利用するメソッドのテストには、モック実装の ``MockResult`` [#]_ が便利です。
-
-..  code-block:: java
-
-    @Test
-    public void testCutoff_shortage() {
-        StockOpImpl operator = new StockOpImpl();
-
-        List<Stock> stocks = Arrays.asList(StockFactory.create(new DateTime(), 0, 100, 10));
-        List<Shipment> shipments = Arrays.asList();
-        MockResult<Stock> newStocks = new MockResult<Stock>();
-        MockResult<Shipment> newShipments = new MockResult<Shipment>();
-
-        operator.cutoff(stocks, shipments, newStocks, newShipments);
-
-        assertThat(newStocks.getResults().size(), is(1));
-        assertThat(newShipments.getResults().size(), is(0));
-    }
-
-``MockResult`` はメソッド ``add`` で追加されたオブジェクトをメモリ上に保持します。
-同じオブジェクトを使いまわして結果を出力するメソッドでは、次のように ``MockResult`` のメソッド ``bless`` をオーバーライドして、独自にコピーを作成します。
-
-..  code-block:: java
-
-    MockResult<Stock> newStocks = new MockResult<Stock>() {
-        @Override protected Stock bless(Stock obj) {
-            Stock copy = new Stock();
-            copy.copyFrom(obj);
-            return copy;
-        }
-    };
-
-なお、結果型を引数に指定する演算子については :doc:`../dsl/operators` を参照してください。
-
-..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Result`
-..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.testing.MockResult`
-
 演算子テストの補助
 ------------------
 
 いくつかの演算子のテストには、 ``OperatorTestEnvironment`` [#]_ クラスを利用します。
 このクラスはAsakusaのフレームワークAPIをテスト時にエミュレーションするためのもので、フレームワークAPIを利用する演算子をテストする場合には必須です。
+その他、 ``OperatorTestEnvironment`` は演算子のテスト実装に便利なユーティリティメソッドを提供します。
 
 ``OperatorTestEnvironment`` クラスは、テストクラスの ``public`` フィールドに ``@Rule`` [#]_ という注釈を付けてインスタンス化します。
 
@@ -87,6 +47,41 @@
 
 ..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.OperatorTestEnvironment`
 ..  [#] ``org.junit.Rule``
+
+結果型を利用する演算子のテスト
+------------------------------
+
+いくつかの演算子メソッドでは、出力を表す ``Result`` [#]_ 型のオブジェクトを引数に取ります。
+これを利用するメソッドのテストには、モック実装の ``MockResult`` [#]_ が便利です。
+
+..  code-block:: java
+
+    @Rule
+    public OperatorTestEnvironment resource = new OperatorTestEnvironment();
+
+    @Test
+    public void testCutoff_shortage() {
+        StockOpImpl operator = new StockOpImpl();
+
+        List<Stock> stocks = Arrays.asList(StockFactory.create(new DateTime(), 0, 100, 10));
+        List<Shipment> shipments = Arrays.asList();
+        MockResult<Stock> newStocks = resource.newResult(Stock.class);
+        MockResult<Shipment> newShipments = resource.newResult(Shipment.class);
+
+        operator.cutoff(stocks, shipments, newStocks, newShipments);
+
+        assertThat(newStocks.getResults().size(), is(1));
+        assertThat(newShipments.getResults().size(), is(0));
+    }
+
+..  note::
+    バージョン 0.9.1 以降では、 ``MockResult`` インスタンスを生成するファクトリメソッド ``OperatorTestEnvironment#newResult`` が利用できます。
+    通常はこのメソッドを使って ``MockResult`` を生成することを推奨します。
+
+なお、結果型を引数に指定する演算子については :doc:`../dsl/operators` を参照してください。
+
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.core.Result`
+..  [#] :asakusafw-javadoc:`com.asakusafw.runtime.testing.MockResult`
 
 コンテキストAPIを利用する演算子のテスト
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
