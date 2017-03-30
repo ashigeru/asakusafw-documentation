@@ -48,6 +48,8 @@
 ..  [#] :asakusafw-javadoc:`com.asakusafw.testdriver.OperatorTestEnvironment`
 ..  [#] ``org.junit.Rule``
 
+.. _operator-testing-with-result:
+
 結果型を利用する演算子のテスト
 ------------------------------
 

@@ -5,6 +5,69 @@
 Asakusa Frameworkのリリースノートです。
 すべての変更点は :doc:`changelogs` を参照してください。
 
+Release 0.9.1
+=============
+
+(開発中)
+
+`Asakusa Framework 0.9.1 documentation`_
+
+..  _`Asakusa Framework 0.9.1 documentation`: http://docs.asakusafw.com/0.9.1/release/ja/html/index.html
+
+新機能と主な変更点
+------------------
+
+Direct I/O formatted text
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Direct I/Oでレコードやフィールドを区切り文字によって分割するデータ形式を取り扱うための機能 :doc:`../directio/formatted-text` を追加しました。
+
+従来、Direct I/Oで提供していた :doc:`../directio/csv-format` や :doc:`../sandbox/directio-tsv` などのテキストフォーマットを扱う機能と比べて、以下のような特徴を持っています。
+
+* 多様なデータ形式を扱うきめ細かな設定が可能
+
+  * データ形式に関する様々な設定をレコード全体、及びフィールド単位にそれぞれ設定することができます。
+  * 従来、事前にデータ整形処理が必要であったようなデータ形式の多くは、この機能で直接処理可能となります。
+* 不整合データに対する柔軟な動作設定が可能
+
+  * 不整合データの検出時にエラーとして異常終了、警告を出力して処理を継続、単にスキップするなど様々な動作設定が可能です。
+  * 想定外のデータやアプリケーションの仕様変更などに対して柔軟な対応が可能となります。
+
+詳しくは、以下のドキュメントを参照してください。
+
+* :doc:`../directio/formatted-text`
+
+Direct I/Oのデータフォーマットファイルをテストデータに指定
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Direct I/Oを利用したアプリケーションのテストでは通常のテスト方法に加えて、Direct I/Oのデータフォーマットに対応するファイルをテストデータとして指定することが可能になりました。
+
+例えば、CSVやTSVファイルを演算子やデータフローのテストに対する入力データや期待値データとして指定することができます。
+
+詳しくは、以下のドキュメントを参照してください。
+
+* :doc:`../directio/user-guide` - :ref:`directio-testdriver-dataformat`
+
+その他の変更点
+--------------
+
+* Direct I/O の :ref:`directio-output-filename-pattern` で利用可能なプレースホルダで数値書式の対応を追加
+* :ref:`operator-testing-with-result` 向けのユーティリティメソッド ``OperatorTestEnvironment#newResult`` を追加
+* :ref:`vup-gradle-wrapper` の手順で設定されるGradleラッパーの取得先URLをGradleの標準設定に合わせて ``http`` から ``https`` に変更
+* :doc:`../m3bp/index` 標準の設定下で単一の入力グループが2GB以上になるとエラーが発生する制限事項を解消
+* :doc:`../m3bp/index` 特定の条件でデータフローのコンパイルが正しく行われないことがある問題 [#]_ を修正
+* :doc:`product/target-platform` のアップデート
+
+その他、細かな機能改善およびバグフィックスが含まれます。
+すべての変更点は :doc:`changelogs` を参照してください。
+
+..  [#] https://github.com/asakusafw/asakusafw-compiler/pull/119
+
+互換性に関して
+--------------
+
+本リリースでは過去バージョンとの互換性に関する特別な情報はありません。
+
 Release 0.9.0
 =============
 
