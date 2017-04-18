@@ -58,7 +58,7 @@ Asakusa DSL
 Spark
 -----
 
-本ドキュメントのバージョンでは、Spark 2.0.2 で動作を検証しています。
+本ドキュメントのバージョンでは、Spark 2.1.0 で動作を検証しています。
 
 また、Sparkの動作モードとして、YARN cluster mode、および YARN client modeで動作を確認しています。
 
