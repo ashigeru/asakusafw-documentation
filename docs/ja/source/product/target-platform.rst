@@ -24,7 +24,7 @@ Asakusa Framework は、以下のHadoopディストリビューションと組�
       - 5.9.0 [#]_
       - CentOS 7 (7.2)
     * - Amazon EMR
-      - 5.2.0
+      - 5.4.0
       - Amazon Linux 2016.09 based
     * - Microsoft Azure HDInsight
       - 3.5
@@ -56,13 +56,13 @@ Asakusa Frameworkを利用したバッチアプリケーションの開発環境
       - 10.11
     * - Java
       - JDK [#]_ [#]_
-      - 1.8.0_111
+      - 1.8.0_121
     * - ビルドツール
       - Gradle [#]_
       - 3.4.1
     * - IDE
       - Eclipse IDE for Java Developers
-      - 4.6.1
+      - 4.6.2
     * - IDE
       - IntelliJ IDEA Community Edition [#]_
       - 2016.1
