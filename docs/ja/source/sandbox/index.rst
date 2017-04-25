@@ -22,3 +22,4 @@
     directio-tsv
     asakusa-on-emr
     asakusa-with-hive
+    intellij-idea

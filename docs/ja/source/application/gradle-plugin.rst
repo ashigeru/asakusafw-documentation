@@ -68,6 +68,8 @@ Asakusa Gradle Pluginを使った標準的なアプリケーション開発環�
 以下では、1)のAsakusa Gradle Plugin 用プロジェクトテンプレートを利用した導入方法を解説します。
 2)については、 :doc:`gradle-plugin-reference`  を参照してください。
 
+.. _download-gradle-project-template:
+
 プロジェクトテンプレートのダウンロード
 --------------------------------------
 

@@ -539,38 +539,18 @@ Batch Application Plugin は Gradleが提供するEclipse Pluginのタスクに�
 
 GradleからEclipseプロジェクト用の定義ファイルを生成する方法については、 :ref:`gradle-plugin-using-eclipse` を参照してください。
 
-.. _gradle-plugin-using-idea:
+IntelliJ IDEAの利用
+-------------------
 
-IDEA Pluginの拡張
------------------
+Asakusa FrameworkのアプリケーションプロジェクトはIntelliJ IDEAのGradleプロジェクトとして利用することもできます。
+
+詳しくは、 :doc:`../sandbox/intellij-idea` を参照してください。
 
 ..  attention::
-    Asakusa Framework バージョン |version| では、 IDEA Pluginの拡張は試験的機能として提供しています。
+    Asakusa Framework バージョン |version| では、過去バージョンで提供していた IDEA Pluginの拡張と ``idea`` タスクの利用は非推奨となりました。
+    IntelliJ IDEAのバージョンによっては、これらの機能は正しく動作しません。
 
-Batch Application Plugin は Gradleが提供するIDEA Pluginのタスクに対して、以下のようなIntelliJ IDEAプロジェクトの追加設定を行います。
-
-* プロジェクトに含むモジュールの構成(ソースディレクトリに関する設定など)
-* OperatorDSLコンパイラを実行するためのAnnotation Processorの設定
-* Javaのバージョンやコンパイラに関する設定
-
-アプリケーション開発用の統合開発環境(IDE)にIntelliJ IDEAを使用する場合、開発環境にIntelliJ IDEAをインストールした上で、プロジェクトに対してIntelliJ IDEAプロジェクト用の定義ファイルを追加します。
-
-IntelliJ IDEAプロジェクト用の定義ファイルを作成するには、:program:`idea` タスクを実行します。
-
-..  code-block:: sh
-
-    ./gradlew idea
-
-このコマンドを実行することによって、プロジェクトディレクトリに対してIntelliJ IDEA用の定義ファイルやクラスパスに対応したソースディレクトリなどが追加されます。
-これにより、IntelliJ IDEAからプロジェクトをインポートすることが可能になります。
-
-..  tip::
-    IntelliJ IDEAからプロジェクトをインポートするには、Welcome Screen(プロジェクトを開いていない時に表示されるダイアログ)から :guilabel:`Import` を選択するか、メニューから :menuselection:`File --> Import Project...` を選択し、プロジェクトディレクトリを選択します。
-    インポートウィザードが開始されるので、以下の例を参考にしてプロジェクトのインポートを行います。
-
-    * インポートウィザードの最初の画面では、:guilabel:`Import project from external model` を選択し、 :guilabel:`Gradle` を選択して :guilabel:`Next` を押下します。
-    * インポートウィザードの次の画面の :guilabel:`Project format:` は :guilabel:`ipr (file based)` を選択してください。
-      デフォルトの :guilabel:`.idea (directory based)` ではGradleの :program:`idea` タスクが生成した設定ファイルが使用されません。
+    IntelliJ IDEAを利用する場合、 :doc:`../sandbox/intellij-idea` のドキュメント内容に従って利用してください。
 
 .. _framework-organizer-plugin-reference:
 
