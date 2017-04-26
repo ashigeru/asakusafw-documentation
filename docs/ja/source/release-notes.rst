@@ -8,7 +8,7 @@ Asakusa Frameworkのリリースノートです。
 Release 0.9.1
 =============
 
-(開発中)
+Apr 26, 2017
 
 `Asakusa Framework 0.9.1 documentation`_
 
@@ -56,6 +56,8 @@ Direct I/Oを利用したアプリケーションのテストでは通常のテ�
 * :ref:`vup-gradle-wrapper` の手順で設定されるGradleラッパーの取得先URLをGradleの標準設定に合わせて ``http`` から ``https`` に変更
 * :doc:`../m3bp/index` 標準の設定下で単一の入力グループが2GB以上になるとエラーが発生する制限事項を解消
 * :doc:`../m3bp/index` 特定の条件でデータフローのコンパイルが正しく行われないことがある問題 [#]_ を修正
+* :ref:`windgate-jdbc-direct-mode` 特定の条件でデッドロックが発生する問題を修正
+* :doc:`sandbox/intellij-idea` (試験的機能) ドキュメントの追加、及び従来の利用手順(Gradle IDEA Plugin拡張の利用)を非推奨化
 * :doc:`product/target-platform` のアップデート
 
 その他、細かな機能改善およびバグフィックスが含まれます。

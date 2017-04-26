@@ -62,7 +62,7 @@ Asakusa Frameworkを利用したバッチアプリケーションの開発環境
       - 3.4.1
     * - IDE
       - Eclipse IDE for Java Developers
-      - 4.6.2
+      - 4.6.3
     * - IDE
       - IntelliJ IDEA Community Edition [#]_
       - 2017.1
