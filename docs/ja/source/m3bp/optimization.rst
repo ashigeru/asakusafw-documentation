@@ -255,6 +255,8 @@ WindGate JDBC ダイレクト・モードに関するコンパイラオプショ
 
 ..  [#] バッチアプリケーションが利用するWindGateプロファイルの指定方法などについては、 :doc:`../windgate/user-guide` などを参照してください。
 
+..  _windgate-jdbc-direct-mode-engine-conf:
+
 実行エンジンの設定
 ------------------
 
@@ -299,6 +301,21 @@ WindGate JDBC ダイレクト・モードに関する実行エンジンの設定
 
     既定値: `1024`
 
+``com.asakusafw.dag.jdbc.<profile-name>.input.threads``
+    JDBC経由でデータを入力する際の、入力ごとの最大並列実行数を設定します。
+
+    現在のバージョンでは、この設定は後述の ``com.asakusafw.dag.jdbc.<profile-name>.optimizations`` に ``ORACLE_PARTITION``
+    を設定した場合に有効となる、Oracleのパーティションテーブルに対する並列読み込みを行うにのみ使用します。
+
+    Oracleのパーティションテーブルに対する並列読み込みを有効にする場合、この設定値に `1` より大きな値を設定する必要があります。
+
+    この設定は |M3BP_FEATURE|\ の「ワーカースレッドの最大数 (``com.asakusafw.m3bp.thread.max``)」以下である必要があります。
+
+    既定値: `1`
+
+    ..  hint::
+        この値に最大同時接続数より大きな値を設定した場合、いくつかのスレッドは接続の取得を待ち合わせることになります。
+
 ``com.asakusafw.dag.jdbc.<profile-name>.output.threads``
     JDBC経由でデータを出力する際の、最大並列実行数を設定します。
 
@@ -331,6 +348,7 @@ WindGate JDBC ダイレクト・モードに関する実行エンジンの設定
     利用可能な値:
 
     * ``ORACLE_DIRPATH`` - 出力時にOracleのダイレクトパス・インサートを有効にします
+    * ``ORACLE_PARTITION`` - 入力時にOracleのパーティションテーブルに対する並列読み込みを有効にします。
 
     既定値: なし (有効にしない)
 
