@@ -15,31 +15,20 @@ Asakusa Frameworkの将来のバージョンでは :doc:`../testing/emulation-mo
 利用方法
 ========
 
-Asakusa Vanillaの有効化
------------------------
-
-アプリケーションプロジェクトで  Asakusa Vanillaを有効にするには、 ディストリビューションプラグイン [#]_ を利用したビルドスクリプト ( :file:`build.gradle` ) に対して以下の設定を追加します。
-
-..  code-block:: groovy
-    :caption: build.gradle
-    :name: build.gradle-asakusa-vanilla-1
-
-    apply plugin: 'asakusafw-vanilla'
-
-..  [#] ディストリビューションプラグインについては、 :doc:`../application/gradle-plugin-reference` を参照してください。
-
-テストドライバの設定
---------------------
+アプリケーションのテスト
+------------------------
 
 テストドライバの実行エンジンにAsakusa Vanillaを利用するには、ビルドスクリプトに対して以下の定義を追加します。
 
 ..  code-block:: groovy
     :caption: build.gradle
-    :name: build.gradle-asakusa-vanilla-2
+    :name: build.gradle-asakusa-vanilla-1
 
     asakusafw {
         sdk.testkit 'vanilla'
     }
+
+この状態で ``./gradlew check`` などによってテストドライバを利用したテストを実行すると、Asakusa Vanillaが利用されます。
 
 Eclipse上でテストを実行する場合は上記設定後に ``./gradlew eclipse`` などを実行してEclipseのプロジェクト情報を更新してください。
 
@@ -48,7 +37,15 @@ Eclipse上でテストを実行する場合は上記設定後に ``./gradlew ecl
 
 Asakusa Vanillaは主にテストドライバ上で利用することを想定していますが、DSLコンパイルによってバッチアプリケーションを生成し、これを実行することも可能です。
 
-`Asakusa Vanillaの有効化`_ を設定した状態で、Gradleタスク :program:`vanillaCompileBatchapps` を実行すると、Asakusa Vanilla 向けのバッチアプリケーションのビルドを実行します。
+Asakusa Vanillaを実行エンジンに利用するバッチアプリケーションを生成するには、ディストリビューションプラグイン [#]_ を利用したビルドスクリプト ( :file:`build.gradle` ) に対して以下の設定を追加します。
+
+..  code-block:: groovy
+    :caption: build.gradle
+    :name: build.gradle-asakusa-vanilla-2
+
+    apply plugin: 'asakusafw-vanilla'
+
+この状態で、Gradleタスク :program:`vanillaCompileBatchapps` を実行すると、Asakusa Vanilla 向けのバッチアプリケーションのビルドを実行します。
 
 ..  code-block:: sh
 
@@ -59,7 +56,12 @@ Asakusa Vanillaは主にテストドライバ上で利用することを想定�
 標準の設定では、Asakusa Vanillaのバッチアプリケーションは接頭辞に ``vanilla.`` が付与されます。
 例えば、サンプルアプリケーションのバッチID ``example.summarizeSales`` の場合、Asakusa VanillaのバッチアプリケーションのバッチIDは ``vanilla.example.summarizeSales`` となります。
 
-なお、標準の設定では :program:`assemble` タスクの実行などによるデプロイメントアーカイブの作成時にAsakusa Vanilla向けのバッチアプリケーションを生成する機能は無効になっています。
+..  [#] ディストリビューションプラグインについては、 :doc:`../application/gradle-plugin-reference` を参照してください。
+
+デプロイメントアーカイブの作成
+------------------------------
+
+標準の設定では :program:`assemble` タスクの実行などによるデプロイメントアーカイブの作成時にAsakusa Vanilla向けのバッチアプリケーションを生成する機能は無効になっています。
 この設定を有効にするには、ビルドスクリプトに対して以下の定義を追加します。
 
 ..  code-block:: groovy
@@ -472,7 +474,7 @@ Asakusa Vanillaのバッチアプリケーション実行時の設定は、 `設
 ------------
 
 Asakusa Vanillaに関するバッチアプリケーション実行時のパラメータは、 :file:`$ASAKUSA_HOME/vanilla/conf/vanilla.properties` に記述します。
-このファイルは、 `Asakusa Vanillaの有効化`_ を設定してデプロイメントアーカイブを作成した場合にのみ含まれています。
+このファイルは、 `デプロイメントアーカイブの作成`_ の設定を行った状態でデプロイメントアーカイブを作成した場合にのみ含まれています。
 
 このファイルに設定した内容はAsakusa Vanillaのバッチアプリケーションの設定として使用され、バッチアプリケーション実行時の動作に影響を与えます。
 
