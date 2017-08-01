@@ -597,7 +597,7 @@ Asakusa Vanilla実行用のJVMプロセスを起動するコマンドには ``ha
 ..  tip::
     バッチアプリケーション実行時の環境変数は、YAESSプロファイルで設定することも可能です。
 
-    \ |M3BP_FEATURE|\ を利用する場合、コマンドラインジョブのプロファイル ``command.vanilla`` が利用できます。 :file:`$ASAKUSA_HOME/yaess/conf/yaess.properties` に ``command.vanilla.env.HADOOP_CMD`` といったような設定を追加することで、YAESSからAsakusa Vanillaを実行する際に環境変数が設定されます。
+    Asakusa Vanillaを利用する場合、コマンドラインジョブのプロファイル ``command.vanilla`` が利用できます。 :file:`$ASAKUSA_HOME/yaess/conf/yaess.properties` に ``command.vanilla.env.HADOOP_CMD`` といったような設定を追加することで、YAESSからAsakusa Vanillaを実行する際に環境変数が設定されます。
 
     YAESSのコマンドラインジョブの設定方法について詳しくは、 :doc:`../yaess/user-guide` - :ref:`yaess-profile-command-section` などを参照してください。
 
