@@ -350,7 +350,7 @@ Framework Organizer Plugin ( ``asakusafwOrganizer`` ) への拡張
 
     既定値: `operator.estimator.* のデフォルト値`_ を参照
 
-``<バッチID>.<オプション名>``
+``<バッチID>:<オプション名>``
     指定のオプションを、指定のIDのバッチに対してのみ有効にする。
 
     バッチIDは ``m3bp.`` などのプレフィックスが付与する **まえの** ものを指定する必要がある。
