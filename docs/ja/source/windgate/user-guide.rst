@@ -1043,7 +1043,21 @@ WindGateと連携してデータベースのテーブルからデータをイン
 ``Collection<? extends JdbcAttribute> getOptions()``
   インポート処理時に指定するオプションを指定します。
 
-  このメソッドは将来の拡張用に定義されており、本バージョンでは指定可能なオプションはありません。
+  指定可能なオプションは、列挙型 ``JdbcImporterDescription.Option`` [#]_ に定義されています。
+  本バージョンでは、以下のオプションが利用可能です。
+
+    ..  list-table:: データベースを利用するインポータ記述で利用可能なオプション
+        :widths: 2 8
+        :header-rows: 1
+
+        * - オプション
+          - 内容
+        * - ``ORACLE_PARTITION``
+          - Oracleのパーティションテーブルに対する並列読み込みを有効にする。
+
+            この機能を利用する場合、WindGateの実行環境は :ref:`windgate-jdbc-direct-mode` を利用する必要がある。
+            また :ref:`windgate-jdbc-direct-mode` の実行環境では、このオプション指定に加えて
+            :ref:`windgate-jdbc-direct-mode-engine-conf` で ``com.asakusafw.dag.jdbc.<profile-name>.optimizations`` を設定する必要がある。
 
 以下は実装例です。
 
@@ -1075,9 +1089,15 @@ WindGateと連携してデータベースのテーブルからデータをイン
         public Class<? extends DataModelJdbcSupport<?>> getJdbcSupport() {
             return DocumentJdbcSupport.class;
         }
+
+        @Override
+        public Collection<JdbcAttribute> getOptions() {
+            return Arrays.asList(Option.ORACLE_PARTITION);
+        }
     }
 
 ..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcImporterDescription`
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.windgate.JdbcImporterDescription.Option`
 
 データベースを利用するエクスポーター記述
 ----------------------------------------
