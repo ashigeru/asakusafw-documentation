@@ -163,6 +163,15 @@
 
   既定値: ``nio`` (Java NIOを利用)
 
+``com.asakusafw.dag.input.file.directory``
+  :doc:`../dsl/operators` - :ref:`spill-input-buffer` などを利用してメモリ上のバッファをファイルとして退避する際に使用する、
+  ファイルの出力先ディレクトリを設定します。
+
+  既定値: なし (未指定の場合、JVMのシステムプロパティ ``java.io.tmpdir`` で設定されているディレクトリを利用)
+
+  ..  attention::
+      大量のバッファが出力されるような処理を実行する場合には、出力先に十分な空き領域を確保する必要があることに注意してください。
+
 ``hadoop.<name>``
   指定の ``<name>`` を名前に持つHadoopの設定を追加します。
 
