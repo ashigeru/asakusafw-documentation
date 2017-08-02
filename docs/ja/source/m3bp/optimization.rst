@@ -255,6 +255,14 @@ WindGate JDBC ダイレクト・モードに関するコンパイラオプショ
 
 ..  _windgate-jdbc-direct-mode-engine-conf:
 
+JDBCドライバーの配置
+--------------------
+
+WindGate JDBC ダイレクト・モードで使用するJDBCドライバーのライブラリファイルは、 ``$ASAKUSA_HOME/m3bp/lib`` ディレクトリ直下に配置してください。
+
+..  attention::
+    通常のWindGateとJDBCドライバーファイルの配置ディレクトリが異なることに注意してください。
+
 実行エンジンの設定
 ------------------
 
