@@ -507,6 +507,7 @@ DMDLでは4種類のデータモデルを記述できます。
     projective sub_proj = super_proj + { b : INT; };
     record = sub_proj;
 
+..  _dmdl-property-references:
 
 プロパティ参照を定義する
 ------------------------

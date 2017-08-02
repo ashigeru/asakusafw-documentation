@@ -5,6 +5,64 @@
 Asakusa Frameworkのリリースノートです。
 すべての変更点は :doc:`changelogs` を参照してください。
 
+Release 0.9.2
+=============
+
+(開発中)
+
+`Asakusa Framework 0.9.2 documentation`_
+
+..  _`Asakusa Framework 0.9.2 documentation`: http://docs.asakusafw.com/0.9.2/release/ja/html/index.html
+
+新機能と主な変更点
+------------------
+
+DMDLプロパティ参照
+~~~~~~~~~~~~~~~~~~
+
+DMDLプロパティ参照は、DMDLのレコードモデルおよび射影モデルに対して、複数のプロパティを単一のコレクションとして利用する機能をを提供します。
+
+これらは固定長のリスト ( ``java.util.List`` ) またはマップ ( ``java.util.Map`` ) として利用でき、それぞれの要素はデータモデル内に存在するプロパティの参照を表します。 つまり、データモデル中のプロパティの値を変更するとリストやマップの値も変化し、リストやマップに対して変更を行うと、対応するプロパティの値が変化します。
+
+このプロパティ参照を上手に利用すると、データモデル内に存在する「プロパティの繰り返し」を容易に処理できるようになります。
+
+詳しくは、以下のドキュメントを参照してください。
+
+* :doc:`../dmdl/user-guide` - :ref:`dmdl-property-references`
+
+WindGate JDBC ダイレクト・モード を正式機能としてリリース
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+バージョン 0.9.0 から試験的機能として公開していた :ref:`windgate-jdbc-direct-mode` を正式機能として公開しました。
+
+WindGate JDBC ダイレクト・モードとは、WindGateを利用したバッチアプリケーションの実行時にデータフロー処理を行うプロセスの内部で直接
+WindGate JDBCによるデータベースへのインポート処理とエクスポート処理を行うように動作する、 |M3BP_FEATURE| 固有の最適化設定です。
+
+WindGate JDBC ダイレクト・モードを利用することで、通常のWindGateよりもバッチアプリケーション全体の実行時間が大きく短縮できる可能性があります。
+
+詳しくは、以下のドキュメントを参照してください。
+
+* :doc:`m3bp/optimization` - :ref:`windgate-jdbc-direct-mode`
+
+WindGate - Oracleパーティションテーブルの並列読み出し
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+WindGateの最適化オプションに、Oracleパーティションテーブルに対する並列読み出しを行うオプションが追加されました。
+
+この機能は、 :ref:`windgate-jdbc-direct-mode` でのみ利用することができます。
+この機能の設定方法などは、 :ref:`windgate-jdbc-direct-mode` のドキュメントを参照してください。
+
+その他の変更点
+--------------
+
+* :doc:`spark/index` - Direct I/O のファイル出力処理中に処理が失敗しても正常終了として扱われることがある問題を修正
+* :doc:`spark/index` - :ref:`summarize-operator` の 集約関数 ``max`` を適用するデータに ``null`` が含まれていても、エラーにならず正常終了として扱われることがある問題を修正
+* :doc:`spark/optimization` に Direct I/Oの入力スプリットを結合するオプション ``spark.hadoop.com.asakusafw.bridge.directio.input.combine`` を追加
+* :doc:`m3bp/optimization` に :ref:`spill-input-buffer` で使用するディレクトリを変更するオプション ``com.asakusafw.dag.input.file.directory`` を追加
+
+その他、細かな機能改善およびバグフィックスが含まれます。
+すべての変更点は :doc:`changelogs` を参照してください。
+
 Release 0.9.1
 =============
 
