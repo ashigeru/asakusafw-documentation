@@ -5,7 +5,7 @@ Changelogs
 Release 0.9.2
 =============
 
-(in development)
+Aug 07, 2017
 
 ..  list-table:: Bundled Components
     :widths: 3 1 6
