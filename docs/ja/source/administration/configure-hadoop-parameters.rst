@@ -7,8 +7,9 @@ Hadoopパラメータの設定
 設定ファイル
 ============
 
-Asakusa Frameworkに関するHadoopのパラメータは、 :file:`$ASAKUSA_HOME/core/conf/asakusa-resources.xml` [#]_ に記載します。
+Asakusa Frameworkに関するHadoopのパラメータは、 :file:`$ASAKUSA_HOME/core/conf/asakusa-resources.xml` [#]_ に設定します。
 このファイルに設定した内容はバッチアプリケーションの実行時にHadoopジョブの設定として使用され、ジョブ実行時の動作に影響を与えます。
+また、Hadoopのライブラリを利用している :doc:`../directio/index` などの設定もこのファイルに記述します。
 
 設定ファイルはHadoopの各設定ファイルのフォーマットと同様です。
 以下のように、１つの設定項目に対して ``<property>`` 要素を作成し、設定名を ``<name>`` 要素に、設定値を ``<value>`` 要素にそれぞれ設定します。
@@ -39,5 +40,8 @@ Asakusa Frameworkに関するHadoopのパラメータは、 :file:`$ASAKUSA_HOME
 
 Hadoopパラメータで設定可能な項目は、以下のドキュメントを参照してください。
 
-* :doc:`configure-task-optimization`
-* :doc:`configure-library-cache`
+* :doc:`../directio/user-guide`
+* :doc:`../mapreduce/configure-task-optimization`
+* :doc:`../mapreduce/configure-library-cache`
+* :doc:`deployment-runtime-plugins`
+

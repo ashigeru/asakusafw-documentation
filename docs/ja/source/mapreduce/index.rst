@@ -12,6 +12,8 @@ Asakusa on Sparkは、Asakusa DSLを始めとするAsakusa Frameworkの開発基
 
     dsl-visualization
     reference
+    configure-task-optimization
+    configure-library-cache
 
 リンク
 ======

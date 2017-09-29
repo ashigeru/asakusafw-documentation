@@ -147,5 +147,5 @@ Eclipse上でのテストドライバー実行
     Asakusa Framework バージョン ``0.7.2`` 以前では ``com.asakusafw:asakusa-test-inprocess`` を指定したエミュレーションモードの実行にはスモールジョブ実行エンジンは使用されませんでしたが、バージョン ``0.7.3`` からはスモールジョブ実行エンジンを使用するよう変更されました。
 
 ..  seealso::
-    スモールジョブ実行エンジンについては、 :doc:`../administration/configure-task-optimization` を参照してください。
+    スモールジョブ実行エンジンについては、 :doc:`../mapreduce/configure-task-optimization` を参照してください。
 

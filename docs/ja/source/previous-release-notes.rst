@@ -573,7 +573,7 @@ Nov 20, 2014
 
 運用環境で本機能を有効にするには、以下を参照してください。
 
-* :doc:`administration/configure-task-optimization`
+* :doc:`mapreduce/configure-task-optimization`
 
 開発環境で本機能を有効にするには、以下を参照してください。
 
@@ -683,8 +683,8 @@ Mapタスクのスケジューリングを改善
 
 これらの機能に関する設定など詳しくは、以下のドキュメントを参照してください。
 
-* :doc:`administration/configure-library-cache`
-* :doc:`administration/configure-task-optimization`
+* :doc:`mapreduce/configure-library-cache`
+* :doc:`mapreduce/configure-task-optimization`
 
 ----
 
