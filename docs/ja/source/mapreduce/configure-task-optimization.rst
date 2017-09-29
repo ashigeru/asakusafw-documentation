@@ -4,8 +4,11 @@ Hadoopタスクの最適化設定
 
 この文書では、Hadoopパラメータとして設定可能なHadoopタスクの最適化設定について説明します。
 
+..  attention::
+    本書で説明する機能はAsakusa on MapReduceでのみ使用可能です。
+
 ..  seealso::
-    Hadoopパラメータの設定方法については、 :doc:`configure-hadoop-parameters` を参照してください。
+    Hadoopパラメータの設定方法については、 :doc:`../administration/configure-hadoop-parameters` を参照してください。
 
 タスク最適化の設定
 ==================

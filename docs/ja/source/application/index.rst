@@ -26,13 +26,6 @@ Asakusa Frameworkの開発環境(OSやAsakusa Frameworkが利用するソフト�
 * :doc:`gradle-plugin-v08-changes`
 * :doc:`previous-migration-guide`
 
-開発ツールの利用
-================
-
-Asakusa Frameworkが提供する開発ツールに関するドキュメントです。
-
-* :doc:`dsl-visualization`
-
 プラットフォーム関連
 ====================
 
@@ -66,7 +59,6 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
     gradle-plugin-v09-changes
     gradle-plugin-v08-changes
     previous-migration-guide
-    dsl-visualization
     using-hadoop
     using-jdk
     gradle-plugin-deprecated

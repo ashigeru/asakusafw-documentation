@@ -10,7 +10,10 @@ Asakusa on Sparkは、Asakusa DSLを始めとするAsakusa Frameworkの開発基
 ..  toctree::
     :maxdepth: 1
 
+    dsl-visualization
     reference
+    configure-task-optimization
+    configure-library-cache
 
 リンク
 ======

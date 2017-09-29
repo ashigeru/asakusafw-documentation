@@ -42,9 +42,6 @@
         </property>
     </configuration>
 
-..  hint::
-    上記設定ファイルの記法はHadoop本体の設定ファイル ( :file:`core-site.xml` 等 ) と同様です。
-
 レポートAPIに関するプラグイン
 =============================
 

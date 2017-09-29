@@ -1,11 +1,11 @@
-===================
-Asakusa DSLの可視化
-===================
+================================
+Asakusa on MapReduce DSLの可視化
+================================
 
-この文書では、Asakusa DSLの分析を行うにあたって、Asakusa Frameworkが提供するDSLの可視化の仕組みについて解説します。
+この文書では、Asakusa DSLの分析を行うにあたって、Asakusa on MapReudceが提供するDSLの可視化の仕組みについて解説します。
 
 ..  attention::
-    Asakusa Framework バージョン |version| では、本書で説明する機能はMapReduce DSLコンパイラで使用可能です。Spark DSLコンパイラには含まれていません。
+    本書で説明する機能はMapReduce DSLコンパイラでのみ使用可能です。
 
 Asakusa DSLの分析用ファイル
 ===========================
@@ -42,7 +42,7 @@ Asakusa DSLをバッチコンパイルして生成したバッチアプリケー
     * - :file:`jobflow/<フローID>/stageblock-XX.dot`
       - 各ステージ単位の構造を示すdotファイル
 
-..  [#] バッチアプリケーションアーカイブファイルを生成する方法については、 :doc:`gradle-plugin` を参照してください。
+..  [#] バッチアプリケーションアーカイブファイルを生成する方法については、 :doc:`../application/gradle-plugin` を参照してください。
 ..  [#] バッチアプリケーションアーカイブファイルから分析用ファイルを取り出すには、jarコマンド等を使用してアーカイブファイルから分析用ファイルを抽出してください。
         なお、プロジェクトをバッチコンパイルした環境では、プロジェクトのビルドディレクトリ配下の :file:`batchc/<バッチID>/opt/dsl-analysis` ディレクトリに分析用ファイルが出力されています。
 
@@ -186,5 +186,5 @@ Graphvizを使って、dotファイルからPDF形式 [#]_ でグラフを作成
                 stage: hoge.batchapp.example.summarizeSales.byCategory.stage0003.StageClient
                     mapper: hoge.batchapp.example.summarizeSales.byCategory.stage0003.StageMapper1
     ...
-    
+
 ..  [#] バッチコンパイル後のバッチ構造はdotファイルによるグラフ形式も利用することができますが、テキストファイル形式のほうがより詳細な情報が含まれています。
