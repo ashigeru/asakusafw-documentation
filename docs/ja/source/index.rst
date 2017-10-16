@@ -29,6 +29,7 @@ Asakusa Framework入門
 * :doc:`directio/index`
 * :doc:`windgate/index`
 * :doc:`yaess/index`
+* :doc:`cli/index`
 * :doc:`application/index`
 * :doc:`administration/index`
 * :doc:`sandbox/index`
