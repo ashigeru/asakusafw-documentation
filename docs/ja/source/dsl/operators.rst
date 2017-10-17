@@ -2061,6 +2061,123 @@ Flow DSLからは次のように利用します。
 `グループ結合演算子の実装`_ において、演算子の入力には ``List`` を指定しています。
 この演算子は基本的に小さなグループごとに処理することを想定しており、大きなグループを処理する場合に ``List`` 内の要素が多くなりすぎて、メモリが不足してしまう場合があります。
 
+これを回避するために、演算子メソッドの各入力の引数に `@Once注釈`_ 、または `@Spill注釈`_ を指定することができます。
+
+..  attention::
+    Asakusa on MapReduce では ``@Once`` 注釈 および ``@Spill`` 注釈を利用できません。
+    Asakusa on MapReduce では後述の `InputBuffer.ESCAPE`_ に記載の方法を利用してください。
+
+@Once注釈
+^^^^^^^^^
+
+``@Once`` [#]_ 注釈を演算子の入力に指定すると、メモリ消費を抑え大きな入力グループを安全に取り扱うことができます。
+ただし、入力には以下の制約が課せられます。
+
+* 引数の型は ``Iterable<...>`` でなければならない (通常は ``List<...>`` )
+* 各要素の内容は一度だけしか読み出せない
+
+  .. note:
+     @Once 注釈は、各要素のオブジェクトを順次読み出し、要素全体を一度に蓄えないことで巨大なデータを取り扱えるようにしています。
+
+以下は ``@Once`` 注釈を使用するグループ結合演算子メソッドの例です。
+演算子メソッドの各入力に ``@Once`` 注釈を付与し、引数の型を ``List`` から ``Iterable`` に変更しています。
+
+..  code-block:: java
+
+    @CoGroup
+    public void cogroupWithOnce(
+            @Key(group = "hogeCode") @Once Iterable<Hoge> hogeList,
+            @Key(group = "hogeId") @Once Iterable<Foo> fooList,
+            Result<Hoge> hogeResult,
+            Result<Foo> fooResult
+            ) {
+        for (Hoge hoge : hogeList) {
+            ...
+        }
+        for (Foo foo : fooList) {
+            ...
+        }
+    }
+
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.model.Once`
+
+@Spill注釈
+^^^^^^^^^^
+
+``@Spill`` [#]_ 注釈を演算子の入力に指定すると、演算子メソッドの引数に指定したリストはメモリ外のストレージを一時的に利用します。
+Java VMのヒープ上に配置されるオブジェクトは全体の一部で、残りはファイルシステム上などの領域に保存します。
+
+これにより ``List`` を利用しつつ巨大な入力データを取り扱えるようになります。
+また、 ``@Once`` 注釈では制約のある、リストに対する複数回アクセスやランダムアクセスが可能です。
+
+..  attention::
+    ``@Spill`` 注釈を利用するとほとんどの場合に著しくパフォーマンスが低下します。
+    また、一時領域のストレージ構成や空き領域の確保といった、環境面での考慮も必要になります。
+
+    このため、通常は  ``@Once`` 注釈の利用を推奨します。
+    演算子メソッド実装の都合上 ``@Once`` 注釈の制約が許容できない場合にのみ、 ``@Spill`` 注釈の利用を検討してください。
+
+``@Spill`` 注釈を指定した入力の ``List`` には以下に示す多大な制約がかかります。
+
+* それぞれの ``List`` からはひとつずつしかオブジェクトを取り出せなくなる。
+* 2つ以上オブジェクトを取り出した場合、最後に取り出したオブジェクト以外はまったく別の内容に変更されている可能性がある。
+* リストから取り出したオブジェクトを変更しても、リストの別の要素にアクセスしただけで変更したオブジェクトの内容が失われる可能性がある。
+
+つまり、次のようなプログラムを書いた場合の動作は保証されません。
+
+..  code-block:: java
+
+    @CoGroup
+    public void invalid(@Key(group = "id") @Spill List<Hoge> list, Result<Hoge> result) {
+        // 二つ取り出すとaの内容が保証されない
+        Hoge a = list.get(0);
+        Hoge b = list.get(1);
+
+        // 内容を変更しても、別の要素を参照しただけでオブジェクトの内容が変わる場合がある
+        b.setValue(100);
+        list.get(2);
+    }
+
+上記のようなプログラムを書きたい場合、かならずオブジェクトのコピーを作成してください。
+
+..  code-block:: java
+
+    Hoge a = new Hoge();
+    Hoge b = new Hoge();
+
+    @CoGroup
+    public void valid(@Key(group = "id") @Spill List<Hoge> list, Result<Hoge> result) {
+        a.copyFrom(list.get(0));
+        b.copyFrom(list.get(1));
+        b.setValue(100);
+        list.get(2);
+        ...
+    }
+
+なお、下記のようにひとつずつ取り出して使う場合、オブジェクトをコピーする必要はありません（ただし、このケースでは ``@Once`` で代替可能です）。
+
+..  code-block:: java
+
+    @CoGroup
+    public void valid(@Key(group = "id") @Spill List<Hoge> list, Result<Hoge> result) {
+        for (Hoge hoge : list) {
+            hoge.setValue(100);
+            result.add(hoge);
+        }
+    }
+
+..  [#] :asakusafw-javadoc:`com.asakusafw.vocabulary.model.Spill`
+
+InputBuffer.ESCAPE
+^^^^^^^^^^^^^^^^^^
+
+..  attention::
+    バージョン |version| において、 ``InputBuffer.ESCAPE`` を指定する方法は過去バージョンとの互換性維持のため提供していますが、将来のバージョンでは非推奨となる予定です。
+    Asakusa on Spark、および |M3BP_FEATURE| ではこの機能の代わりに `@Once注釈`_ および `@Spill注釈`_ の利用を推奨します。
+
+`グループ結合演算子の実装`_ において、演算子の入力には ``List`` を指定しています。
+この演算子は基本的に小さなグループごとに処理することを想定しており、大きなグループを処理する場合に ``List`` 内の要素が多くなりすぎて、メモリが不足してしまう場合があります。
+
 これを回避するには、演算子注釈の要素 ``inputBuffer`` に ``InputBuffer.ESCAPE`` [#]_ を指定します。
 何も指定しない場合は、ヒープ上に全てのデータを保持する ``InputBuffer.EXPAND`` が利用されます。
 
