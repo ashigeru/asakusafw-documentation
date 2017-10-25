@@ -31,7 +31,6 @@ Asakusa Frameworkの開発環境(OSやAsakusa Frameworkが利用するソフト�
 
 特定のプラットフォームでAsakusa Frameworkを利用することに関するドキュメントです。
 
-* :doc:`using-hadoop`
 * :doc:`using-jdk`
 
 非推奨機能
@@ -59,7 +58,6 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
     gradle-plugin-v09-changes
     gradle-plugin-v08-changes
     previous-migration-guide
-    using-hadoop
     using-jdk
     gradle-plugin-deprecated
     sdk-artifact

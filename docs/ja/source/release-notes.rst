@@ -252,7 +252,7 @@ Asakusa Vanillaは、Asakusa Frameworkの内部機能として提供するDAG実
 
 Asakusa Vanillaは単一ノード上でアプリケーションを実行します。
 軽量で比較的コンパイル速度が速く、実行時にJVM以外の環境を必要としない、といった特徴を持っています。
-このため将来のバージョンでは、Asakusa Vanillaを :doc:`testing/emulation-mode` で利用する標準の実行エンジンに採用することを計画しています。
+このため将来のバージョンでは、Asakusa Vanillaを :doc:`mapreduce/emulation-mode` で利用する標準の実行エンジンに採用することを計画しています。
 
 詳しくは、以下のドキュメントを参照してください。
 

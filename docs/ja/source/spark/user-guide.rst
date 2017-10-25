@@ -34,7 +34,7 @@ Asakusa DSL
   従来のAsakusa DSLやDMDLで記述したバッチアプリケーションは基本的に変更なしで、Asakusa DSL Compiler for Sparkを利用してSpark向けの実行モジュールを生成することができます。
 
 テスト機構
-  従来のAsakusa DSLのテスト方法と同様に、エミュレーションモードを利用してAsakusa DSLのテストを実行することができます。このとき、Sparkは特に利用しません。
+  従来のAsakusa DSLのテスト方法と同様に、テストドライバーを利用してAsakusa DSLのテストを実行することができます。このとき、Sparkは特に利用しません。
 
 アプリケーションの実行
   従来と同様、YAESSを利用してバッチアプリケーションを実行することができます。

@@ -49,7 +49,7 @@ Asakusa Frameworkを利用したバッチアプリケーションの開発環境
       - Ubuntu Desktop
       - 16.04
     * - OS
-      - Windows [#]_
+      - Windows
       - 7(SP1) / 10
     * - OS
       - MacOSX [#]_
@@ -66,17 +66,12 @@ Asakusa Frameworkを利用したバッチアプリケーションの開発環境
     * - IDE
       - IntelliJ IDEA Community Edition [#]_
       - 2017.1
-    * - Hadoop
-      - Apache Hadoop [#]_
-      - 2.7.3
 
-..  [#] Windows上ではテストドライバーを利用したテストは :doc:`エミュレーションモード <../testing/emulation-mode>` のみ使用できます。Windowsの利用については、 :doc:`../introduction/start-guide-windows` を参照してください。
 ..  [#] MacOSX上では基本的な動作のみ検証しています。
 ..  [#] JREでは一部の機能が動作しません。必ずJDKを使用してください。
 ..  [#] 開発環境に対するJavaのセットアップについては、 :doc:`../application/using-jdk` を参照してください。
 ..  [#] Gradleの利用については、 :doc:`../application/gradle-plugin` を参照してください。
 ..  [#] IntelliJ IDEAの利用は試験的機能として提供しています。詳しくは :doc:`../sandbox/intellij-idea` を参照してください。
-..  [#] 開発環境に対するHadoopのセットアップについては、 :doc:`../application/using-hadoop` を参照してください。
 
 WindGate
 ========
