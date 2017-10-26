@@ -17,6 +17,7 @@
     directio/index
     windgate/index
     yaess/index
+    cli/index
     application/index
     administration/index
     sandbox/index
