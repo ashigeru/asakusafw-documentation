@@ -51,7 +51,7 @@ Asakusa Frameworkが提供するSDKアーティファクトは以下のものが
       - :doc:`Direct I/O Hive <../directio/using-hive>` を使用するアプリケーション開発プロジェクトで必要となるライブラリをまとめたアーティファクト
     * - ``asakusa-sdk-test-emulation``
       - 0.7.2
-      - :doc:`エミュレーションモード <../testing/emulation-mode>` を使用するアプリケーション開発プロジェクトで必要となるライブラリをまとめたアーティファクト
+      - :doc:`エミュレーションモード <../mapreduce/emulation-mode>` を使用するアプリケーション開発プロジェクトで必要となるライブラリをまとめたアーティファクト
 
 SDKアーティファクトの利用方法
 =============================

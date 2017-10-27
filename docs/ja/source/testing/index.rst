@@ -26,5 +26,4 @@ Asakusa Frameworkにはテストドライバーという開発用のJavaライ�
     user-guide
     using-excel
     using-json
-    emulation-mode
     developer-guide

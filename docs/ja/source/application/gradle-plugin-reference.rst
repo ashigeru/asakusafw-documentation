@@ -112,6 +112,10 @@ Asakusa Gradle Pluginはいくつかのプラグインから構成されてい�
       - |M3BP_FEATURE| Plugin
       - ``-``
       - |M3BP_ENGINE| 向けのバッチアプリケーションを生成、実行するための機能を導入する。
+    * - ``asakusafw-vanilla``
+      - Asakusa Vanilla Plugin
+      - ``-``
+      - Asakusa Vanilla 向けのバッチアプリケーションを生成、実行するための機能を導入する。
 
 使用方法
 --------
@@ -505,9 +509,9 @@ SDKプロパティ
         true または false を指定可能。
     * - ``testkit``
       - Object
-      - ``mapreduce-emulation``
+      - ``vanilla``
       - テストドライバで利用する実行エンジンを指定する。
-        ``mapreduce`` (Hadoop MapReduce) または ``mapreduce-emulation`` (エミュレーションモード) を指定可能。
+        ``vanilla`` (Asakusa Vanilla) , ``mapreduce`` (Hadoop MapReduce) , ``mapreduce-emulation`` (エミュレーションモード) を指定可能 [#]_ 。
     * - ``directio``
       - Object
       - true
@@ -526,6 +530,7 @@ SDKプロパティ
 
 ..  [#] アプリケーションSDKライブラリについては、 :doc:`gradle-plugin` - :ref:`gradle-plugin-dependency-management` も参照してください。
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwSdkExtension` が提供します。
+..  [#] 標準の設定以外の実行エンジンの利用は非推奨です。
 
 Eclipse Pluginの拡張
 --------------------

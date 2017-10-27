@@ -66,7 +66,7 @@ Hadoop1系は非対応となりました。
 
 開発環境にHadoop2系をインストールする方法については、以下のドキュメントを参照してください。
 
-* :doc:`using-hadoop`
+* :doc:`../mapreduce/using-hadoop`
 
 Gradle
 ~~~~~~
