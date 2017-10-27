@@ -645,6 +645,30 @@ Framework Organizer Plugin の規約プロパティはビルドスクリプト�
 
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.BatchappsConfiguration` が提供します。
 
+Hadoopプロパティ
+~~~~~~~~~~~~~~~~
+
+Hadoopの構成に関する規約プロパティは、 ``asakusafwOrganizer`` ブロック内の参照名 ``hadoop`` でアクセスできます [#]_ 。
+この規約オブジェクトは以下のプロパティを持ちます。
+
+..  list-table:: Framework Organizer Plugin - Hadoopプロパティ ( ``hadoop`` ブロック )
+    :widths: 2 1 2 5
+    :header-rows: 1
+
+    * - プロパティ名
+      - 型
+      - デフォルト値
+      - 説明
+    * - ``embed``
+      - boolean
+      - false
+      - この値をtrueにするとデプロイメントアーカイブにHadoopライブラリーを含める
+
+..  [#] これらのプロパティは規約オブジェクト :asakusa-gradle-groovydoc:`com.asakusafw.gradle.plugins.AsakusafwOrganizerPluginConvention.HadoopConfiguration` が提供します。
+
+..  seealso::
+    Hadoopプロパティの利用方法については、 :doc:`../m3bp/user-guide` - :ref:`m3bp-user-guide-using-hadoop` を参照してください。
+
 MapReduceプロパティ
 ~~~~~~~~~~~~~~~~~~~
 
