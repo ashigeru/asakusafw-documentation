@@ -44,3 +44,4 @@ Asakusa Frameworkの外部で作成されたシーケンスファイルを利用
     sequencefile-format
     using-hive
     tools-guide
+    directio-cli

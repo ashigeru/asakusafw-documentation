@@ -21,7 +21,7 @@ Asakusa CLIは開発環境と運用環境の両方で利用することができ
 運用環境のセットアップ
 ----------------------
 
-運用環境では、バッチアプリケーションをビルドして生成するデプロイメントアーカイブが運用環境に配置された状態であればAsakusa CLIを利用することができます。
+運用環境では、Asakusa Frameworkのデプロイメントアーカイブを配備した状態であればAsakusa CLIを利用することができます。
 運用環境上でデプロイメントアーカイブを配置する手順については、 :doc:`../administration/deployment-guide` などを参照してください。
 
 :program:`asakusa` コマンド
@@ -48,7 +48,7 @@ Asakusa CLIの各機能は :program:`asakusa` コマンドを通して利用し�
 
     See 'asakusa <command> --help' for more information on a specific command.
 
-エラーが返される等で上記のように表示されない場合は、セットアップ環境を確認してください。
+上記が表示されず、エラーメッセージが表示されてしまう場合には、セットアップ環境を確認してください。
 
 コマンド体系
 ============
@@ -149,8 +149,8 @@ Asakusa CLIの各機能は :program:`asakusa` コマンドを通して利用し�
 
 .. _`asakusa-cmd-run`:
 
-:program:`run`
---------------
+:program:`asakusa run`
+----------------------
 
 :program:`run` は、環境にデプロイされているバッチアプリケーションを実行します。
 
@@ -253,8 +253,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list`:
 
-:program:`list`
----------------
+:program:`asakusa list`
+-----------------------
 
 :program:`list` は、バッチアプリケーションのDSL情報から様々な観点のリストを表示します。
 :program:`list` のサブコマンド一覧を以下に示します。
@@ -311,8 +311,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-batch`:
 
-:program:`batch`
-~~~~~~~~~~~~~~~~
+:program:`asakusa list batch`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`batch` は環境にデプロイされているバッチアプリケーションの一覧を表示します。
 
@@ -348,8 +348,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-parameter`:
 
-:program:`parameter`
-~~~~~~~~~~~~~~~~~~~~
+:program:`asakusa list parameter`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`parameter` は指定されたバッチIDに対応する、バッチアプリケーションのバッチ引数一覧を表示します。
 
@@ -382,8 +382,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-jobflow`:
 
-:program:`jobflow`
-~~~~~~~~~~~~~~~~~~
+:program:`asakusa list jobflow`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`jobflow` は指定されたバッチIDに対応する、バッチアプリケーションに含まれるジョブフローの一覧を表示します。
 
@@ -434,8 +434,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-operator`:
 
-:program:`operator`
-~~~~~~~~~~~~~~~~~~~
+:program:`asakusa list operator`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`operator` は指定したバッチIDに対応する、バッチアプリケーションに含まれる演算子の一覧を表示します。
 
@@ -473,8 +473,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-directio`:
 
-:program:`directio`
-~~~~~~~~~~~~~~~~~~~
+:program:`asakusa list directio`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`directio` は指定したバッチIDに対応する、バッチアプリケーションに含まれるDirect I/Oの入出力一覧を表示します。
 :program:`directio` のサブコマンド一覧を以下に示します。
@@ -559,8 +559,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-hive`:
 
-:program:`hive`
-~~~~~~~~~~~~~~~
+:program:`asakusa list hive`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`hive` は指定したバッチIDに対応する、バッチアプリケーションに含まれるDirect I/O Hiveの入出力一覧を表示します。
 :program:`hive` のサブコマンド一覧を以下に示します。
@@ -659,8 +659,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-windgate`:
 
-:program:`windgate`
-~~~~~~~~~~~~~~~~~~~
+:program:`asakusa list windgate`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`windgate` は指定したバッチIDに対応する、バッチアプリケーションに含まれるWindGateの入出力一覧を表示します。
 :program:`windgate` のサブコマンド一覧を以下に示します。
@@ -742,8 +742,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-list-plan`:
 
-:program:`plan`
-~~~~~~~~~~~~~~~
+:program:`asakusa list plan`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`plan` は指定したバッチIDに対応する、バッチアプリケーションの実行計画に含まれるvertexの一覧を表示します。
 
@@ -838,8 +838,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-generate`:
 
-:program:`generate`
--------------------
+:program:`asakusa generate`
+---------------------------
 
 :program:`generate` は、バッチアプリケーションのDSL情報から様々なリソースを生成します。
 :program:`generate` のサブコマンド一覧を以下に示します。
@@ -859,8 +859,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 ..  _`asakusa-cmd-generate-dot`:
 
-:program:`dot`
-~~~~~~~~~~~~~~
+:program:`asakusa generate dot`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`dot` はバッチアプリケーションのDSL情報からグラフ表示ツール Graphviz 向けの ``dot`` スクリプトを生成します。
 :program:`dot` のサブコマンド一覧を以下に示します。
@@ -952,8 +952,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 ..  _`asakusa-cmd-generate-ddl`:
 
-:program:`ddl`
-~~~~~~~~~~~~~~
+:program:`asakusa generate ddl`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :program:`ddl` はバッチアプリケーションのDSL情報からDDLスクリプトを生成する
 :program:`ddl` のサブコマンド一覧を以下に示します。
@@ -1052,8 +1052,8 @@ SLF4JのSimpleLogger [#]_ のシステムプロパティを環境変数 ``ASAKUS
 
 .. _`asakusa-cmd-version`:
 
-:program:`version`
-------------------
+:program:`asakusa version`
+--------------------------
 
 :program:`version` は、環境にインストールまたはデプロイされているAsakusa Frameworkのバージョンを表示します。
 
