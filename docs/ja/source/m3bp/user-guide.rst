@@ -219,23 +219,19 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
 ..  hint::
     Shafuを利用する場合は、プロジェクトを選択してコンテキストメニューから :menuselection:`Jinrikisha (人力車) --> Asakusaデプロイメントアーカイブを生成` を選択します。
 
+..  _m3bp-user-guide-using-hadoop:
+
 Hadoopとの連携
 --------------
 
-`デプロイメントアーカイブの生成`_\ を行う際に、以下のいずれかの設定を行うことで、実行環境にインストール済みのHadoopと連携するデプロイメントアーカイブを生成します。
+..  attention::
+    Hadoopとの連携についての標準の動作および設定は、Asakusa Framework バージョン 0.10.0 から大きく変更されました。
+    バージョン0.9系、およびそれ以前のバージョンから移行する場合、必ず :doc:`../application/gradle-plugin-v010-changes` を参照してください。
 
-* ``asakusafwOrganizer.m3bp.useSystemHadoop true``
-* ``asakusafwOrganizer.profiles.<プロファイル名>.m3bp.useSystemHadoop true``
+`デプロイメントアーカイブの生成`_\ を行う際に、標準の設定では実行環境上にインストールしたHadoopと連携するようデプロイメントアーカイブを生成します。
+実行環境上にインストールしたHadoopと連携することで、環境上に構築されているHDFSなどに対してファイルの入出力を行うことができるようになります。
 
-以下は、 ``prod`` プロファイルのデプロイメントアーカイブに上記の設定を行う例です。
-
-..  literalinclude:: attachment/build-system-hadoop.gradle
-    :language: groovy
-    :caption: build.gradle
-    :name: build.gradle-m3bp-user-guide-2
-    :emphasize-lines: 19
-
-なお、実行環境にインストールされたHadoopを利用する際、以下の順序で ``hadoop`` コマンドを探して利用します (上にあるものほど優先度が高いです)。
+実行環境にインストールされたHadoopを利用する際、以下の順序で ``hadoop`` コマンドを探して利用します (上にあるものほど優先度が高いです)。
 
 * 環境変数に ``HADOOP_CMD`` が設定されている場合、 ``$HADOOP_CMD`` コマンドを経由して起動します。
 * 環境変数に ``HADOOP_HOME`` が設定されている場合、 :file:`$HADOOP_HOME/bin/hadoop` コマンドを経由して起動します。
@@ -246,7 +242,7 @@ Hadoopとの連携
     この設定を上書きする方法は、 `Java VMの設定`_ を参照してください。
 
 ..  attention::
-    MapRなどの一部の環境で ``useSystemHadoop true`` を利用した際に、バッチアプリケーション起動時にデッドロックが発生しアプリケーションが正しく実行されないことがある問題が確認されています。
+    MapRなどの一部の環境では、バッチアプリケーション起動時にデッドロックが発生しアプリケーションが正しく実行されないことがある問題が確認されています。
     これを回避するには、 ``build.gradle`` に以下の設定を加えてください
 
     ..  code-block:: groovy
@@ -258,6 +254,28 @@ Hadoopとの連携
                 libraries += ["com.asakusafw.m3bp.bridge:asakusa-m3bp-workaround-hadoop:${asakusafw.m3bp.version}"]
             }
         }
+
+また、実行環境のHadoopと連携せずローカルファイルシステムや外部のデータベースに対してのみデータの入出力を行うような場合でも、
+Direct I/OやWindGateなどの一部のコンポーネントはHadoopに含まれるライブラリやスクリプトを必要とするため、
+実行環境上にはAsakusa Frameworkの実行に必要なHadoopコンポーネントを導入する必要があります。
+
+このような場合 Asakusa Gradle Plugin の機能で、必要な最低限のHadoopライブラリーをデプロイメントアーカイブに組み込むことができます。
+デプロイメントアーカイブにHadoopライブラリーを含めるには、以下の設定を追加してください。
+
+* ``asakusafwOrganizer.hadoop.embed true``
+
+以下は、 ``prod`` プロファイルのデプロイメントアーカイブに対してのみ上記の設定を行う例です。
+
+..  literalinclude:: attachment/build-hadoop-embed.gradle
+    :language: groovy
+    :caption: build.gradle
+    :name: build.gradle-m3bp-user-guide-2
+    :emphasize-lines: 19
+
+..  attention::
+    この方法で導入されるHadoopはAsakusa Frameworkの実行に最低限必要なコンポーネントのみが含まれます。
+    特にHDFSなどのHadoopファイルシステム実装ライブラリが含まれないなどの制約があるため、
+    実行環境上のHadoopファイルシステムと連携する場合にはこのオプションを有効にせず、実行環境上にインストールしたHadoopと連携するようにしてください。
 
 ..  tip::
     バッチアプリケーション実行時の環境変数は、YAESSプロファイルで設定することも可能です。

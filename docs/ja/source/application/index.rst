@@ -22,6 +22,7 @@ Asakusa Frameworkの開発環境(OSやAsakusa Frameworkが利用するソフト�
 
 * :doc:`migration-guide`
 * :doc:`gradle-plugin-migration-guide`
+* :doc:`gradle-plugin-v010-changes`
 * :doc:`gradle-plugin-v09-changes`
 * :doc:`gradle-plugin-v08-changes`
 * :doc:`previous-migration-guide`
@@ -55,6 +56,7 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
     gradle-plugin-reference
     migration-guide
     gradle-plugin-migration-guide
+    gradle-plugin-v010-changes
     gradle-plugin-v09-changes
     gradle-plugin-v08-changes
     previous-migration-guide

@@ -185,13 +185,6 @@ Framework Organizer Plugin ( ``asakusafwOrganizer`` ) への拡張
         なお、この設定に ``false`` を指定しても全ての依存ライブラリが含まれるわけではありません。
         詳しくは :doc:`user-guide` を参照してください。
 
-``m3bp.useSystemHadoop``
-    デプロイメントアーカイブの\ |M3BP_FEATURE|\ が、実行環境にインストールされているHadoopを利用するかどうかを指定する。
-
-    ``true`` を指定した場合には環境にインストールされているHadoopを利用し、 ``false`` を指定した場合にはデプロイメントアーカイブに最小構成のHadoopライブラリ群を含めてそちらを利用する。
-
-    既定値: ``false`` (実行環境にインストールされたHadoopを利用しない)
-
 ``<profile>.m3bp.enabled``
     対象のプロファイルに対し、デプロイメントアーカイブに\ |M3BP_FEATURE|\ のコンポーネントを追加するかどうかを指定する。
 
@@ -205,13 +198,6 @@ Framework Organizer Plugin ( ``asakusafwOrganizer`` ) への拡張
     前述の ``m3bp.useSystemNativeDependencies`` と同様だが、こちらはプロファイルごとに指定できる。
 
     既定値: ``asakusafwOrganizer.m3bp.useSystemNativeDependencies`` (全体のデフォルト値を利用する)
-
-``<profile>.m3bp.useSystemHadoop``
-    対象のプロファイルに対し、デプロイメントアーカイブの\ |M3BP_FEATURE|\ が、実行環境にインストールされているHadoopを利用するかどうかを指定する。
-
-    前述の ``m3bp.useSystemHadoop`` と同様だが、こちらはプロファイルごとに指定できる。
-
-    既定値: ``asakusafwOrganizer.m3bp.useSystemHadoop`` (全体のデフォルト値を利用する)
 
 ..  [#] これらのプロパティは規約オブジェクト :asakusa-m3bp-gradle-groovydoc:`com.asakusafw.m3bp.gradle.plugins.AsakusafwOrganizerM3bpExtension` が提供します。
 

@@ -296,8 +296,9 @@ WindGateからSSHを経由してHadoopにアクセスする際に、Hadoopブリ
 このツールは通常 :file:`$ASAKUSA_HOME/windgate-ssh` というディレクトリにインストールされていて、リモートコンピューターのAsakusa Frameworkにも同様のディレクトリが必要です。
 また、プロファイルの ``resource.hadoop.env.ASAKUSA_HOME`` には、リモートコンピューターのAsakusa Frameworkのインストール先をフルパスで指定してください。
 
-このツールの内部では、以下の順序で :program:`hadoop` コマンドを検索し、そのコマンドでHadoopクラスターの操作を行います。
+このツールの内部では、以下の順序でリモートコンピューターの :program:`hadoop` コマンドを検索し、そのコマンドでHadoopクラスターの操作を行います。
 
+* リモートコンピューターのAsakusa Frameworkに組み込みのHadoop [#]_ がインストールされている場合、そのHadoop環境を利用します。
 * 環境変数 ``HADOOP_CMD`` が設定されている場合、 ``$HADOOP_CMD`` を :program:`hadoop` コマンドとみなして利用します。
 * 環境変数 ``HADOOP_HOME`` が設定されている場合、 :program:`$HADOOP_HOME/bin/hadoop` コマンドを利用します。
 * :program:`hadoop` コマンドのパスが通っている場合、それを利用します。
@@ -318,6 +319,7 @@ WindGate本体と同様に、SLF4JとLogbackを利用しています [#]_ 。
     ``HADOOP_USER_CLASSPATH_FIRST`` の設定は、ログの設定を有効にするためにも必要です。
     特別な理由でHadoopのクラスパスを優先したい時を除き、 ``HADOOP_USER_CLASSPATH_FIRST`` の設定を変更しないようにしてください。
 
+..  [#] 組み込みのHadoopについては、 :doc:`start-guide` - Hadoopの設定 を参照してください。
 ..  [#] `WindGateのログ設定`_ を参照
 
 ローカルファイルシステムの設定
@@ -487,19 +489,18 @@ WindGateをAsakusa Frameworkのバッチから利用する場合、以下の環�
 
 なお、WindGateの本体は、以下の規約に従って起動します (上にあるものほど優先度が高いです)。
 
+* Asakusa Frameworkに組み込みのHadoop [#]_ がインストールされている場合、そのHadoopライブラリーを利用します。
 * 環境変数に ``HADOOP_CMD`` が設定されている場合、 ``$HADOOP_CMD`` コマンドを経由して起動します。
 * 環境変数に ``HADOOP_HOME`` が設定されている場合、 :file:`$HADOOP_HOME/bin/hadoop` コマンドを経由して起動します。
 * :program:`hadoop` コマンドのパスが通っている場合、 :program:`hadoop` コマンドを経由して起動します。
-* :program:`java` コマンドから直接起動します。
 
 このため、 ``HADOOP_CMD`` と ``HADOOP_HOME`` の両方を指定した場合、 ``HADOOP_CMD`` の設定を優先します。
 
-..  hint::
-    :program:`hadoop` コマンドが見つからない場合、WindGateは代わりに :program:`java` コマンドを利用してアプリケーションを起動します。
-    前者はHadoopに関する設定やクラスライブラリなどが有効になりますが、後者は :file:`$ASAKUSA_HOME/windgate/lib` 以下のライブラリのみをクラスパスに通し、Hadoopに関する設定を行いません。
+..  attention::
+    Asakusa Framework バージョン 0.9系以前では :program:`hadoop` コマンドが見つからない場合、WindGateは代わりに
+    :program:`java` コマンドを利用してアプリケーションを起動する機能が含まれていましたが、バージョン 0.10 よりこの機能は廃止されました。
 
-    特別な理由がない限り、 :file:`$ASAKUSA_HOME/windgate/conf/env.sh` 内で ``HADOOP_CMD`` や ``HADOOP_HOME`` を設定しておくのがよいでしょう。
-    または、 :doc:`YAESS <../yaess/index>` を利用して外部から環境変数を設定することも可能です。
+..  [#] 組み込みのHadoopについては、 :doc:`start-guide` - Hadoopの設定 を参照してください。
 
 WindGateのログ設定
 ------------------
