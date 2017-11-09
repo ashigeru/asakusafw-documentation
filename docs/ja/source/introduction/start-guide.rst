@@ -337,14 +337,14 @@ Shafuを導入した開発環境では、コンテキストメニューから :m
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `サンプルアプリケーションのビルド`_ で作成したデプロイメントアーカイブファイル ``asakusafw-example-basic-spark.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
-展開後、 ``$ASAKUSA_HOME`` 配下の :file:`*.sh` に実行権限を追加します。
+展開後 ``$ASAKUSA_HOME/tools/bin/setup.jar`` を実行し、展開したファイルに対して適切な実行権限などを設定します。
 
 ..  code-block:: sh
 
     mkdir -p "$ASAKUSA_HOME"
     cd "$ASAKUSA_HOME"
     tar -xzf /path/to/asakusafw-example-basic-spark.tar.gz
-    find "$ASAKUSA_HOME" -name "*.sh" | xargs chmod u+x
+    java -jar $ASAKUSA_HOME/tools/bin/setup.jar
 
 サンプルデータの配置
 --------------------
