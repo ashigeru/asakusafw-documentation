@@ -82,7 +82,7 @@ Asakusa on Spark Gradle Pluginは Batch Application Plugin に対して Asakusa 
     asakusafw {
         spark {
             include 'com.example.batch.*'
-            option 'spark.input.direct', 'false'
+            option 'operator.logging.level', 'warn'
         }
 
 この規約オブジェクトは以下のプロパティを持ちます。
@@ -234,20 +234,6 @@ Asakusa DSL Compiler for Spark リファレンス
 
 Asakusa DSL Compiler for Sparkで利用可能なコンパイラプロパティについて説明します。これらの設定方法については、 `Batch Application Plugin ( asakusafw ) への拡張`_ の ``spark.option`` の項を参照してください。
 
-``inspection.dsl``
-    DSLの構造を可視化するためのファイル( ``etc/inspection/dsl.json`` )を生成するかどうか。
-
-    ``true`` ならば生成し、 ``false`` ならば生成しない。
-
-    既定値: ``true``
-
-``inspection.task``
-    タスクの構造を可視化するためのファイル( ``etc/inspection/task.json`` )を生成するかどうか。
-
-    ``true`` ならば生成し、 ``false`` ならば生成しない。
-
-    既定値: ``true``
-
 ``directio.input.filter.enabled``
     Direct I/O input filterを有効にするかどうか。
 
@@ -341,6 +327,8 @@ Asakusa DSL Compiler for Sparkで利用可能なコンパイラプロパティ�
     既定値: ``true``
 
 ..  attention::
+    Asakusa Framework バージョン 0.10.0 より、 ``spark.input.direct`` および ``spark.output.direct`` を ``false`` に指定した利用は非推奨となりました。
+
     ``spark.input.direct`` , ``spark.output.direct`` のいずれかの値を ``false`` に設定した場合、
     YAESSによるバッチアプリケーション実行にはHadoopコマンドを利用できる環境が必要です。
     利用するHadoopコマンドの設定方法や検索方法については、 :doc:`../yaess/user-guide` を参照してください。

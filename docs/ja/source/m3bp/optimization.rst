@@ -163,6 +163,9 @@
 
   既定値: ``nio`` (Java NIOを利用)
 
+  ..  attention::
+      Asakusa Framework 0.10.0 より ``com.asakusafw.m3bp.buffer.access`` に ``unsafe`` を指定することは非推奨となりました。
+
 ``com.asakusafw.dag.input.file.directory``
   :doc:`../dsl/operators` - :ref:`spill-input-buffer` などを利用してメモリ上のバッファをファイルとして退避する際に使用する、
   ファイルの出力先ディレクトリを設定します。

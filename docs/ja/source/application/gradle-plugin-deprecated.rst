@@ -127,6 +127,41 @@ Asakusa Frameworkでは、標準のデプロイメントアーカイブに含ま
 
 このようにタスクを実行すると、テスト済のバッチアプリケーションと設定ファイル、追加ライブラリ、拡張モジュールを含むデプロイメントアーカイブを生成します。
 
+その他のプラグイン機能
+======================
+
+バッチテストランナーの実行
+--------------------------
+
+..  attention::
+    Asakusa Frameworkのバージョン 0.10.0 より、 :program:`testRunBatchapp` タスクは非推奨となりました。
+
+:program:`testRunBatchapp` タスクはインテグレーションテスト用のテストAPIであるバッチテストランナーをGradleタスクとして実行することができます。
+このタスクを利用するには、プロジェクトに対してAsakusa on MapReduce Plugin ( ``asakusafw-mapreduce`` ) を有効にする必要があります。
+
+:program:`testRunBatchapp` タスクは :program:`gradlew` コマンド実行時に以下のコマンドライン引数を指定します。
+
+..  program:: testRunBatchapp
+
+..  option:: --id batch-id
+
+    実行するバッチアプリケーションのバッチID
+
+..  option:: --arguments key1=value1 [,key2=value2]
+
+    バッチ引数を ``key=value`` 形式で指定
+
+    複数のバッチ引数がある場合はカンマ区切りで指定 ( ``key1=value1,key2=value2`` )
+
+:program:`testRunBatchapp` タスクの実行例は以下の通りです。
+
+..  code-block:: sh
+
+    ./gradlew testRunBatchapp --id example.summarizeSales --arguments date=2011-04-01
+
+..  seealso::
+    バッチテストランナーの詳細は :doc:`../testing/user-guide` - :ref:`testing-userguide-batch-test-runner` を参照してください。
+
 Asakusa Gradle Plugin リファレンス
 ==================================
 

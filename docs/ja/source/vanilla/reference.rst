@@ -228,20 +228,6 @@ DSL Compiler for Vanilla リファレンス
 DSL Compiler for Vanillaで利用可能なコンパイラプロパティについて説明します。
 これらの設定方法については、 `Batch Application Plugin ( asakusafw ) への拡張`_ の ``vanilla.option`` の項を参照してください。
 
-``inspection.dsl``
-    DSLの構造を可視化するためのファイル( ``etc/inspection/dsl.json`` )を生成するかどうか。
-
-    ``true`` ならば生成し、 ``false`` ならば生成しない。
-
-    既定値: ``true``
-
-``inspection.task``
-    タスクの構造を可視化するためのファイル( ``etc/inspection/task.json`` )を生成するかどうか。
-
-    ``true`` ならば生成し、 ``false`` ならば生成しない。
-
-    既定値: ``true``
-
 ``directio.input.filter.enabled``
     Direct I/O input filterを有効にするかどうか。
 

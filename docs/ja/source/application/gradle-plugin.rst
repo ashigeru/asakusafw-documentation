@@ -539,10 +539,6 @@ Asakusa Gradle Pluginを適用したアプリケーションプロジェクト�
         sdk.hive true
     }
 
-..  attention::
-    Asakusa Framework バージョン 0.8系までは、アプリケーションSDKライブラリの管理はビルドスクリプトの ``dependencies`` ブロックに
-    :doc:`SDKアーティファクト <sdk-artifact>` を追加するという方法を採用していましたが、この方法はバージョン 0.9.0 からは非推奨となりました。
-
 ..  seealso::
     ``sdk`` に対して設定可能な全てのプロパティについては :doc:`gradle-plugin-reference` - :ref:`batch-application-plugin-reference` を参照してください。
 
@@ -772,37 +768,6 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
     Asakusa Frameworkのバージョン ``0.7.6`` 以前では :program:`compileBatchapp` タスクに対して ``--update`` オプションを指定していましたが、
     バージョン ``0.8.0`` 以降は :program:`compileBatchapp` タスクに ``--update`` オプションを指定することはできなくなりました。
     代わりに、各DSLコンパイラの実行用タスク ( :program:`sparkCompileBatchapps` など ) に ``--update`` オプションを指定します。
-
-バッチテストランナーの実行
---------------------------
-
-..  attention::
-    Asakusa Frameworkのバージョン |version| では、 :program:`testRunBatchapp` タスクは試験的機能として提供しています。
-
-:program:`testRunBatchapp` タスクはインテグレーションテスト用のテストAPIであるバッチテストランナーをGradleタスクとして実行することができます。
-
-:program:`testRunBatchapp` タスクは :program:`gradlew` コマンド実行時に以下のコマンドライン引数を指定します。
-
-..  program:: testRunBatchapp
-
-..  option:: --id batch-id
-
-    実行するバッチアプリケーションのバッチID
-
-..  option:: --arguments key1=value1 [,key2=value2]
-
-    バッチ引数を ``key=value`` 形式で指定
-
-    複数のバッチ引数がある場合はカンマ区切りで指定 ( ``key1=value1,key2=value2`` )
-
-:program:`testRunBatchapp` タスクの実行例は以下の通りです。
-
-..  code-block:: sh
-
-    ./gradlew testRunBatchapp --id example.summarizeSales --arguments date=2011-04-01
-
-..  seealso::
-    バッチテストランナーの詳細は :doc:`../testing/user-guide` - :ref:`testing-userguide-batch-test-runner` を参照してください。
 
 テストツールタスクの実行
 ------------------------

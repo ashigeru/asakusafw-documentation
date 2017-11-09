@@ -18,31 +18,22 @@ Asakusa Gradle PluginはAsakusa FrameworkのMavenリポジトリ( http://asakusa
       - 説明
     * - ``com.asakusafw.gradle``
       - ``asakusa-distribution``
-      - Asakusa Gradle Pluginの標準機能に加えて、このリリースバージョンで利用可能なサブプロジェクトの機能をまとめて提供する ( `ディストリビューションプラグインの利用`_ )。
-    * - ``com.asakusafw``
-      - ``asakusa-gradle-plugins``
-      - Asakusa Gradle Pluginの標準機能に加えて、:doc:`../mapreduce/index` 向けの機能を提供する。
-    * - ``com.asakusafw.spark``
-      - ``asakusa-spark-gradle``
-      - Asakusa Gradle Pluginの標準機能に加えて、 :doc:`../spark/index` 向けの機能を提供する。
-    * - ``com.asakusafw.m3bp``
-      - ``asakusa-m3bp-gradle``
-      - Asakusa Gradle Pluginの標準機能に加えて、 :doc:`../m3bp/index` 向けの機能を提供する。
+      - ディストリビューションプラグイン ( `ディストリビューションプラグインの利用`_ )。
 
 ディストリビューションプラグインの利用
 --------------------------------------
 
-Asakusa Gradle Pluginを利用する場合、通常はディストリビューションプラグイン ``com.asakusafw.gradle:asakusa-distribution`` の利用を推奨します。
+Asakusa Gradle Pluginを利用する場合には、プロジェクトに対してディストリビューションプラグイン ``com.asakusafw.gradle:asakusa-distribution`` を有効にします。
 
 ディストリビューションプラグインはAsakusa Frameworkのリリース時に動作検証を行った各サブプロジェクトの組み合わせによる
 Gradle Pluginのバージョンを自動的に適用し、これらを単一のバージョンで利用できるようにします。
 将来サブプロジェクトが追加された場合や構成が変更になった場合にも、マイグレーションの手順がシンプルになります。
 
-例えば、ディストリビューションプラグインのバージョン 0.9.0 は以下のGradle Pluginを自動的に適用します。
+例えば、ディストリビューションプラグインのバージョン 0.10.0 は以下のGradle Pluginを自動的に適用します。
 
-* ``com.asakusafw:asakusa-gradle-plugins:0.9.0``
-* ``com.asakusafw.spark:asakusa-spark-gradle:0.4.0``
-* ``com.asakusafw.m3bp:asakusa-m3bp-gradle:0.2.0``
+* ``com.asakusafw:asakusa-gradle-plugins:0.10.0``
+* ``com.asakusafw.spark:asakusa-spark-gradle:0.5.0``
+* ``com.asakusafw.m3bp:asakusa-m3bp-gradle:0.3.0``
 
 ..  seealso::
     Gradle Pluginによってアプリケーションプロジェクトに適用される各コンポーネントのバージョンを確認する方法は、後述の `バージョンの確認`_ を参照してください。
@@ -145,13 +136,15 @@ Asakusa Gradle Pluginの各プラグインを使うためには、ビルドス�
 
 ..  code-block:: none
 
-    :asakusaVersions
-    Asakusa Gradle Plug-ins: 0.9.0
-    Asakusa SDK: 0.9.0
+    > Task :asakusaVersions
+    Asakusa Gradle Plug-ins: 0.10.0
+    Asakusa SDK: 0.10.0
     JVM: 1.8
-    Asakusa on Spark: 0.4.0
-    Spark: 2.0.2
-    Asakusa on M3BP: 0.2.0
+    Asakusa Language: 0.5.0
+    Asakusa Vanilla: 0.5.0
+    Asakusa on Spark: 0.5.0
+    Spark: 2.2.0
+    Asakusa on M3BP: 0.3.0
 
 .. _batch-application-plugin-reference:
 
@@ -208,10 +201,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ``asakusafw-sdk``
       - ``GenerateTestbookTask`` [#]_
       - テストデータ定義シートを生成する
-    * - :program:`testRunBatchapp`
-      - ``asakusafw-mapreduce``
-      - ``RunBatchappTask`` [#]_
-      - バッチテストランナーを実行する
     * - :program:`generateHiveDDL`
       - ``asakusafw-sdk``
       - ``GenerateHiveDdlTask`` [#]_
@@ -220,7 +209,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileDmdlTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileBatchappTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateTestbookTask`
-..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.RunBatchappTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateHiveDdlTask`
 
 また、Batch Application Pluginは以下のタスクに対してタスク依存関係を追加します。
