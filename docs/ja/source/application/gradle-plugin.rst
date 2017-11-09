@@ -769,37 +769,6 @@ Asakusa Gradle Pluginでは、特定の環境向けに個別にデプロイメ�
     バージョン ``0.8.0`` 以降は :program:`compileBatchapp` タスクに ``--update`` オプションを指定することはできなくなりました。
     代わりに、各DSLコンパイラの実行用タスク ( :program:`sparkCompileBatchapps` など ) に ``--update`` オプションを指定します。
 
-バッチテストランナーの実行
---------------------------
-
-..  attention::
-    Asakusa Frameworkのバージョン |version| では、 :program:`testRunBatchapp` タスクは試験的機能として提供しています。
-
-:program:`testRunBatchapp` タスクはインテグレーションテスト用のテストAPIであるバッチテストランナーをGradleタスクとして実行することができます。
-
-:program:`testRunBatchapp` タスクは :program:`gradlew` コマンド実行時に以下のコマンドライン引数を指定します。
-
-..  program:: testRunBatchapp
-
-..  option:: --id batch-id
-
-    実行するバッチアプリケーションのバッチID
-
-..  option:: --arguments key1=value1 [,key2=value2]
-
-    バッチ引数を ``key=value`` 形式で指定
-
-    複数のバッチ引数がある場合はカンマ区切りで指定 ( ``key1=value1,key2=value2`` )
-
-:program:`testRunBatchapp` タスクの実行例は以下の通りです。
-
-..  code-block:: sh
-
-    ./gradlew testRunBatchapp --id example.summarizeSales --arguments date=2011-04-01
-
-..  seealso::
-    バッチテストランナーの詳細は :doc:`../testing/user-guide` - :ref:`testing-userguide-batch-test-runner` を参照してください。
-
 テストツールタスクの実行
 ------------------------
 

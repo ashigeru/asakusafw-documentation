@@ -201,10 +201,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
       - ``asakusafw-sdk``
       - ``GenerateTestbookTask`` [#]_
       - テストデータ定義シートを生成する
-    * - :program:`testRunBatchapp`
-      - ``asakusafw-mapreduce``
-      - ``RunBatchappTask`` [#]_
-      - バッチテストランナーを実行する
     * - :program:`generateHiveDDL`
       - ``asakusafw-sdk``
       - ``GenerateHiveDdlTask`` [#]_
@@ -213,7 +209,6 @@ Batch Application Plugin は、以下のタスクをプロジェクトに追加�
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileDmdlTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.CompileBatchappTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateTestbookTask`
-..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.RunBatchappTask`
 ..  [#] :asakusa-gradle-groovydoc:`com.asakusafw.gradle.tasks.GenerateHiveDdlTask`
 
 また、Batch Application Pluginは以下のタスクに対してタスク依存関係を追加します。
