@@ -342,14 +342,26 @@ Hadoopクライアントマシン上でAsakusa Frameworkを配置しバッチア
 
 Hadoopクライアントマシンにデプロイメントアーカイブファイル ``asakusafw-${project.name}.tar.gz`` を配置し、 ``$ASAKUSA_HOME`` 配下にデプロイメントアーカイブを展開します。
 展開後、 ``$ASAKUSA_HOME`` 配下の :file:`*.sh` に実行権限を追加します。
+展開後 ``$ASAKUSA_HOME/tools/bin/setup.jar`` を実行し、展開したファイルに対して適切な実行権限などを設定します。
+
 
 ..  code-block:: sh
 
     mkdir -p "$ASAKUSA_HOME"
     cd "$ASAKUSA_HOME"
     tar -xzf /path/to/asakusafw-*.tar.gz
-    find "$ASAKUSA_HOME" -name "*.sh" | xargs chmod u+x
-..  **
+    java -jar $ASAKUSA_HOME/tools/bin/setup.jar
+
+..  attention::
+    ``$ASAKUSA_HOME/tools/bin/setup.jar`` を実行する手順は Asakusa Framework バージョン 0.10.0 より追加されました。
+
+    バージョン 0.9以前では、この部分は ``find "$ASAKUSA_HOME" -name "*.sh" | xargs chmod u+x`` のようなコマンドを実行していましたが、
+    バージョン 0.10.0 から展開後のファイル拡張子が変更されたため、この手順では正しくセットアップすることができません。
+
+    そのためバージョン 0.10.0 以降は必ず上記のように ``$ASAKUSA_HOME/tools/bin/setup.jar`` を実行してセットアップを行ってください。
+
+..  seealso::
+    ``setup.jar`` の詳細は、 :doc:`utility-tool-user-guide` を参照してください。
 
 環境構成の確認とバッチの実行
 ----------------------------

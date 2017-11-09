@@ -8,7 +8,58 @@
 ユーティリティツールの配置
 ==========================
 
-すべてのユーティリティツールは、Asakusa Frameworkをインストールしたパスの :file:`tools/bin` ディレクトリ内に格納されています。
+すべてのユーティリティツールは、Asakusa Frameworkをインストールしたパスの :file:`$ASAKUSA_HOME/tools/bin` ディレクトリ内に格納されています。
+
+ユーティリティツールのコマンド一覧を以下に示します。
+
+..  list-table:: ユーティリティツール コマンド一覧
+    :widths: 2 8
+    :header-rows: 1
+
+    * - サブコマンド
+      - 説明
+    * - :program:`directio`
+      - Direct I/O CLI [#]_
+    * - :program:`directio.cmd`
+      - Direct I/O CLI のWindows向けコマンド
+    * - :file:`setup.jar`
+      - `デプロイメントアーカイブのセットアップ`_
+    * - :program:`hadoop-fs-clean.sh`
+      - `Hadoopファイルシステムのクリーニング`_
+
+..  [#] Direct I/O CLI については :doc:`../directio/directio-cli` を参照してください。
+
+セットアップに関するユーティリティ
+==================================
+
+デプロイメントアーカイブのセットアップ
+--------------------------------------
+
+:file:`setup.jar` はAsakusa Frameworkのデプロイメントアーカイブを展開後に実行することで
+展開したファイルに対して適切な実行権限を付与するなどの処理を行い、バッチアプリケーションを実行可能な状態にセットアップします。
+
+利用方法の例は、 :doc:`../introduction/start-guide` や :doc:`../administration/deployment-guide` を参照してください。
+
+書式
+~~~~
+
+..  code-block:: sh
+
+    java -jar $ASAKUSA_HOME/tools/bin/setup.jar [/path/to/installation] [--help]
+
+``setup.jar`` は :program:`java` コマンドを経由して実行します。
+オプションを指定せず実行した場合、 環境変数 ``$ASAKUSA_HOME`` 配下に配置されているファイルに対してセットアップ処理を行います。
+オプションにディレクトリパスを指定すると、そのディレクトリ配下に配置されているファイルに対してセットアップ処理を行います。
+
+使用例
+~~~~~~
+
+..  code-block:: sh
+
+    mkdir -p "$ASAKUSA_HOME"
+    cd "$ASAKUSA_HOME"
+    tar -xzf /tmp/asakusafw-example-basic-m3bp.tar.gz
+    java -jar $ASAKUSA_HOME/tools/bin/setup.jar
 
 Hadoopに関するユーティリティ
 ============================
