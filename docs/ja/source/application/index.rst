@@ -40,7 +40,6 @@ Asakusa Frameworkの開発環境(OSやAsakusa Frameworkが利用するソフト�
 Asakusa Framework バージョン |version| において、以下のドキュメントで説明する機能は非推奨となっています。
 
 * :doc:`gradle-plugin-deprecated`
-* :doc:`sdk-artifact`
 
 ..  attention::
     非推奨となった機能のうち、その多くは、現在のバージョンで代替となる推奨機能が提供されています。
@@ -62,4 +61,3 @@ Asakusa Framework バージョン |version| において、以下のドキュメ
     previous-migration-guide
     using-jdk
     gradle-plugin-deprecated
-    sdk-artifact

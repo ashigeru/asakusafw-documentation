@@ -539,10 +539,6 @@ Asakusa Gradle Pluginを適用したアプリケーションプロジェクト�
         sdk.hive true
     }
 
-..  attention::
-    Asakusa Framework バージョン 0.8系までは、アプリケーションSDKライブラリの管理はビルドスクリプトの ``dependencies`` ブロックに
-    :doc:`SDKアーティファクト <sdk-artifact>` を追加するという方法を採用していましたが、この方法はバージョン 0.9.0 からは非推奨となりました。
-
 ..  seealso::
     ``sdk`` に対して設定可能な全てのプロパティについては :doc:`gradle-plugin-reference` - :ref:`batch-application-plugin-reference` を参照してください。
 
