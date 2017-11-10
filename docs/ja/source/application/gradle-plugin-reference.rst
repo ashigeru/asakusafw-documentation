@@ -510,6 +510,11 @@ SDKプロパティ
       - true
       - この値をtrueにするとWindGateライブラリを依存ライブラリに追加する。
         true または false を指定可能。
+    * - ``yaess``
+      - Object
+      - true
+      - この値をtrueにするとバッチアプリケーションのコンパイル時にYAESSのワークフロースクリプトを追加する。
+        true または false を指定可能。
     * - ``hive``
       - Object
       - false
