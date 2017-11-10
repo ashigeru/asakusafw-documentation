@@ -716,6 +716,39 @@ Javaオブジェクトによるテストデータ定義
 ..  [#] :doc:`../application/gradle-plugin` の手順に従って作成したプロジェクトでは :file:`$ASAKUSA_HOME/core/conf/asakusa-resources.xml` が配置されるため、デフォルトの状態ではこのファイルが利用されます。
         デフォルトの状態では演算子のテストで使用される実行時プラグイン設定ファイルと異なるファイルが利用されることに注意してください。
 
+一時的なフロー記述による演算子のテスト
+--------------------------------------
+
+各 ``Tester`` クラスの ``runTest`` メソッドでは、テスト対象のクラスを指定する方法の他に
+Flow DSLのフロー記述メソッドと同様の形式で複数の演算子を含む一時的なデータフローを組み立てて、
+そのデータフローを実行することができます。
+
+複数の演算子を組み合わせてテストしたい場合や、
+ビューやリストを含む複雑な演算子をテストドライバでテストしたい
+といった場合にこの方法を使うと便利です。
+
+..  code-block:: java
+
+    @Test
+    public void testWithTemporaryFlow() {
+        // 入出力の定義
+        FlowPartTester tester = new FlowTester(getClass());
+        In<Hoge> in0 = tester.input(Hoge.class)
+            .prepare("path/to/input0.xlsx");
+        In<Foo> in1 = tester.input(Foo.class)
+            .prepare("path/to/input1.xlsx");
+        Out<Bar> out = tester.output(Bar.class)
+            .verify(...);
+
+        // テスト用の一時的なデータフローを構築して実行
+        tester.runTest(() -> {
+            HogeOperatorFactory f = new HogeOperatorFactory();
+            Prepare op1 = f.prepare(in0);
+            GetBars op2 = f.getBars(op1.out, in1);
+            out.add(op2.out);
+        });
+    }
+
 .. _testing-userguide-integration-test:
 
 インテグレーションテスト
