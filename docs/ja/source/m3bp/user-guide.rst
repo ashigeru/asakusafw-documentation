@@ -187,7 +187,7 @@ Hadoopとの連携方法は、 `Hadoopとの連携`_ を参照してください
     :name: build.gradle-m3bp-user-guide-1
 
 ..  seealso::
-    Asakusa on Spark Gradle Pluginのより詳細な情報は、 :doc:`../application/gradle-plugin-reference` や :doc:`reference` などを参照してください。
+    |M3BP_FEATURE| Gradle Pluginのより詳細な情報は、 :doc:`../application/gradle-plugin-reference` や :doc:`reference` などを参照してください。
 
 アプリケーションのビルド
 ------------------------

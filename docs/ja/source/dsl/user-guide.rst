@@ -878,9 +878,9 @@ Batch DSLで記述する内容は、主に「ジョブフローの実行順序�
 上記のうち ``parameters`` を指定すると、このバッチで利用可能なバッチ引数の詳細を指定できます。
 さらに ``strict`` に ``true`` を指定すると、 ``parameters`` 以外のバッチ引数を指定できなくなります。
 
-この ``parameters`` では注釈 ``@Parameters`` [#]_ を利用して個々のバッチ引数を指定します。
+この ``parameters`` では注釈 ``@Parameter`` [#]_ を利用して個々のバッチ引数を指定します。
 
-..  list-table:: ``@Parameters`` の属性
+..  list-table:: ``@Parameter`` の属性
     :widths: 2 2 2 8
     :header-rows: 1
 
